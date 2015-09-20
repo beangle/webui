@@ -18,7 +18,7 @@
  */
 package org.beangle.webui.tag
 
-import org.beangle.webmvc.api.context.{ ActionMessages, ContextHolder, Flash }
+import org.beangle.webmvc.api.context.{ ActionMessages, ActionContextHolder, Flash }
 import org.beangle.webmvc.view.tag.{ ClosingUIBean, ComponentContext, UIBean }
 
 class Messages(context: ComponentContext) extends UIBean(context) {
@@ -28,7 +28,7 @@ class Messages(context: ComponentContext) extends UIBean(context) {
   var clear = "true"
 
   override def evaluateParams() {
-    val messages = ContextHolder.context.flash.get(Flash.MESSAGES).asInstanceOf[ActionMessages]
+    val messages = ActionContextHolder.context.flash.get(Flash.MESSAGES).asInstanceOf[ActionMessages]
     if (null != messages && (!messages.messages.isEmpty || !messages.errors.isEmpty)) {
       generateIdIfEmpty()
 

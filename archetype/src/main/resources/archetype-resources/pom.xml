@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>22.2</version>
+    <version>22.3</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>\${groupId}</groupId>
@@ -14,7 +14,8 @@
   <description>Beangle WebMVC Starter</description>
 
   <properties>
-    <beangle.mvc.version>${project.version}</beangle.mvc.version>
+    <beangle.mvc.version>0.2.10</beangle.mvc.version>
+    <beangle.webui.version>${project.version}</beangle.webui.version>
   </properties>
 
   <dependencies>
@@ -29,24 +30,24 @@
       <version>\${beangle.mvc.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-bootstrap-ui</artifactId>
+      <groupId>org.beangle.webui</groupId>
+      <artifactId>beangle-webui-bootstrap</artifactId>
       <version>\${beangle.mvc.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-tag</artifactId>
-      <version>\${beangle.mvc.version}</version>
+      <groupId>org.beangle.webui</groupId>
+      <artifactId>beangle-webui-tag</artifactId>
+      <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-config-plugin</artifactId>
-      <version>\${beangle.mvc.version}</version>
+      <groupId>org.beangle.webui</groupId>
+      <artifactId>beangle-webmvc-app-config-browser</artifactId>
+      <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-hibernate-plugin</artifactId>
-      <version>\${beangle.mvc.version}</version>
+      <groupId>org.beangle.webui</groupId>
+      <artifactId>beangle-webui-app-hibernate</artifactId>
+      <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>

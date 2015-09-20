@@ -25,7 +25,7 @@ import scala.reflect.runtime.universe
 import org.beangle.commons.lang.Strings
 import org.beangle.commons.lang.annotation.description
 import org.beangle.commons.lang.reflect.BeanManifest
-import org.beangle.commons.text.i18n.Messages
+import org.beangle.commons.i18n.Messages
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.config.{ ActionConfig, Configurer }
 

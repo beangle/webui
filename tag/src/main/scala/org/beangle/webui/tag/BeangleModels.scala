@@ -22,7 +22,7 @@ import java.io.StringWriter
 import java.{ util => ju }
 
 import org.beangle.commons.collection.page.Page
-import org.beangle.webmvc.api.context.ContextHolder
+import org.beangle.webmvc.api.context.ActionContextHolder
 import org.beangle.webmvc.context.ActionContextHelper
 import org.beangle.webmvc.view.UITheme
 import org.beangle.webmvc.view.tag.{ ComponentContext, CoreModels }
