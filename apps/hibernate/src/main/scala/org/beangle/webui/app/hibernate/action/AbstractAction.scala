@@ -19,7 +19,7 @@
 package org.beangle.webui.app.hibernate.action
 
 import org.beangle.commons.lang.Strings.isEmpty
-import org.beangle.data.jpa.hibernate.ConfigurableSessionFactory
+import org.beangle.data.hibernate.ConfigurableSessionFactory
 import org.beangle.webmvc.api.action.{ ParamSupport, RouteSupport }
 import org.beangle.webui.app.hibernate.helper.SessionFactoryHelper
 import org.hibernate.SessionFactory

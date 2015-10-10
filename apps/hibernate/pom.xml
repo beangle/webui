@@ -18,17 +18,11 @@
   <dependencies>
     <dependency>
       <groupId>org.beangle.data</groupId>
-      <artifactId>beangle-data-jpa_2.11</artifactId>
+      <artifactId>beangle-data-hibernate_2.11</artifactId>
     </dependency>
     <dependency>
       <groupId>org.beangle.webmvc</groupId>
       <artifactId>beangle-webmvc-view_2.11</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>${hibernate.version}</version>
-      <optional>true</optional>
     </dependency>
   </dependencies>
 </project>

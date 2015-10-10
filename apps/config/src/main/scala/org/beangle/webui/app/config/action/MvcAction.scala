@@ -19,15 +19,14 @@
 package org.beangle.webui.app.config.action
 
 import java.util.Locale
-
 import scala.reflect.runtime.universe
-
 import org.beangle.commons.lang.Strings
 import org.beangle.commons.lang.annotation.description
 import org.beangle.commons.lang.reflect.BeanManifest
 import org.beangle.commons.i18n.Messages
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.config.{ ActionConfig, Configurer }
+import org.beangle.webmvc.config.ActionMapping
 
 /**
  * @author chaostone
@@ -56,7 +55,7 @@ class MvcAction extends ActionSupport {
 
   def action(): String = {
     val actionName = get("name", "")
-    val config = configurer.getConfig(actionName).get
+    val config = configurer.getActionMapping(actionName).get
     try {
       val clazz = config.clazz
       put("properties", BeanManifest.get(clazz).properties.values.filterNot(m => m.name.contains("$")))
@@ -73,10 +72,10 @@ class MvcAction extends ActionSupport {
   def jekyll(): String = {
     val packageName = get("packageName", "")
     val actionNames = new collection.mutable.HashSet[String]
-    val configs = configurer.actionConfigs.values.toSet
+    val configs = configurer.actionMappings.values.toSet
     val descriptions = new collection.mutable.HashMap[String, String]
     val messages = Messages(Locale.SIMPLIFIED_CHINESE)
-    val configMap = new collection.mutable.HashMap[String, ActionConfig]
+    val configMap = new collection.mutable.HashMap[String, ActionMapping]
     configs foreach { config =>
       if (config.clazz.getName.startsWith(packageName)) {
         val actionName = config.name
@@ -93,13 +92,13 @@ class MvcAction extends ActionSupport {
   }
 
   private def getNamespaces(): Seq[String] = {
-    val configs = configurer.actionConfigs.values.toSet
+    val configs = configurer.actionMappings.values.toSet
     configs.map(config => config.namespace).toList.sorted
   }
 
   private def getActionNames(namespace: String): Seq[String] = {
     val actionNames = new collection.mutable.HashSet[String]
-    val configs = configurer.actionConfigs.values.toSet
+    val configs = configurer.actionMappings.values.toSet
     configs foreach { config =>
       if (config.namespace == namespace) {
         if (config.name == namespace) actionNames += ""

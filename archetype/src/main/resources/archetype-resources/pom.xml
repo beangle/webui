@@ -14,14 +14,14 @@
   <description>Beangle WebMVC Starter</description>
 
   <properties>
-    <beangle.mvc.version>0.2.10</beangle.mvc.version>
+    <beangle.mvc.version>0.3.2</beangle.mvc.version>
     <beangle.webui.version>${project.version}</beangle.webui.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-webxml-plugin</artifactId>
+      <artifactId>beangle-webmvc-spring-plugin</artifactId>
       <version>\${beangle.mvc.version}</version>
     </dependency>
     <dependency>
@@ -41,7 +41,7 @@
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webmvc-app-config-browser</artifactId>
+      <artifactId>beangle-webui-app-config-browser</artifactId>
       <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
