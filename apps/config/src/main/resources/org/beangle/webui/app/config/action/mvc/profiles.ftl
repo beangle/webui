@@ -9,10 +9,15 @@
     <view path="${profile.viewPath}" style="${profile.viewPathStyle}" type="${profile.viewType}" suffix="${profile.viewSuffix}" />
     <url path="${profile.urlPath}" suffix="${profile.urlSuffix}"  style="${profile.urlStyle}" />
     <interceptors>
-      [#list profile.interceptorNames as interceptor]
-      <interceptor name="${interceptor}"/>
+      [#list profile.interceptors as interceptor]
+      <interceptor name="${interceptor.class.name}"/>
       [/#list]
     </interceptors>
+    <decorators>
+      [#list profile.decorators as decorator]
+      <decorator name="${decorator.class.name}"/>
+      [/#list]
+    </decorators>
   </profile>
   
 [/#list]
