@@ -14,39 +14,39 @@
   <description>Beangle WebMVC Starter</description>
 
   <properties>
-    <beangle.mvc.version>0.3.2</beangle.mvc.version>
+    <beangle.mvc.version>0.3.3</beangle.mvc.version>
     <beangle.webui.version>${project.version}</beangle.webui.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-spring-plugin</artifactId>
+      <artifactId>beangle-webmvc-spring-plugin_2.11</artifactId>
       <version>\${beangle.mvc.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-entity-plugin</artifactId>
+      <artifactId>beangle-webmvc-entity-plugin_2.11</artifactId>
       <version>\${beangle.mvc.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-bootstrap</artifactId>
+      <artifactId>beangle-webui-bootstrap_2.11</artifactId>
       <version>\${beangle.mvc.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-tag</artifactId>
+      <artifactId>beangle-webui-tag_2.11</artifactId>
       <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-app-config-browser</artifactId>
+      <artifactId>beangle-webui-app-config-browser_2.11</artifactId>
       <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-app-hibernate</artifactId>
+      <artifactId>beangle-webui-app-hibernate_2.11</artifactId>
       <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
