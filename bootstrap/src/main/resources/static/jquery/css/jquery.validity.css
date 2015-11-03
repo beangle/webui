@@ -5,7 +5,7 @@
 label.error { 
     color:#fff; 
     margin-left:2px;     
-    background-image:url('images/arrow.gif');
+    background-image:url('../images/arrow.gif');
     background-position:left center;
     background-repeat:no-repeat;
     padding:2px;

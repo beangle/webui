@@ -24,27 +24,27 @@
 [/#if]
 
 [#macro beangle_uijs_head]
-  <script type="text/javascript" src="${base}/static/jquery/js/jquery.js?bg=0.0.3"></script>
-  <script type="text/javascript" src="${base}/static/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="${base}/static/jquery/jquery.js?bg=0.0.3"></script>
+  <script type="text/javascript" src="${base}/static/bootstrap/bootstrap.min.js"></script>
 [#if tag.compressed]
-  <script type="text/javascript" src="${base}/static/jquery/js/jquery-form,jquery-history,jquery-colorbox,jquery-chosen.js?bg=0.0.3"></script>
-  <script type="text/javascript" src="${base}/static/beangle/js/beangle,beangle-ui.js?bg=0.0.3"></script>
+  <script type="text/javascript" src="${base}/static/jquery/jquery-form,jquery-history,jquery-colorbox,jquery-chosen.js?bg=0.0.3"></script>
+  <script type="text/javascript" src="${base}/static/beangle/beangle,beangle-ui.js?bg=0.0.3"></script>
 [#else]
-  <script type="text/javascript" src="${base}/static/jquery/js/jquery-form.js?bg=0.0.3&compress=no"></script>
-  <script type="text/javascript" src="${base}/static/jquery/js/jquery-history.js?bg=0.0.3&compress=no"></script>
-  <script type="text/javascript" src="${base}/static/jquery/js/jquery-colorbox.js?bg=0.0.3&compress=no"></script>
-  <script type="text/javascript" src="${base}/static/jquery/js/jquery-chosen.js?bg=0.0.3&compress=no"></script>
-  <script type="text/javascript" src="${base}/static/beangle/js/beangle.js?bg=0.0.3&compress=no"></script>
-  <script type="text/javascript" src="${base}/static/beangle/js/beangle-ui.js?bg=0.0.3&compress=no"></script>
+  <script type="text/javascript" src="${base}/static/jquery/jquery-form.js?bg=0.0.3&compress=no"></script>
+  <script type="text/javascript" src="${base}/static/jquery/jquery-history.js?bg=0.0.3&compress=no"></script>
+  <script type="text/javascript" src="${base}/static/jquery/jquery-colorbox.js?bg=0.0.3&compress=no"></script>
+  <script type="text/javascript" src="${base}/static/jquery/jquery-chosen.js?bg=0.0.3&compress=no"></script>
+  <script type="text/javascript" src="${base}/static/beangle/beangle.js?bg=0.0.3&compress=no"></script>
+  <script type="text/javascript" src="${base}/static/beangle/beangle-ui.js?bg=0.0.3&compress=no"></script>
 [/#if]
 [/#macro]
 
 [#macro beangle_js_head]
-[#assign themeName = Parameters['ui.theme']!"default"]
+[#assign themeName = Parameters['ui.theme']!"beangle"]
 [#if tag.compressed]
-  <script type="text/javascript" src="${base}/static/jquery/js/jquery,jquery-form,jquery-history,/static/beangle/js/beangle.js,beangle-ui.js"></script>
+  <script type="text/javascript" src="${base}/static/jquery/jquery,jquery-form,jquery-history,/static/beangle/beangle.js,beangle-ui.js"></script>
 [#else]
-  <script type="text/javascript" src="${base}/static/jquery/js/jquery,/beangle/js/beangle.js?compress=no"></script>
+  <script type="text/javascript" src="${base}/static/jquery/jquery,/beangle/beangle.js?compress=no"></script>
 [/#if]
   <script>
     beangle.contextPath="${base}"
@@ -52,11 +52,11 @@
   <link rel="stylesheet" href="${base}/static/bootstrap/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="${base}/static/bootstrap/css/bootstrap-theme.min.css"/>
   <link rel="stylesheet" href="${base}/static/beangle/css/beangle-ui.css"/>
-  <script src="${base}/static/bootstrap/js/bootstrap.min.js"></script>
+  <script src="${base}/static/bootstrap/bootstrap.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
   <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <script type="text/javascript" src="${base}/static/scripts/my97/WdatePicker-4.72.js?compress=no"></script>
+  <script type="text/javascript" src="${base}/static/my97/WdatePicker.js?compress=no"></script>
 [/#macro]
