@@ -33,7 +33,7 @@
 
 .gridtable th{border-color:#006CB2;border-style:solid;border-width:0 0px 1px 0;}
 
-.grid-filter-submit {background-image: url(icons/16x16/actions/edit-find.png);background-repeat: no-repeat;background-color:transparent;width:16px;height:16px;border-style:none}
+.grid-filter-submit {background-image: url(../icons/16x16/actions/edit-find.png);background-repeat: no-repeat;background-color:transparent;width:16px;height:16px;border-style:none}
 
 .gridselect{text-align:center;background-color: #e0ecff;}
 
@@ -43,7 +43,7 @@
 
 .gridhead th{text-decoration: none;}
 
-.gridhead-icon{background-image: url(icons/16x16/actions.png);display:inline-block;}
+.gridhead-icon{background-image: url(../icons/16x16/actions.png);display:inline-block;}
 
 .gridhead-asc{background-color: #308dbb;cursor:pointer;}
 
@@ -87,7 +87,7 @@
 .toolbar{height:22px;border-collapse:separate;display:block;}
 
 .toolbar-icon{
-    background-image: url(icons/16x16/actions.png);
+    background-image: url(../icons/16x16/actions.png);
     display:inline-block;
     /**ie6 hack*/
     vertical-align:bottom !important;
@@ -439,7 +439,7 @@ form.listform fieldset ol {
 }
 
 form.listform fieldset li{
-    background: url("images/form-divider.gif") repeat-x scroll left bottom transparent;
+    background: url("../images/form-divider.gif") repeat-x scroll left bottom transparent;
     padding: 4px 10px 7px;
     list-style: none outside none;
     margin: 0;
@@ -475,10 +475,10 @@ form.listform li.foot {
 .collapsed .modulebody,.collapsed .collapsed{display:none}
 .header{background:#94aef3;margin:0;padding:0;font-size:100%;line-height:1.2em}
 .expanded .header,.collapsed .header{
-    background-image:url("images/arrow_down.gif");
+    background-image:url("../images/arrow_down.gif");
     background-repeat:no-repeat;background-position:4px 45%
 } 
-.collapsed .header{background-image:url("images/arrow_right.gif")}
+.collapsed .header{background-image:url("../images/arrow_right.gif")}
 .header .toggle,.header .toggle:visited{
     display:block;padding:4px;text-decoration:none;color:#000
 }
@@ -493,7 +493,7 @@ form.listform li.foot {
 .header{background-image:none} 
 .field{margin-top:2px;padding-top:2px} 
 
-.icon-action{background-image: url(icons/16x16/actions.png);display:inline-block;vertical-align:bottom;margin-top:2px;margin-right:2px;border:0px}
+.icon-action{background-image: url(../icons/16x16/actions.png);display:inline-block;vertical-align:bottom;margin-top:2px;margin-right:2px;border:0px}
 .action-activate{ background-position: 0 0; width: 16px; height: 16px; } 
 .action-backward{ background-position: -66px 0; width: 16px; height: 16px; } 
 .action-close{ background-position: -132px 0; width: 16px; height: 16px; } 

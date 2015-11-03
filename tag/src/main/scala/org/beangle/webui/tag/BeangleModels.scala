@@ -23,7 +23,6 @@ import java.{ util => ju }
 
 import org.beangle.commons.collection.page.Page
 import org.beangle.webmvc.api.context.ActionContextHolder
-import org.beangle.webmvc.view.UITheme
 import org.beangle.webmvc.view.tag.{ ComponentContext, CoreModels }
 import org.beangle.webmvc.view.tag.freemarker.TagModel
 import org.beangle.webui.tag.Grid.{ Bar, Boxcol, Col, Filter, Row, Treecol }
@@ -32,6 +31,13 @@ import _root_.freemarker.template.utility.StringUtil
 import javax.servlet.http.HttpServletRequest
 
 class BeangleModels(context: ComponentContext, request: HttpServletRequest) extends CoreModels(context, request) {
+
+  val uitheme = {
+    val base = request.getContextPath
+    val location = if (base.length() < 2) "/static/"
+    else base + "/static/"
+    new UITheme(location)
+  }
 
   /**
    * Return useragent component.
