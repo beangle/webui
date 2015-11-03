@@ -10,8 +10,10 @@
 <h4>Configurations & Settings</h4>
 <table class="table  table-striped">
   <thead>
-    <th>Object</th>
-    <th>Value</th>
+    <tr>
+      <th>Object</th>
+      <th>Value</th>
+    </tr>
   </thead>
   <tbody>
     <tr>
@@ -62,7 +64,7 @@
        <td>Whitespace Stripping</td>
        <td>${config.whitespaceStripping?string("True","False")}</td>
     </tr>
-    <tr> <td colspan="2"><hr></td></tr>
+    <tr> <td colspan="2"><hr/></td></tr>
     [#list config.settings?keys as s]
     [#if s!="object_wrapper"]
     <tr>

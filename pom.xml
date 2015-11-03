@@ -9,14 +9,14 @@
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
   <name>Beangle Webui Parent</name>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
 
   <properties>
-    <beangle.commons.version>4.4.2</beangle.commons.version>
-    <beangle.data.version>4.3.1</beangle.data.version>
-    <beangle.cdi.version>0.0.1</beangle.cdi.version>
+    <beangle.commons.version>4.4.4</beangle.commons.version>
+    <beangle.data.version>4.3.2</beangle.data.version>
+    <beangle.cdi.version>0.0.2</beangle.cdi.version>
     <hibernate.version>4.3.1.Final</hibernate.version>
-    <beangle.webmvc.version>0.3.2</beangle.webmvc.version>
+    <beangle.webmvc.version>0.3.3</beangle.webmvc.version>
   </properties>
 
   <modules>
