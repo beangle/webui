@@ -16,7 +16,7 @@
     <beangle.data.version>4.3.2</beangle.data.version>
     <beangle.cdi.version>0.0.2</beangle.cdi.version>
     <hibernate.version>4.3.1.Final</hibernate.version>
-    <beangle.webmvc.version>0.3.4</beangle.webmvc.version>
+    <beangle.webmvc.version>0.3.5-SNAPSHOT</beangle.webmvc.version>
   </properties>
 
   <modules>

@@ -22,7 +22,7 @@ import java.io.StringWriter
 import java.{ util => ju }
 
 import org.beangle.commons.collection.page.Page
-import org.beangle.webmvc.api.context.ActionContextHolder
+import org.beangle.webmvc.api.context.ActionContext
 import org.beangle.webmvc.view.tag.{ ComponentContext, CoreModels }
 import org.beangle.webmvc.view.tag.freemarker.TagModel
 import org.beangle.webui.tag.Grid.{ Bar, Boxcol, Col, Filter, Row, Treecol }
