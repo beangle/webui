@@ -19,7 +19,7 @@
 package org.beangle.webui.app.config.action
 
 import org.beangle.webmvc.api.action.ActionSupport
-import org.beangle.webmvc.api.context.ActionContextHolder
+import org.beangle.webmvc.api.context.ActionContext
 import java.io.File
 import org.beangle.commons.lang.ClassLoaders
 import org.beangle.commons.io.IOs
@@ -30,7 +30,7 @@ import org.beangle.commons.lang.annotation.description
 class WebinitAction extends ActionSupport {
 
   def index(): String = {
-    val context = ActionContextHolder.context.request.getServletContext
+    val context = ActionContext.current.request.getServletContext
     val webxml = context.getRealPath("WEB-INF/web.xml")
     val url =
       if (null != webxml && new File(webxml).exists) {

@@ -23,7 +23,7 @@ import java.{ util => ju }
 
 import org.beangle.commons.collection.page.Page
 import org.beangle.commons.lang.{ Objects, Strings }
-import org.beangle.webmvc.api.context.ActionContextHolder
+import org.beangle.webmvc.api.context.ActionContext
 import org.beangle.webmvc.view.tag.{ ClosingUIBean, ComponentContext, IterableUIBean, Themes }
 import org.beangle.webui.tag.Grid.Row
 
@@ -86,7 +86,7 @@ object Grid {
     }
 
     override protected def next(): Boolean = {
-      val ctx = ActionContextHolder.context
+      val ctx = ActionContext.current
       if (iterator != null && iterator.hasNext) {
         index = index + 1
         curObj = iterator.next()
