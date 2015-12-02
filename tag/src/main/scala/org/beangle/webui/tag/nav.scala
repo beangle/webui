@@ -19,6 +19,8 @@
 package org.beangle.webui.tag
 
 import org.beangle.commons.collection.page.Page
+import org.beangle.webmvc.api.context.ActionContext
+import org.beangle.webmvc.execution.{ Handler, MappingHandler }
 import org.beangle.webmvc.view.tag.{ ClosingUIBean, ComponentContext, UIBean }
 
 class Toolbar(context: ComponentContext) extends ClosingUIBean(context) {
@@ -54,11 +56,9 @@ class Navitem(context: ComponentContext) extends ClosingUIBean(context) {
     if (null != href) {
       this.href = render(this.href)
       if (!active) {
-        val starts = requestURI.startsWith(this.href)
-        if (starts) {
-          val sub = requestURI.substring(this.href.length)
-          active = (sub.length == 0 || sub == "/index")
-        }
+        val contextPath = ActionContext.current.request.getContextPath
+        val requestUri = (if (contextPath != "/") contextPath else "") + Handler.current.asInstanceOf[MappingHandler].mapping.url
+        active = requestUri.startsWith(this.href)
       }
     }
   }
