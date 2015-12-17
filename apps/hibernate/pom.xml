@@ -2,7 +2,7 @@
   <parent>
     <groupId>org.beangle.webui</groupId>
     <artifactId>beangle-webui-app-parent_2.11</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.6-SNAPSHOT</version>
   </parent>
   <artifactId>beangle-webui-app-hibernate_2.11</artifactId>
   <packaging>jar</packaging>
