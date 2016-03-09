@@ -16,28 +16,26 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Beangle.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.beangle.webui.tag
+package org.beangle.webui.showcase.action.config
 
-import org.beangle.commons.lang.annotation.spi
-import org.beangle.webmvc.dispatch.ActionUriRender
-import org.beangle.webmvc.view.impl.IndexableIdGenerator
-import javax.servlet.http.{ HttpServletRequest, HttpServletResponse }
+import org.beangle.commons.lang.Strings
 import org.beangle.commons.lang.annotation.description
-import org.beangle.webmvc.view.TagLibrary
-import org.beangle.webmvc.view.tag.AbstractTagLibrary
-import org.beangle.webmvc.view.tag.ComponentContext
+import org.beangle.webmvc.api.action.ActionSupport
+import org.beangle.webmvc.context.ContainerHelper
 
 /**
- * Beangle tag Library
- *
  * @author chaostone
- * @since 2.0
  */
-@description("beangle webui 标签库")
-class BeangleTagLibrary extends AbstractTagLibrary {
+@description("Beange CDI 配置查看器")
+class ContainerAction extends ActionSupport {
 
-  def getModels(req: HttpServletRequest, res: HttpServletResponse): AnyRef = {
-    new BeangleModels(this.buildComponentContext(req), req)
+  def index(): String = {
+    var container = ContainerHelper.get
+    val parent = get("parent", "")
+    if (Strings.isNotEmpty(parent)) container = container.parent
+    put("beanNames", container.keys)
+    put("container", container)
+    forward()
   }
 
 }

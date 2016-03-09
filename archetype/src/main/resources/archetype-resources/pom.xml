@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>22.4</version>
+    <version>23.1</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>\${groupId}</groupId>
@@ -41,12 +41,7 @@
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-app-config-browser_2.11</artifactId>
-      <version>\${beangle.webui.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-app-hibernate_2.11</artifactId>
+      <artifactId>beangle-webui-showcase_2.11</artifactId>
       <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
@@ -61,12 +56,6 @@
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.scala-lang.modules</groupId>
-      <artifactId>scala-xml_2.11</artifactId>
-      <version>1.0.3</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>

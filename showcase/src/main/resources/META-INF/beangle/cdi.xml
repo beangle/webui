@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<cdi>
+  <container name="web">
+    <module class="org.beangle.webui.showcase.action.config.DefaultModule"/>
+    <module class="org.beangle.webui.showcase.action.hibernate.DefaultModule"/>
+  </container>
+</cdi>
