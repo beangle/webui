@@ -2,20 +2,20 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>22.4</version>
+    <version>23.1</version>
   </parent>
   <groupId>org.beangle.webui</groupId>
-  <artifactId>beangle-webui-parent_2.11</artifactId>
+  <artifactId>beangle-webui-parent_2.12</artifactId>
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
   <name>Beangle Webui Parent</name>
   <version>0.0.6-SNAPSHOT</version>
 
   <properties>
-    <beangle.commons.version>4.4.7</beangle.commons.version>
-    <beangle.data.version>4.3.3</beangle.data.version>
-    <beangle.cdi.version>0.0.5</beangle.cdi.version>
-    <beangle.webmvc.version>0.3.5</beangle.webmvc.version>
+    <beangle.commons.version>4.4.8</beangle.commons.version>
+    <beangle.data.version>4.3.4</beangle.data.version>
+    <beangle.cdi.version>0.0.6</beangle.cdi.version>
+    <beangle.webmvc.version>0.3.6</beangle.webmvc.version>
     <hibernate.version>4.3.1.Final</hibernate.version>
   </properties>
 
@@ -30,67 +30,67 @@
     <dependencies>
       <dependency>
         <groupId>org.beangle.commons</groupId>
-        <artifactId>beangle-commons-core_2.11</artifactId>
+        <artifactId>beangle-commons-core_2.12</artifactId>
         <version>${beangle.commons.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.commons</groupId>
-        <artifactId>beangle-commons-web_2.11</artifactId>
+        <artifactId>beangle-commons-web_2.12</artifactId>
         <version>${beangle.commons.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.data</groupId>
-        <artifactId>beangle-data-model_2.11</artifactId>
+        <artifactId>beangle-data-model_2.12</artifactId>
         <version>${beangle.data.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.data</groupId>
-        <artifactId>beangle-data-hibernate_2.11</artifactId>
+        <artifactId>beangle-data-hibernate_2.12</artifactId>
         <version>${beangle.data.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.data</groupId>
-        <artifactId>beangle-data-serializer_2.11</artifactId>
+        <artifactId>beangle-data-serializer_2.12</artifactId>
         <version>${beangle.data.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.cdi</groupId>
-        <artifactId>beangle-cdi-spring_2.11</artifactId>
+        <artifactId>beangle-cdi-spring_2.12</artifactId>
         <version>${beangle.cdi.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-api_2.11</artifactId>
+        <artifactId>beangle-webmvc-api_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-core_2.11</artifactId>
+        <artifactId>beangle-webmvc-core_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-view_2.11</artifactId>
+        <artifactId>beangle-webmvc-view_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-spring-plugin_2.11</artifactId>
+        <artifactId>beangle-webmvc-spring-plugin_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-entity-plugin_2.11</artifactId>
+        <artifactId>beangle-webmvc-entity-plugin_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-serializer-plugin_2.11</artifactId>
+        <artifactId>beangle-webmvc-serializer-plugin_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.webui</groupId>
-        <artifactId>beangle-webui-tag_2.11</artifactId>
+        <artifactId>beangle-webui-tag_2.12</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
@@ -99,11 +99,11 @@
   <dependencies>
     <dependency>
       <groupId>org.beangle.commons</groupId>
-      <artifactId>beangle-commons-core_2.11</artifactId>
+      <artifactId>beangle-commons-core_2.12</artifactId>
     </dependency>
     <dependency>
       <groupId>org.beangle.commons</groupId>
-      <artifactId>beangle-commons-web_2.11</artifactId>
+      <artifactId>beangle-commons-web_2.12</artifactId>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
