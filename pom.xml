@@ -23,7 +23,7 @@
     <module>tag</module>
     <module>bootstrap</module>
     <module>archetype</module>
-    <module>apps</module>
+    <module>showcase</module>
   </modules>
 
   <dependencyManagement>
