@@ -16,28 +16,25 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Beangle.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.beangle.webui.tag
+package org.beangle.webui.showcase.action.hibernate
 
-import org.beangle.commons.lang.annotation.spi
-import org.beangle.webmvc.dispatch.ActionUriRender
-import org.beangle.webmvc.view.impl.IndexableIdGenerator
-import javax.servlet.http.{ HttpServletRequest, HttpServletResponse }
-import org.beangle.commons.lang.annotation.description
-import org.beangle.webmvc.view.TagLibrary
-import org.beangle.webmvc.view.tag.AbstractTagLibrary
-import org.beangle.webmvc.view.tag.ComponentContext
+import org.beangle.data.hibernate.ConfigurableSessionFactory
+import org.hibernate.SessionFactory
 
-/**
- * Beangle tag Library
- *
- * @author chaostone
- * @since 2.0
- */
-@description("beangle webui 标签库")
-class BeangleTagLibrary extends AbstractTagLibrary {
-
-  def getModels(req: HttpServletRequest, res: HttpServletResponse): AnyRef = {
-    new BeangleModels(this.buildComponentContext(req), req)
+class SessionFactoryHelper(val fs: Map[String, ConfigurableSessionFactory]) {
+  val factories: Map[Any, ConfigurableSessionFactory] = fs.map {
+    case (k, v) =>
+      var name = k.toString
+      name = name.replace(".", "_")
+      name = name.replace("#", "_")
+      (name, v)
   }
 
+  def getSessionFactory(id: String): SessionFactory = {
+    factories(id).result
+  }
+
+  def getFactory(id: String): ConfigurableSessionFactory = {
+    factories(id)
+  }
 }

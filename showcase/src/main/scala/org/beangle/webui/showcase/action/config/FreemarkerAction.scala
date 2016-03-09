@@ -16,28 +16,23 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Beangle.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.beangle.webui.tag
+package org.beangle.webui.showcase.action.config
 
-import org.beangle.commons.lang.annotation.spi
-import org.beangle.webmvc.dispatch.ActionUriRender
-import org.beangle.webmvc.view.impl.IndexableIdGenerator
-import javax.servlet.http.{ HttpServletRequest, HttpServletResponse }
+import org.beangle.commons.lang.ClassLoaders
 import org.beangle.commons.lang.annotation.description
-import org.beangle.webmvc.view.TagLibrary
-import org.beangle.webmvc.view.tag.AbstractTagLibrary
-import org.beangle.webmvc.view.tag.ComponentContext
+import org.beangle.webmvc.api.action.ActionSupport
+import org.beangle.template.freemarker.FreemarkerConfigurer
 
-/**
- * Beangle tag Library
- *
- * @author chaostone
- * @since 2.0
- */
-@description("beangle webui 标签库")
-class BeangleTagLibrary extends AbstractTagLibrary {
+@description("Freemarker配置查看器")
+class FreemarkerAction extends ActionSupport {
+  var freemarkerConfigurer: FreemarkerConfigurer = _
 
-  def getModels(req: HttpServletRequest, res: HttpServletResponse): AnyRef = {
-    new BeangleModels(this.buildComponentContext(req), req)
+  def index(): String = {
+    put("config", freemarkerConfigurer.config)
+    put("properties", freemarkerConfigurer.properties)
+    put("templatePath", freemarkerConfigurer.templatePath)
+    val configLocations = ClassLoaders.getResources("META-INF/freemarker.properties") ++ ClassLoaders.getResources("freemarker.properties")
+    put("configLocations", configLocations)
+    forward()
   }
-
 }
