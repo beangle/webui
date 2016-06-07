@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>23.1</version>
+    <version>23.3</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>\${groupId}</groupId>
@@ -14,34 +14,34 @@
   <description>Beangle WebMVC Starter</description>
 
   <properties>
-    <beangle.mvc.version>0.3.3</beangle.mvc.version>
+    <beangle.mvc.version>0.3.7</beangle.mvc.version>
     <beangle.webui.version>${project.version}</beangle.webui.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-spring-plugin_2.11</artifactId>
+      <artifactId>beangle-webmvc-spring-plugin_2.12</artifactId>
       <version>\${beangle.mvc.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-entity-plugin_2.11</artifactId>
+      <artifactId>beangle-webmvc-entity-plugin_2.12</artifactId>
       <version>\${beangle.mvc.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-bootstrap_2.11</artifactId>
+      <artifactId>beangle-webui-bootstrap_2.12</artifactId>
       <version>\${beangle.mvc.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-tag_2.11</artifactId>
+      <artifactId>beangle-webui-tag_2.12</artifactId>
       <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-showcase_2.11</artifactId>
+      <artifactId>beangle-webui-showcase_2.12</artifactId>
       <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
