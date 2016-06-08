@@ -18,6 +18,11 @@ class Resturl(uriRender: ActionUriRender) {
     }
   }
 
+  def info(obj: AnyRef): String = {
+    val id: Any = Properties.get(obj, "id")
+    uriRender.render(Handler.mapping, "!info?id=" + id)
+  }
+
   private def isValid(id: Any): Boolean = {
     if (null == id) return false
     if (id.isInstanceOf[Number]) return NotZero(id.asInstanceOf[Number])
