@@ -9,7 +9,7 @@ import org.beangle.webmvc.dispatch.ActionUriRender
 
 class Resturl(uriRender: ActionUriRender) {
 
-  def saveOrUpdate(obj: AnyRef): String = {
+  def save(obj: AnyRef): String = {
     val id: Any = Properties.get(obj, "id")
     if (isValid(id)) {
       uriRender.render(Handler.mapping, "!update?id=" + id)
