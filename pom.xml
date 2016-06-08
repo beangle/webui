@@ -8,8 +8,8 @@
   <artifactId>beangle-webui-parent_2.12</artifactId>
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
-  <name>Beangle Webui Parent</name>
-  <version>0.0.7-SNAPSHOT</version>
+  <name>Beangle WebUI Parent</name>
+  <version>0.0.7</version>
 
   <properties>
     <beangle.commons.version>4.5.0</beangle.commons.version>
