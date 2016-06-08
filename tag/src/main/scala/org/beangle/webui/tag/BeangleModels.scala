@@ -40,7 +40,7 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
     new UITheme(location)
   }
 
-  val resturl = new Resturl(context.uriRender)
+  val rest = new Rest(context.uriRender)
   /**
    * Return useragent component.
    */
