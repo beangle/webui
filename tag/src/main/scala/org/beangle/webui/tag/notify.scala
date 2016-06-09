@@ -28,13 +28,12 @@ class Messages(context: ComponentContext) extends UIBean(context) {
   var clear = "true"
 
   override def evaluateParams() {
-    val messages = ActionContext.current.flash.get(Flash.MESSAGES).asInstanceOf[ActionMessages]
-    if (null != messages && (!messages.messages.isEmpty || !messages.errors.isEmpty)) {
-      generateIdIfEmpty()
+    actionMessages = ActionContext.current.flash.messages
+    actionErrors = ActionContext.current.flash.errors
 
-      actionMessages = messages.messages.toList
-      actionErrors = messages.errors.toList
-      if ("true".equals(clear)) messages.clear()
+    if (!actionMessages.isEmpty || !actionErrors.isEmpty) {
+      generateIdIfEmpty()
+      if ("true".equals(clear)) ActionContext.current.flash.clear()
     }
   }
 
