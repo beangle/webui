@@ -29,6 +29,7 @@ import org.beangle.webui.tag.Grid.{ Bar, Boxcol, Col, Filter, Row, Treecol }
 
 import _root_.freemarker.template.utility.StringUtil
 import javax.servlet.http.HttpServletRequest
+import org.beangle.webmvc.execution.Handler
 
 class BeangleModels(context: ComponentContext, request: HttpServletRequest) extends CoreModels(context, request) {
 
@@ -39,6 +40,7 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
     new UITheme(location)
   }
 
+  val rest = new Rest(context.uriRender)
   /**
    * Return useragent component.
    */

@@ -20,17 +20,18 @@ package org.beangle.webui.showcase.action.config
 
 import org.beangle.commons.lang.ClassLoaders
 import org.beangle.commons.lang.annotation.description
+import org.beangle.template.freemarker.Configurer
 import org.beangle.webmvc.api.action.ActionSupport
-import org.beangle.template.freemarker.FreemarkerConfigurer
+import org.beangle.webmvc.api.annotation.ignore
 
 @description("Freemarker配置查看器")
 class FreemarkerAction extends ActionSupport {
-  var freemarkerConfigurer: FreemarkerConfigurer = _
+  var configurer: Configurer = _
 
   def index(): String = {
-    put("config", freemarkerConfigurer.config)
-    put("properties", freemarkerConfigurer.properties)
-    put("templatePath", freemarkerConfigurer.templatePath)
+    put("config", configurer.config)
+    put("properties", configurer.properties)
+    put("templatePath", configurer.templatePath)
     val configLocations = ClassLoaders.getResources("META-INF/freemarker.properties") ++ ClassLoaders.getResources("freemarker.properties")
     put("configLocations", configLocations)
     forward()
