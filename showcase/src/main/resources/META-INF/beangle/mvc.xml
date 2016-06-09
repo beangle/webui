@@ -3,7 +3,6 @@
   <profile name="showcase" package="org.beangle.webui.showcase.action">
     <url path="/" suffix=""  style="seo" />
     <interceptors>
-      <interceptor name="web.Interceptor.flash"/>
       <interceptor name="web.Interceptor.cors"/>
     </interceptors>
   </profile>

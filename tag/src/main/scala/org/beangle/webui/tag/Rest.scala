@@ -3,7 +3,6 @@ package org.beangle.webui.tag
 import org.beangle.commons.bean.Properties
 
 import org.beangle.commons.lang.functor.{ NotEmpty, NotZero }
-import org.beangle.commons.lang.annotation.value
 import org.beangle.webmvc.execution.Handler
 import org.beangle.webmvc.dispatch.ActionUriRender
 
