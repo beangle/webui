@@ -91,7 +91,6 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
     // every element initial validity buffer is 80 chars.
     val sb = new StringBuilder((elementChecks.size * 80) +
       (if (null == extraChecks) 0 else extraChecks.length))
-    import scala.collection.JavaConversions._
     for ((key, value) <- elementChecks) {
       sb.append("jQuery('#").append(Strings.replace(key, ".", "\\\\.")).append("')")
         .append(value).append("\n")
