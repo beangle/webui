@@ -63,7 +63,7 @@ object Grid {
     private val iterator: Iterator[Any] = {
       table.items match {
         case iterbl: Iterable[_]        => if (iterbl.iterator.hasNext) iterbl.iterator else List(null).iterator
-        case javaIter: ju.Collection[_] => collection.JavaConversions.asScalaIterator(javaIter.iterator())
+        case javaIter: ju.Collection[_] => collection.JavaConverters.asScalaIterator(javaIter.iterator())
       }
     }
 
