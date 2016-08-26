@@ -22,7 +22,7 @@ import java.util.Locale
 import scala.reflect.runtime.universe
 import org.beangle.commons.lang.Strings
 import org.beangle.commons.lang.annotation.description
-import org.beangle.commons.lang.reflect.BeanManifest
+import org.beangle.commons.lang.reflect.BeanInfos
 import org.beangle.commons.i18n.Messages
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.config.{ ActionConfig, Configurer }
@@ -58,7 +58,7 @@ class MvcAction extends ActionSupport {
     val config = configurer.getActionMapping(actionName).get
     try {
       val clazz = config.clazz
-      put("properties", BeanManifest.get(clazz).properties.values.filterNot(m => m.name.contains("$")))
+      put("properties", BeanInfos.get(clazz).properties.values.filterNot(m => m.name.contains("$")))
     } catch {
       case e: Throwable =>
         logger.error("Unable to get properties for action " + actionName, e)

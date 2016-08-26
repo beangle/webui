@@ -21,8 +21,9 @@ package org.beangle.webui.tag
 import org.beangle.commons.bean.Properties
 import org.beangle.commons.lang.{ Numbers, Strings }
 import org.beangle.webmvc.view.tag.ComponentContext
-import Radio.{ DefaultItemMap, DefaultKeys }
 import org.beangle.webmvc.view.tag.UIBean
+import Radio.{ DefaultItemMap, DefaultKeys }
+import scala.collection.JavaConverters.mapAsScalaMap
 
 class Textfields(context: ComponentContext) extends UIBean(context) {
   var names: String = _
@@ -83,7 +84,7 @@ class Radios(context: ComponentContext) extends UIBean(context) {
   private def convertItems(): Iterable[_] = {
     if (items.isInstanceOf[collection.Map[_, _]]) return items.asInstanceOf[collection.Map[_, _]].keys.toList
     if (items.isInstanceOf[java.util.Map[_, _]]) {
-      items = collection.JavaConversions.mapAsScalaMap(items.asInstanceOf[java.util.Map[_, _]])
+      items = mapAsScalaMap(items.asInstanceOf[java.util.Map[_, _]])
       return items.asInstanceOf[collection.Map[_, _]].keys.toList
     }
     import Radio._
