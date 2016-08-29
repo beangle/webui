@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>23.3</version>
+    <version>23.4</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>\${groupId}</groupId>
@@ -14,7 +14,7 @@
   <description>Beangle WebMVC Starter</description>
 
   <properties>
-    <beangle.mvc.version>0.3.7</beangle.mvc.version>
+    <beangle.mvc.version>0.3.8</beangle.mvc.version>
     <beangle.webui.version>${project.version}</beangle.webui.version>
   </properties>
 
