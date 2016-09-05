@@ -14,7 +14,7 @@
   <description>Beangle WebMVC Starter</description>
 
   <properties>
-    <beangle.mvc.version>0.3.8</beangle.mvc.version>
+    <beangle.mvc.version>0.3.9</beangle.mvc.version>
     <beangle.webui.version>${project.version}</beangle.webui.version>
   </properties>
 
@@ -32,7 +32,7 @@
     <dependency>
       <groupId>org.beangle.webui</groupId>
       <artifactId>beangle-webui-bootstrap_2.12</artifactId>
-      <version>\${beangle.mvc.version}</version>
+      <version>\${beangle.webui.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
@@ -59,6 +59,23 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>2.12.0-M5</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-reflect</artifactId>
+      <version>2.12.0-M5</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang.modules</groupId>
+      <artifactId>scala-xml_2.12.0-M5</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
     </dependency>
@@ -72,7 +89,7 @@
         <configuration>
           <stopKey>CTRL+C</stopKey>
           <stopPort>8999</stopPort>
-          <scanIntervalSeconds>10</scanIntervalSeconds>
+          <scanIntervalSeconds>1000</scanIntervalSeconds>
           <webAppSourceDirectory>\${basedir}/src/main/webapp/</webAppSourceDirectory>
           <webAppConfig>
             <contextPath>/\${artifactId}</contextPath>

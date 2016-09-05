@@ -41,10 +41,6 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
   }
 
   val rest = new Rest(context.uriRender)
-  /**
-   * Return useragent component.
-   */
-  def agent: TagModel = get(classOf[Agent])
 
   def head = get(classOf[Head])
 

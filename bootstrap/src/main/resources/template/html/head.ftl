@@ -12,40 +12,14 @@
     <meta http-equiv="expires" content="0"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>[#if tag.parameters['title']??]${tag.parameters['title']}[/#if]</title>
-    [#--[@b.agent/]--]
-    [#if tag.loadui]
-    [@beangle_js_head/][#--[@beangle_uijs_head/]--]
-    [#else]
-    [@beangle_js_head/]
-    [/#if]
-    ${tag.body}
-  </head>
-  <body>
-[/#if]
 
-[#macro beangle_uijs_head]
-  <script type="text/javascript" src="${base}/static/jquery/jquery.js?bg=0.0.3"></script>
-  <script type="text/javascript" src="${base}/static/bootstrap/bootstrap.min.js"></script>
-[#if tag.compressed]
-  <script type="text/javascript" src="${base}/static/jquery/jquery-form,jquery-history,jquery-colorbox,jquery-chosen.js?bg=0.0.3"></script>
-  <script type="text/javascript" src="${base}/static/beangle/beangle,beangle-ui.js?bg=0.0.3"></script>
-[#else]
-  <script type="text/javascript" src="${base}/static/jquery/jquery-form.js?bg=0.0.3&compress=no"></script>
-  <script type="text/javascript" src="${base}/static/jquery/jquery-history.js?bg=0.0.3&compress=no"></script>
-  <script type="text/javascript" src="${base}/static/jquery/jquery-colorbox.js?bg=0.0.3&compress=no"></script>
-  <script type="text/javascript" src="${base}/static/jquery/jquery-chosen.js?bg=0.0.3&compress=no"></script>
-  <script type="text/javascript" src="${base}/static/beangle/beangle.js?bg=0.0.3&compress=no"></script>
-  <script type="text/javascript" src="${base}/static/beangle/beangle-ui.js?bg=0.0.3&compress=no"></script>
-[/#if]
-[/#macro]
-
-[#macro beangle_js_head]
-[#assign themeName = Parameters['ui.theme']!"beangle"]
-[#if tag.compressed]
+  [#assign themeName = Parameters['ui.theme']!"beangle"]
   <script type="text/javascript" src="${base}/static/jquery/jquery,jquery-form,jquery-history,/static/beangle/beangle.js,beangle-ui.js"></script>
-[#else]
-  <script type="text/javascript" src="${base}/static/jquery/jquery,/beangle/beangle.js?compress=no"></script>
-[/#if]
+  [#if tag.loadui]
+  <script type="text/javascript" src="${base}/static/my97/WdatePicker.js"></script>
+  <script type="text/javascript" src="${base}/static/jquery/jquery-colorbox.js"></script>
+  <script type="text/javascript" src="${base}/static/jquery/jquery-chosen.js"></script>
+  [/#if]
   <script>
     beangle.contextPath="${base}"
   </script>
@@ -58,5 +32,12 @@
   <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <script type="text/javascript" src="${base}/static/my97/WdatePicker.js?compress=no"></script>
-[/#macro]
+    ${tag.body}
+  <style type="text/css">
+  body {
+    font-size: 13px;
+  }
+  </style>
+  </head>
+  <body>
+[/#if]
