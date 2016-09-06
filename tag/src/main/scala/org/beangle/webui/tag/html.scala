@@ -35,16 +35,6 @@ class Head(context: ComponentContext) extends ClosingUIBean(context) {
 
 class Foot(context: ComponentContext) extends ClosingUIBean(context)
 
-/**
- * Useragent specific javascript
- */
-class Agent(context: ComponentContext) extends UIBean(context) {
-
-  private val tempBrowser = Browser.parse(request.getHeader("USER-AGENT"))
-  val browser = tempBrowser.category.name
-  val version = tempBrowser.version
-}
-
 class Css(context: ComponentContext) extends UIBean(context) {
   var href: String = _
 }

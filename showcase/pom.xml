@@ -2,15 +2,17 @@
   <parent>
     <groupId>org.beangle.webui</groupId>
     <artifactId>beangle-webui-parent_2.12</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>beangle-webui-showcase_2.12</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <name>Beangle WebUI Showcase</name>
 
   <properties>
     <hibernate.version>4.3.1.Final</hibernate.version>
+    <bundle.symbolicName>org.beangle.webui.showcase</bundle.symbolicName>
+    <bundle.namespace>org.beangle.webui.showcase</bundle.namespace>
   </properties>
 
   <dependencies>

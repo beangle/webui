@@ -464,10 +464,11 @@
     numSpan.click(function(){this.parentNode.style.marginTop="0px";this.nextSibling.style.display='';this.style.display='none'});
 
     var pagespan=document.createElement('span');
+    var pageIdxSelect=null;
     pagespan.style.display="none";
     //add pagesize select
     if(ranks && (ranks.length>0)){
-      var pageIdxSelect=document.createElement('select');
+      pageIdxSelect=document.createElement('select');
       pageIdxSelect.id=pageDiv.id+"_select";
       pagespan.appendChild(pageIdxSelect);
       pageIdxSelect.className="pgbar-selbox";
@@ -495,7 +496,7 @@
     pageInputJ.attr("id",pageDiv.id+"_input");
     pageInputJ.attr('title',(onePage.startNo +" - " + onePage.endNo + " of " + onePage.totalItems));
     pageInputJ.focus(function(){this.value=''});
-    pageInputJ.blur(function(){if(!this.value) this.value= onePage.pageIndex});
+    pageInputJ.blur(function(){if(!this.value) this.value= onePage.pageIndex;changePage();});
 
     //add go button
     var submitBtn = document.createElement('input');
@@ -510,6 +511,7 @@
       onePage.goPage(pageIndex,document.getElementById(pageDiv.id+'_select').value);
     }
     jQuery(submitBtn).click(function (){changePage()});
+    if(pageIdxSelect) pageIdxSelect.onchange=function(){changePage();}
 
     pageDiv.appendChild(pagespan);
     jQuery(pagespan).keypress(function(event){

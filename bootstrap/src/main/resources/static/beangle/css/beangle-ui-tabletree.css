@@ -29,6 +29,7 @@
 	float: left;
 	padding-right: 3px 
 }
+
 .tree-item {
 	background: url(../icons/16x16/trees.png) no-repeat  top left;
 	background-position: 0 0; width: 16px; height: 16px;  
@@ -47,7 +48,7 @@
 	background: url(../icons/16x16/trees.png) no-repeat  top left;
 }
 
-.tree-tier1 { margin-left: 0; }
-.tree-tier2 { margin-left: 1em; }
-.tree-tier3 { margin-left: 2em; }
-.tree-tier4 { margin-left: 3em; }
+.tree-tier1 { margin-left: 0; text-align: left;}
+.tree-tier2 { margin-left: 1em;text-align: left; }
+.tree-tier3 { margin-left: 2em;text-align: left; }
+.tree-tier4 { margin-left: 3em;text-align: left; }
