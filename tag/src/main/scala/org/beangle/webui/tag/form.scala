@@ -36,7 +36,7 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
   var onsubmit: String = _
 
   /** Boolean */
-  protected var validate: String = _
+  private var _validate: String = _
 
   var title: String = _
 
@@ -55,15 +55,15 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
     if (null != title) title = getText(title)
   }
 
-  def getValidate(): String = {
-    if (null == validate) {
-      if (!elementChecks.isEmpty) validate = "true"
-      else validate = "false"
+  def validate: String = {
+    if (null == _validate) {
+      if (!elementChecks.isEmpty) _validate = "true"
+      else _validate = "false"
     }
-    return validate
+    _validate
   }
 
-  def setValidate(validate: String): Unit = {
+  def validate_=(validate: String): Unit = {
     this.validate = validate
   }
 
@@ -87,7 +87,7 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
     extraChecks.append(check)
   }
 
-  def getValidity(): String = {
+  def validity: String = {
     // every element initial validity buffer is 80 chars.
     val sb = new StringBuilder((elementChecks.size * 80) +
       (if (null == extraChecks) 0 else extraChecks.length))
@@ -96,7 +96,7 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
         .append(value).append("\n")
     }
     if (null != extraChecks) sb.append(extraChecks)
-    return sb.toString()
+    sb.toString
   }
 }
 

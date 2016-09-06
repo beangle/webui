@@ -1,10 +1,9 @@
 [#if tag.id??]
-<div class="ui-widget" id="${tag.id}">
+<div id="${tag.id}">
 [#if tag.hasMessages]
 <div class="actionMessage">
-  <div class="ui-state-highlight ui-corner-all"> 
+  <div class="alert alert-info" style="margin-bottom: 0;padding: 0;">
     [#list tag.actionMessages as message]
-    <span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.3em;"></span>
     <span>${message!}</span>[#if message_has_next]<br/>[/#if]
     [/#list]
   </div>
@@ -12,9 +11,8 @@
 [/#if]
 [#if tag.hasErrors]
 <div class="actionError">
-  <div class="ui-state-error ui-corner-all" style="padding: 0.3em 0.7em;"> 
+  <div class="alert alert-danger" style="margin-bottom: 0;padding: 0;">
     [#list tag.actionErrors as message]
-    <span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>
     <span>${message!}</span>[#if message_has_next]<br/>[/#if]
     [/#list]
   </div>

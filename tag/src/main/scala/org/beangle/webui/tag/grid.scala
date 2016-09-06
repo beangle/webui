@@ -67,7 +67,7 @@ object Grid {
       }
     }
 
-    def isHasTr(): Boolean = {
+    def hasTr: Boolean = {
       innerTr.getOrElse({
         var i = 0
         var innerTr = false
@@ -102,7 +102,7 @@ object Grid {
 
   class Col(context: ComponentContext) extends ClosingUIBean(context) {
     var property: String = _
-    var title: String = _
+    var _title: String = _
     var width: String = _
     var row: Row = _
     var sortable: String = _
@@ -121,48 +121,51 @@ object Grid {
           if (Strings.isNotEmpty(body)) {
             writer.append(body)
           } else if (null != property) {
-            val value = getValue()
-            if (null != value) writer.append(StringUtil.XMLEncNA(value.toString()))
+            writer.append(StringUtil.XMLEncNA(this.value))
           }
           writer.append("</td>")
         } catch {
-          case e: Exception =>
-            e.printStackTrace()
+          case e: Throwable => e.printStackTrace()
         }
-        return false
+        false
       } else {
-        return super.doEnd(writer, body)
+        super.doEnd(writer, body)
       }
     }
 
     /**
      * find value of row.obj's property
      */
-    def getValue(): String = {
+    def value: String = {
       getValue(row.curObj, property) match {
-        case null      => ""
-        case s: String => s
-        case any: Any  => any.toString
+        case null           => ""
+        case s: String      => s
+        case Some(d)        => if (null == d) "" else d.toString
+        case None           => ""
+        case a: Iterable[_] => if (a.isEmpty) "" else a.toString
+        case any: Any       => any.toString
       }
     }
 
-    def setTitle(title: String) {
-      this.title = title
+    def title_=(title: String) {
+      this._title = title
     }
 
-    def getPropertyPath() = Strings.concat(row.table.`var`, ".", property)
+    def propertyPath: String = {
+      Strings.concat(row.table.`var`, ".", property)
+    }
 
     /**
      * 支持按照属性提取国际化英文名
      */
-    def getTitle(): String = {
-      if (null == title) {
-        title = Strings.concat(row.table.`var`, ".", property)
+    def title: String = {
+      if (null == _title) {
+        _title = Strings.concat(row.table.`var`, ".", property)
       }
-      return getText(title)
+      return getText(_title)
     }
 
-    def getCurObj() = row.curObj
+    def curObj = row.curObj
 
   }
 
@@ -203,46 +206,23 @@ object Grid {
           writer.append(parameterString).append(">")
           if (display) {
             writer.append("<input class=\"box\" name=\"").append(boxname).append("\" value=\"")
-              .append(String.valueOf(getValue())).append("\" type=\"").append(`type`).append("\"")
+              .append(String.valueOf(this.value)).append("\" type=\"").append(`type`).append("\"")
             if (checked) writer.append(" checked=\"checked\"")
             writer.append("/>")
           }
           if (Strings.isNotEmpty(body)) writer.append(body)
           writer.append("</td>")
         } catch {
-          case e: Exception =>
-            e.printStackTrace()
+          case e: Exception => e.printStackTrace()
         }
-        return false
+        false
       } else {
-        return super.doEnd(writer, body)
+        super.doEnd(writer, body)
       }
     }
 
-    def getType() = `type`
-
-    override def getTitle() = Strings.concat(row.table.`var`, "_", property)
-
-    def getBoxname() = boxname
-
-    def setBoxname(boxname: String) {
-      this.boxname = boxname
-    }
-
-    def setType(`type`: String) {
-      this.`type` = `type`
-    }
-
-    def isChecked() = checked
-
-    def setChecked(checked: Boolean) {
-      this.checked = checked
-    }
-
-    def isDisplay() = display
-
-    def setDisplay(display: Boolean) {
-      this.display = display
+    override def title: String = {
+      Strings.concat(row.table.`var`, "_", property)
     }
   }
 }
@@ -292,7 +272,7 @@ class Grid(context: ComponentContext) extends ClosingUIBean(context) {
   }
 
   def addCol(column: Col) {
-    var title = column.getTitle()
+    var title = column.title
     if (null == title) title = column.property
     if (null == column.width && column.isInstanceOf[Boxcol]) column.width = "4%"
     if (!colTitles.contains(title)) {
