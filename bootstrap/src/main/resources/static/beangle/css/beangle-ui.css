@@ -62,7 +62,7 @@
 .griddata-over{background-color: #BFFFBF;}
 
 .gridbar{
-    height:24px;
+    height:23px;
     background-color: #c7dbff;
     border:solid;
     border-color:#006CB2;
@@ -79,12 +79,12 @@
 
 .pgbar-input{text-align:center;width:35px;height:16px;border-collapse: collapse;border:solid;border-width:1px;border-color:#006CB2;padding:0px;margin:0px 2px 0px 0px;}
 
-.pgbar-selbox{vertical-align: bottom;width:75px;height:21px;font-size: 0.8em;margin:0px 2px 5px 0px;}
+.pgbar-selbox{vertical-align: top;width:75px;height:21px;font-size: 0.8em;margin:1px 2px 0px 0px;}
 
-.pgbar-go{width:30px;height:18px;font-size: 0.8em;text-align:center;margin:0px;padding:0px 0px 2px 0px;border:solid;border-width:1px;border-color:#006CB2;}
+.pgbar-go{width:30px;height:18px;font-size: 0.8em;text-align:center;margin:0px;padding:0px 0px 2px 0px;border:solid;border-width:1px;border-color:#006CB2;display:none;}
 
 /*toolbar*/
-.toolbar{height:22px;border-collapse:separate;display:block;}
+.toolbar{height:23px;border-collapse:separate;display:block;}
 
 .toolbar-icon{
     background-image: url(../icons/16x16/actions.png);
@@ -119,8 +119,8 @@
 .toolbar-item-disabled{display:none;}
 
 .toolbar-item-selected{background-color:#4791C5;float:left;padding:2px 3px 2px 3px;cursor:pointer;}
-/** FIXME 2.5 */
-.toolbar-item-transfer{float:left;padding:1px 2px;background-color:#e9f2f8;border:1px solid #336699;cursor:pointer;}
+
+.toolbar-item-transfer{float:left;padding:1px 2px 1px 2px;background-color:#e9f2f8;border:1px solid #336699;cursor:pointer;}
 
 .toolbar-menu{margin-top:1px;margin-left:0px;background-color:#e9f2f8;visibility:hidden;position:absolute;z-index:100;padding:1px;overflow:visible;border:solid 1px #4791C5;white-space:nowrap;}
 
