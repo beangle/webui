@@ -18,7 +18,7 @@
  */
 package org.beangle.webui.showcase.action.hibernate
 
-import org.beangle.commons.inject.bind.AbstractBindModule
+import org.beangle.commons.cdi.bind.AbstractBindModule
 
 object DefaultModule extends AbstractBindModule {
 

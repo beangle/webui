@@ -18,7 +18,7 @@
  */
 package org.beangle.webui.showcase.action.config
 
-import org.beangle.commons.inject.bind.AbstractBindModule
+import org.beangle.commons.cdi.bind.AbstractBindModule
 
 object DefaultModule extends AbstractBindModule {
 

@@ -21,7 +21,7 @@ package org.beangle.webui.showcase.action.hibernate
 import java.{ util => ju }
 import scala.collection.mutable
 import org.beangle.commons.bean.Initializing
-import org.beangle.commons.inject.Container
+import org.beangle.commons.cdi.Container
 import org.beangle.commons.lang.Strings.isEmpty
 import org.hibernate.SessionFactory
 import org.beangle.commons.lang.annotation.description

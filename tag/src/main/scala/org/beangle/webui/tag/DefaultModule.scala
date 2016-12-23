@@ -18,7 +18,7 @@
  */
 package org.beangle.webui.tag
 
-import org.beangle.commons.inject.bind.{ AbstractBindModule, profile }
+import org.beangle.commons.cdi.bind.{ AbstractBindModule, profile }
 
 object DefaultModule extends AbstractBindModule {
 
