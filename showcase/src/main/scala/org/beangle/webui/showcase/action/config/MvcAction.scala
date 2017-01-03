@@ -1,7 +1,7 @@
 /*
  * Beangle, Agile Development Scaffold and Toolkit
  *
- * Copyright (c) 2005-2016, Beangle Software.
+ * Copyright (c) 2005-2017, Beangle Software.
  *
  * Beangle is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -23,7 +23,7 @@ import scala.reflect.runtime.universe
 import org.beangle.commons.lang.Strings
 import org.beangle.commons.lang.annotation.description
 import org.beangle.commons.lang.reflect.BeanInfos
-import org.beangle.commons.i18n.Messages
+import org.beangle.commons.text.i18n.Messages
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.config.{ ActionConfig, Configurer }
 import org.beangle.webmvc.config.ActionMapping
