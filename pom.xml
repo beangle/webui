@@ -9,12 +9,11 @@
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
   <name>Beangle WebUI Parent</name>
-  <version>0.0.10-SNAPSHOT</version>
+  <version>0.0.10</version>
 
   <properties>
-    <beangle.commons.version>4.5.5</beangle.commons.version>
+    <beangle.commons.version>4.6.0</beangle.commons.version>
     <beangle.data.version>4.4.2</beangle.data.version>
-    <beangle.cdi.version>0.0.9</beangle.cdi.version>
     <beangle.webmvc.version>0.3.10</beangle.webmvc.version>
     <hibernate.version>4.3.1.Final</hibernate.version>
   </properties>
@@ -54,9 +53,9 @@
         <version>${beangle.data.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.beangle.cdi</groupId>
-        <artifactId>beangle-cdi-spring_2.12</artifactId>
-        <version>${beangle.cdi.version}</version>
+        <groupId>org.beangle.commons</groupId>
+        <artifactId>beangle-commons-cdi_2.12</artifactId>
+        <version>${beangle.commons.version}</version>
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
