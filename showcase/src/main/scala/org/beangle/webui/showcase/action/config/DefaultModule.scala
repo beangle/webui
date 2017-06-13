@@ -18,9 +18,9 @@
  */
 package org.beangle.webui.showcase.action.config
 
-import org.beangle.commons.cdi.bind.AbstractBindModule
+import org.beangle.cdi.bind.BindModule
 
-object DefaultModule extends AbstractBindModule {
+object DefaultModule extends BindModule {
 
   protected override def binding() {
     bind(classOf[MvcAction], classOf[ContainerAction], classOf[FreemarkerAction],

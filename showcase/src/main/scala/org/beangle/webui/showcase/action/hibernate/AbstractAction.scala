@@ -19,7 +19,7 @@
 package org.beangle.webui.showcase.action.hibernate
 
 import org.beangle.commons.lang.Strings.isEmpty
-import org.beangle.data.hibernate.ConfigurableSessionFactory
+import org.beangle.data.hibernate.spring.LocalSessionFactoryBean
 import org.beangle.webmvc.api.action.{ ParamSupport, RouteSupport }
 import org.hibernate.SessionFactory
 
@@ -33,7 +33,7 @@ abstract class AbstractAction extends RouteSupport with ParamSupport {
     else helper.getSessionFactory(sfid)
   }
 
-  def getFactory(): ConfigurableSessionFactory = {
+  def getFactory(): LocalSessionFactoryBean = {
     val sfid = get("session_factory_id", "")
     if (isEmpty(sfid)) return null
     else helper.getFactory(sfid)

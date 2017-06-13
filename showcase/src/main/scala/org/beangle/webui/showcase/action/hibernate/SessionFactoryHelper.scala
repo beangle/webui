@@ -18,11 +18,11 @@
  */
 package org.beangle.webui.showcase.action.hibernate
 
-import org.beangle.data.hibernate.ConfigurableSessionFactory
+import org.beangle.data.hibernate.spring.LocalSessionFactoryBean
 import org.hibernate.SessionFactory
 
-class SessionFactoryHelper(val fs: Map[String, ConfigurableSessionFactory]) {
-  val factories: Map[Any, ConfigurableSessionFactory] = fs.map {
+class SessionFactoryHelper(val fs: Map[String, LocalSessionFactoryBean]) {
+  val factories: Map[Any, LocalSessionFactoryBean] = fs.map {
     case (k, v) =>
       var name = k.toString
       name = name.replace(".", "_")
@@ -34,7 +34,7 @@ class SessionFactoryHelper(val fs: Map[String, ConfigurableSessionFactory]) {
     factories(id).result
   }
 
-  def getFactory(id: String): ConfigurableSessionFactory = {
+  def getFactory(id: String): LocalSessionFactoryBean = {
     factories(id)
   }
 }

@@ -2,7 +2,7 @@
   <parent>
     <groupId>org.beangle.webui</groupId>
     <artifactId>beangle-webui-parent_2.12</artifactId>
-    <version>0.0.10</version>
+    <version>0.0.11</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>beangle-webui-showcase_2.12</artifactId>
@@ -10,9 +10,9 @@
   <name>Beangle WebUI Showcase</name>
 
   <properties>
-    <hibernate.version>4.3.1.Final</hibernate.version>
     <bundle.symbolicName>org.beangle.webui.showcase</bundle.symbolicName>
     <bundle.namespace>org.beangle.webui.showcase</bundle.namespace>
+    <hibernate.version>5.2.10.Final</hibernate.version>
   </properties>
 
   <dependencies>
@@ -38,8 +38,8 @@
       <artifactId>beangle-webmvc-serializer-plugin_2.12</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.beangle.commons</groupId>
-      <artifactId>beangle-commons-cdi_2.12</artifactId>
+      <groupId>org.beangle.cdi</groupId>
+      <artifactId>beangle-cdi-spring_2.12</artifactId>
     </dependency>
     <dependency>
       <groupId>org.beangle.data</groupId>
@@ -76,7 +76,7 @@
         <plugin>
           <groupId>org.beangle.maven</groupId>
           <artifactId>beangle-maven-plugin</artifactId>
-          <version>0.1.7</version>
+          <version>0.3.0</version>
           <executions>
             <execution>
               <id>generate</id>
