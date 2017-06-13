@@ -36,7 +36,7 @@ class WebinitAction extends ActionSupport {
       if (null != webxml && new File(webxml).exists) {
         new File(webxml).toURI.toURL
       } else {
-        ClassLoaders.getResource("WEB-INF/web.xml")
+        ClassLoaders.getResource("WEB-INF/web.xml").get
       }
     if (null != url) put("webxml", IOs.readString(url.openStream))
     val initializers = new collection.mutable.HashMap[String, URL]

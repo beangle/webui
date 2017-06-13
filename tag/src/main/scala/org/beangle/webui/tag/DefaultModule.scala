@@ -18,12 +18,11 @@
  */
 package org.beangle.webui.tag
 
-import org.beangle.commons.cdi.bind.{ AbstractBindModule, profile }
+import org.beangle.cdi.bind.BindModule
 
-object DefaultModule extends AbstractBindModule {
+object DefaultModule extends BindModule {
 
   protected override def binding() {
     bind("mvc.Taglibrary.b", classOf[BeangleTagLibrary])
   }
 }
-

@@ -20,7 +20,7 @@ package org.beangle.webui.showcase.action.config
 
 import org.beangle.commons.lang.ClassLoaders
 import org.beangle.commons.lang.annotation.description
-import org.beangle.commons.template.freemarker.Configurer
+import org.beangle.template.freemarker.Configurer
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.api.annotation.ignore
 
