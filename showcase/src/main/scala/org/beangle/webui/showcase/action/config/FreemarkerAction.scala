@@ -23,12 +23,13 @@ import org.beangle.commons.lang.annotation.description
 import org.beangle.template.freemarker.Configurer
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.api.annotation.ignore
+import org.beangle.webmvc.api.view.View
 
 @description("Freemarker配置查看器")
 class FreemarkerAction extends ActionSupport {
   var configurer: Configurer = _
 
-  def index(): String = {
+  def index(): View = {
     put("config", configurer.config)
     put("properties", configurer.properties)
     put("templatePath", configurer.templatePath)

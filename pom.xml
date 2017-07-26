@@ -85,7 +85,7 @@
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-serializer-plugin_2.12</artifactId>
+        <artifactId>beangle-webmvc-stream-plugin_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>
