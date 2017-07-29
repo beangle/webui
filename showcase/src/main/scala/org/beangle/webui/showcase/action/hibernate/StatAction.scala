@@ -26,6 +26,7 @@ import org.beangle.commons.lang.Strings.isEmpty
 import org.hibernate.SessionFactory
 import org.beangle.commons.lang.annotation.description
 import org.beangle.webmvc.api.annotation.action
+import org.beangle.webmvc.api.view.View
 
 @description("Hibernate运行/缓存统计查看器")
 @action("stat/{session_factory_id}")
@@ -34,7 +35,7 @@ class StatAction extends AbstractAction {
   var activation: ju.Date = null
   var deactivation: ju.Date = null
 
-  def index(): String = {
+  def index(): View = {
     val sessionFactory = getSessionFactory()
     val statistics = sessionFactory.getStatistics()
     val lastUpdate = new ju.Date()
@@ -93,25 +94,25 @@ class StatAction extends AbstractAction {
     return forward()
   }
 
-  def entity(): String = {
+  def entity(): View = {
     val statistics = getSessionFactory().getStatistics()
     put("statistics", statistics)
     return forward()
   }
 
-  def query(): String = {
+  def query(): View = {
     val statistics = getSessionFactory().getStatistics()
     put("statistics", statistics)
     return forward("queryCache")
   }
 
-  def collection(): String = {
+  def collection(): View = {
     val statistics = getSessionFactory().getStatistics()
     put("statistics", statistics)
     return forward()
   }
 
-  def cache(): String = {
+  def cache(): View = {
     val statistics = getSessionFactory().getStatistics()
     put("statistics", statistics)
     return forward()

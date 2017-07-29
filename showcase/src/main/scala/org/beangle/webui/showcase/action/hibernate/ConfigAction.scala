@@ -24,12 +24,13 @@ import java.net.URL
 import org.beangle.commons.io.IOs
 import org.beangle.commons.lang.annotation.description
 import org.beangle.webmvc.api.annotation.action
+import org.beangle.webmvc.api.view.View
 
 @description("Hibernate配置查看器")
 @action("config/{session_factory_id}")
 class ConfigAction extends AbstractAction {
 
-  def index(): String = {
+  def index(): View = {
     put("factory", getFactory)
     put("action", this)
     forward()

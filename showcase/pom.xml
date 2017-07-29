@@ -2,7 +2,7 @@
   <parent>
     <groupId>org.beangle.webui</groupId>
     <artifactId>beangle-webui-parent_2.12</artifactId>
-    <version>0.0.11</version>
+    <version>0.0.12</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>beangle-webui-showcase_2.12</artifactId>
@@ -35,7 +35,7 @@
     </dependency>
     <dependency>
       <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-serializer-plugin_2.12</artifactId>
+      <artifactId>beangle-webmvc-stream-plugin_2.12</artifactId>
     </dependency>
     <dependency>
       <groupId>org.beangle.cdi</groupId>
@@ -76,13 +76,13 @@
         <plugin>
           <groupId>org.beangle.maven</groupId>
           <artifactId>beangle-maven-plugin</artifactId>
-          <version>0.3.0</version>
+          <version>0.3.2</version>
           <executions>
             <execution>
               <id>generate</id>
               <phase>compile</phase>
               <goals>
-                <goal>gen-dependency</goal>
+                <goal>sas</goal>
               </goals>
             </execution>
           </executions>

@@ -9,13 +9,13 @@
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
   <name>Beangle WebUI Parent</name>
-  <version>0.0.11</version>
+  <version>0.0.12</version>
 
   <properties>
-    <beangle.commons.version>5.0.0.M3</beangle.commons.version>
-    <beangle.cdi.version>0.0.10</beangle.cdi.version>
-    <beangle.data.version>5.0.0.M2</beangle.data.version>
-    <beangle.webmvc.version>0.3.11</beangle.webmvc.version>
+    <beangle.commons.version>5.0.0.M4</beangle.commons.version>
+    <beangle.cdi.version>0.0.11</beangle.cdi.version>
+    <beangle.data.version>5.0.0.M4</beangle.data.version>
+    <beangle.webmvc.version>0.3.12</beangle.webmvc.version>
     <hibernate.version>5.2.10.Final</hibernate.version>
   </properties>
 
@@ -85,7 +85,7 @@
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-serializer-plugin_2.12</artifactId>
+        <artifactId>beangle-webmvc-stream-plugin_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>

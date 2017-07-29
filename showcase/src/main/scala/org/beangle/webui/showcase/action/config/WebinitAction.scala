@@ -25,11 +25,12 @@ import org.beangle.commons.lang.ClassLoaders
 import org.beangle.commons.io.IOs
 import java.net.URL
 import org.beangle.commons.lang.annotation.description
+import org.beangle.webmvc.api.view.View
 
 @description("Web初始化配置查看器")
 class WebinitAction extends ActionSupport {
 
-  def index(): String = {
+  def index(): View = {
     val context = ActionContext.current.request.getServletContext
     val webxml = context.getRealPath("WEB-INF/web.xml")
     val url =
