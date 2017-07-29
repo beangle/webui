@@ -18,9 +18,11 @@
  */
 package org.beangle.webui.showcase.action.hibernate
 
+import org.beangle.webmvc.api.view.View
+
 class IndexAction extends AbstractAction {
 
-  def index(): String = {
+  def index(): View = {
     put("factories", helper.factories)
     forward()
   }

@@ -19,10 +19,11 @@
 package org.beangle.webui.showcase.action.config
 
 import org.beangle.webmvc.api.action.ActionSupport
+import org.beangle.webmvc.api.view.View
 
 class IndexAction extends ActionSupport{
   
-  def index(): String = {
+  def index(): View = {
     forward()
   }
 }

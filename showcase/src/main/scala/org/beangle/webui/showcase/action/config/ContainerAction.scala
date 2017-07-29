@@ -22,6 +22,7 @@ import org.beangle.commons.lang.Strings
 import org.beangle.commons.lang.annotation.description
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.context.ContainerHelper
+import org.beangle.webmvc.api.view.View
 
 /**
  * @author chaostone
@@ -29,7 +30,7 @@ import org.beangle.webmvc.context.ContainerHelper
 @description("Beange CDI 配置查看器")
 class ContainerAction extends ActionSupport {
 
-  def index(): String = {
+  def index(): View = {
     var container = ContainerHelper.get
     val parent = get("parent", "")
     if (Strings.isNotEmpty(parent)) container = container.parent

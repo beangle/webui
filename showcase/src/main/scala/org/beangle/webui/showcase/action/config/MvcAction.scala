@@ -27,6 +27,7 @@ import org.beangle.commons.text.i18n.Messages
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.config.{ ActionConfig, Configurer }
 import org.beangle.webmvc.config.ActionMapping
+import org.beangle.webmvc.api.view.View
 
 /**
  * @author chaostone
@@ -36,24 +37,24 @@ class MvcAction extends ActionSupport {
 
   var configurer: Configurer = _
 
-  def index(): String = {
+  def index(): View = {
     put("namespaces", getNamespaces())
     forward()
   }
 
-  def profiles(): String = {
+  def profiles(): View = {
     put("profiles", configurer.profiles)
     forward()
   }
 
-  def actions(): String = {
+  def actions(): View = {
     val namespace = get("namespace", "")
     put("namespace", namespace)
     put("actionNames", getActionNames(namespace))
     forward()
   }
 
-  def action(): String = {
+  def action(): View = {
     val actionName = get("name", "")
     val config = configurer.getActionMapping(actionName).get
     try {
@@ -69,7 +70,7 @@ class MvcAction extends ActionSupport {
     forward()
   }
 
-  def jekyll(): String = {
+  def jekyll(): View = {
     val packageName = get("packageName", "")
     val actionNames = new collection.mutable.HashSet[String]
     val configs = configurer.actionMappings.values.toSet

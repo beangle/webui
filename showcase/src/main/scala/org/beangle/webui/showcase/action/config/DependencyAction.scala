@@ -21,11 +21,12 @@ package org.beangle.webui.showcase.action.config
 import org.beangle.commons.io.{ IOs, ResourcePatternResolver }
 import org.beangle.commons.lang.annotation.description
 import org.beangle.webmvc.api.action.{ ParamSupport, RouteSupport }
+import org.beangle.webmvc.api.view.View
 
 @description("项目依赖库查看器")
 class DependencyAction extends RouteSupport with ParamSupport {
 
-  def index(): String = {
+  def index(): View = {
     val resolver = new ResourcePatternResolver
     val urls = resolver.getResources("classpath*:META-INF/maven/**/pom.properties")
     val poms = new collection.mutable.ListBuffer[Map[String, String]]

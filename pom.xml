@@ -9,7 +9,7 @@
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
   <name>Beangle WebUI Parent</name>
-  <version>0.0.12-SNAPSHOT</version>
+  <version>0.0.12</version>
 
   <properties>
     <beangle.commons.version>5.0.0.M4</beangle.commons.version>
@@ -85,7 +85,7 @@
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-serializer-plugin_2.12</artifactId>
+        <artifactId>beangle-webmvc-stream-plugin_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>
