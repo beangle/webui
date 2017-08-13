@@ -20,7 +20,6 @@ package org.beangle.webui.tag
 
 import java.io.Writer
 
-import org.beangle.commons.http.agent.Browser
 import org.beangle.commons.lang.Strings
 import org.beangle.webmvc.view.tag.{ ComponentContext, UIBean, ClosingUIBean, Themes }
 
