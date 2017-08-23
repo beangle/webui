@@ -49,11 +49,6 @@
         <version>${beangle.data.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.beangle.data</groupId>
-        <artifactId>beangle-data-serializer_2.12</artifactId>
-        <version>${beangle.data.version}</version>
-      </dependency>
-      <dependency>
         <groupId>org.beangle.cdi</groupId>
         <artifactId>beangle-cdi-spring_2.12</artifactId>
         <version>${beangle.cdi.version}</version>
@@ -81,11 +76,6 @@
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
         <artifactId>beangle-webmvc-entity-plugin_2.12</artifactId>
-        <version>${beangle.webmvc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-stream-plugin_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>
