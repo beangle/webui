@@ -9,13 +9,13 @@
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
   <name>Beangle WebUI Parent</name>
-  <version>0.0.14-SNAPSHOT</version>
+  <version>0.0.14</version>
 
   <properties>
-    <beangle.commons.version>5.0.0.M5</beangle.commons.version>
-    <beangle.cdi.version>0.0.12</beangle.cdi.version>
-    <beangle.data.version>5.0.0.M5</beangle.data.version>
-    <beangle.webmvc.version>0.3.13</beangle.webmvc.version>
+    <beangle.commons.version>5.0.0.M6</beangle.commons.version>
+    <beangle.cdi.version>0.0.13</beangle.cdi.version>
+    <beangle.data.version>5.0.0.M6</beangle.data.version>
+    <beangle.webmvc.version>0.3.14</beangle.webmvc.version>
     <hibernate.version>5.2.10.Final</hibernate.version>
   </properties>
 
@@ -49,11 +49,6 @@
         <version>${beangle.data.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.beangle.data</groupId>
-        <artifactId>beangle-data-serializer_2.12</artifactId>
-        <version>${beangle.data.version}</version>
-      </dependency>
-      <dependency>
         <groupId>org.beangle.cdi</groupId>
         <artifactId>beangle-cdi-spring_2.12</artifactId>
         <version>${beangle.cdi.version}</version>
@@ -81,11 +76,6 @@
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
         <artifactId>beangle-webmvc-entity-plugin_2.12</artifactId>
-        <version>${beangle.webmvc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-stream-plugin_2.12</artifactId>
         <version>${beangle.webmvc.version}</version>
       </dependency>
       <dependency>
