@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>23.4</version>
+    <version>24.2</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>\${groupId}</groupId>
@@ -11,10 +11,10 @@
   <version>\${version}</version>
   <packaging>war</packaging>
   <name>\${artifactId}</name>
-  <description>Beangle WebMVC Starter</description>
+  <description>Beangle WebUI Starter</description>
 
   <properties>
-    <beangle.mvc.version>0.3.9</beangle.mvc.version>
+    <beangle.mvc.version>0.3.14</beangle.mvc.version>
     <beangle.webui.version>${project.version}</beangle.webui.version>
   </properties>
 
@@ -61,18 +61,18 @@
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
-      <version>2.12.0-M5</version>
+      <version>2.12.3</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-reflect</artifactId>
-      <version>2.12.0-M5</version>
+      <version>2.12.3</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.scala-lang.modules</groupId>
-      <artifactId>scala-xml_2.12.0-M5</artifactId>
+      <artifactId>scala-xml_2.12</artifactId>
       <scope>runtime</scope>
     </dependency>
     <dependency>
