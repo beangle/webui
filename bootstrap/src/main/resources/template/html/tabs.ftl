@@ -10,8 +10,8 @@ ${tag.body}
   $(function () {
     $('#${tag.id} li:eq(${tag.selected}) a').tab('show')
     $('#${tag.id} a').click(function (e) {
-	  e.preventDefault()
-	  $(this).tab('show')
-	})
+    e.preventDefault()
+    $(this).tab('show')
+  })
   })
 </script>
