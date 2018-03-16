@@ -9,7 +9,7 @@
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
   <name>Beangle WebUI Parent</name>
-  <version>0.0.16-SNAPSHOT</version>
+  <version>0.0.16</version>
 
   <properties>
     <beangle.commons.version>5.0.0</beangle.commons.version>
