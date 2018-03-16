@@ -22,7 +22,6 @@
   <modules>
     <module>tag</module>
     <module>bootstrap</module>
-    <module>archetype</module>
     <module>showcase</module>
   </modules>
 
