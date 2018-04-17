@@ -33,13 +33,6 @@ import org.beangle.webmvc.execution.Handler
 
 class BeangleModels(context: ComponentContext, request: HttpServletRequest) extends CoreModels(context, request) {
 
-  val uitheme = {
-    val base = request.getContextPath
-    val location = if (base.length() < 2) "/static/"
-    else base + "/static/"
-    new UITheme(location)
-  }
-
   val rest = new Rest(context.uriRender)
 
   def head = get(classOf[Head])
