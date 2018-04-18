@@ -12,7 +12,7 @@
     <meta http-equiv="expires" content="0"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>[#if tag.parameters['title']??]${tag.parameters['title']}[/#if]</title>
-  [#assign beangle_base=static_base+'/bui/0.0.1'/]
+  [#assign beangle_base=static_base+'/bui/0.0.2'/]
   [#assign themeName = Parameters['ui.theme']!"beangle"]
   <script type="text/javascript" src="${static_base}/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="${beangle_base}/js/jquery-form.js"></script>
