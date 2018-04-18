@@ -14,7 +14,7 @@
     <title>[#if tag.parameters['title']??]${tag.parameters['title']}[/#if]</title>
   [#assign beangle_base=static_base+'/bui/0.0.1'/]
   [#assign themeName = Parameters['ui.theme']!"beangle"]
-  <script type="text/javascript" src="${beangle_base}/js/jquery.js"></script>
+  <script type="text/javascript" src="${static_base}/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="${beangle_base}/js/jquery-form.js"></script>
   <script type="text/javascript" src="${beangle_base}/js/jquery-history.js"></script>
   <script type="text/javascript" src="${beangle_base}/js/beangle.js"></script>
@@ -25,7 +25,7 @@
   <script type="text/javascript" src="${beangle_base}/js/jquery-chosen.js"></script>
   [/#if]
   <script>
-    beangle.base="${static_base}/bui/0.0.1"
+    beangle.base="${static_base}/bui/0.0.2"
   </script>
   <link rel="stylesheet" href="${static_base}/bootstrap/3.3.7/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="${static_base}/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
