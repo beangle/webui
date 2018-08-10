@@ -5,14 +5,14 @@
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="pragma" content="no-cache"/>
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="content-style-type" content="text/css"/>
     <meta http-equiv="content-script-type" content="text/javascript"/>
     <meta http-equiv="expires" content="0"/>
     <title>[#if tag.parameters['title']??]${tag.parameters['title']}[/#if]</title>
-  [#assign beangle_base=static_base+'/bui/0.0.2'/]
+  [#assign beangle_base=static_base+'/bui/0.0.3'/]
   <script type="text/javascript" src="${static_base}/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="${beangle_base}/js/jquery-form.js"></script>
   <script type="text/javascript" src="${beangle_base}/js/jquery-history.js"></script>
@@ -31,11 +31,6 @@
   <link rel="stylesheet" href="${beangle_base}/css/beangle-ui.css"/>
   <script src="${static_base}/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     ${tag.body}
-  <style type="text/css">
-  body {
-    font-size: 13px;
-  }
-  </style>
-  </head>
-  <body>
+ </head>
+ <body>
 [/#if]
