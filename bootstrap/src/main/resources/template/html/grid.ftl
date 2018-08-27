@@ -46,7 +46,7 @@
 </div>
 <script type="text/javascript">
   page_${tag.id} = bg.page("${request.requestURI}","${tag.parameters['target']!""}");
-  page_${tag.id}.target("${tag.parameters['target']!""}",'${tag.id}').action("${request.requestURI}").addParams('${b.paramstring}').orderBy("${Parameters['orderBy']!('null')}");
+  page_${tag.id}.setTarget("${tag.parameters['target']!""}",'${tag.id}').action("${request.requestURI}").addParams('${b.paramstring}').orderBy("${Parameters['orderBy']!('null')}");
   bg.ui.grid.init('${tag.id}',page_${tag.id});
   [#if tag.hasbar]
   bar=new bg.ui.gridbar(['${tag.id}_bar1','${tag.id}_bar2'],'${(tag.parameters['title']?default(''))?replace("'","\"")}');

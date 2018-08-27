@@ -12,7 +12,7 @@
     <meta http-equiv="content-script-type" content="text/javascript"/>
     <meta http-equiv="expires" content="0"/>
     <title>[#if tag.parameters['title']??]${tag.parameters['title']}[/#if]</title>
-  [#assign beangle_base=static_base+'/bui/0.0.3'/]
+  [#assign beangle_base=static_base+'/bui/0.0.4'/]
   <script type="text/javascript" src="${static_base}/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="${beangle_base}/js/jquery-form.js"></script>
   <script type="text/javascript" src="${beangle_base}/js/jquery-history.js"></script>
