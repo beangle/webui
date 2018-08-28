@@ -58,8 +58,6 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   def dialog: TagModel = get(classOf[Dialog])
 
-  def css: TagModel = get(classOf[Css])
-
   def iframe: TagModel = get(classOf[Iframe])
 
   def foot: TagModel = get(classOf[Foot])
