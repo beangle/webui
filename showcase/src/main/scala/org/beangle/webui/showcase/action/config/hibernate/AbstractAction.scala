@@ -16,28 +16,27 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.beangle.webui.showcase.action.hibernate
+package org.beangle.webui.showcase.action.config.hibernate
 
-import java.io.{ File, FileInputStream }
-import java.net.URL
+import org.beangle.commons.lang.Strings.isEmpty
+import org.beangle.data.hibernate.spring.LocalSessionFactoryBean
+import org.beangle.webmvc.api.action.{ ParamSupport, RouteSupport }
+import org.hibernate.SessionFactory
 
-import org.beangle.commons.io.IOs
-import org.beangle.commons.lang.annotation.description
-import org.beangle.webmvc.api.annotation.action
-import org.beangle.webmvc.api.view.View
+abstract class AbstractAction extends RouteSupport with ParamSupport {
 
-@description("Hibernate配置查看器")
-@action("config/{session_factory_id}")
-class ConfigAction extends AbstractAction {
+  var helper: SessionFactoryHelper = _
 
-  def index(): View = {
-    put("factory", getFactory)
-    put("action", this)
-    forward()
+  def getSessionFactory(): SessionFactory = {
+    val sfid = get("session_factory_id", "")
+    if (isEmpty(sfid)) return null
+    else helper.getSessionFactory(sfid)
   }
 
-  def getURLString(url: URL): String = {
-    IOs.readString(url.openStream())
+  def getFactory(): LocalSessionFactoryBean = {
+    val sfid = get("session_factory_id", "")
+    if (isEmpty(sfid)) return null
+    else helper.getFactory(sfid)
   }
 
 }

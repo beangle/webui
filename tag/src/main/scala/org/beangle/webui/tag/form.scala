@@ -55,11 +55,11 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
     if (null != title) title = getText(title)
     if (null != onsubmit) {
       onsubmit = onsubmit.trim()
-      if (!onsubmit.startsWith("return")) {
-        onsubmit = "return " + onsubmit
-      }
       if (!onsubmit.contains(')') && !onsubmit.contains(' ')) {
         onsubmit = onsubmit + "(document." + id + ")"
+      }
+      if (!onsubmit.startsWith("return")) {
+        onsubmit = "return " + onsubmit
       }
     }
   }

@@ -34,10 +34,6 @@ class Head(context: ComponentContext) extends ClosingUIBean(context) {
 
 class Foot(context: ComponentContext) extends ClosingUIBean(context)
 
-class Css(context: ComponentContext) extends UIBean(context) {
-  var href: String = _
-}
-
 object Anchor {
 
   val ReservedTargets = Set("_blank", "_top", "_self", "_parent", "new")
