@@ -2,6 +2,6 @@
 <cdi>
   <container name="web">
     <module class="org.beangle.webui.showcase.action.config.DefaultModule"/>
-    <module class="org.beangle.webui.showcase.action.hibernate.DefaultModule"/>
+    <module class="org.beangle.webui.showcase.action.config.hibernate.DefaultModule"/>
   </container>
 </cdi>

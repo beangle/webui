@@ -6,7 +6,7 @@ Cannot find session factories.
 [/#if]
 <ul>
 [#list factories?keys as k]
-<li>[@b.a href="/hibernate/config/${k}/index"]${k}[/@]</li>
+<li>[@b.a href="config/{session_factory_id}?session_factory_id=${k}"]${k}[/@]</li>
 [/#list]
 </ul>
 [@b.foot/]

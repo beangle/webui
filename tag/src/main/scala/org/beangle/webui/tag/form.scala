@@ -53,6 +53,15 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
     }
     if (null != action) action = render(action)
     if (null != title) title = getText(title)
+    if (null != onsubmit) {
+      onsubmit = onsubmit.trim()
+      if (!onsubmit.contains(')') && !onsubmit.contains(' ')) {
+        onsubmit = onsubmit + "(document." + id + ")"
+      }
+      if (!onsubmit.startsWith("return")) {
+        onsubmit = "return " + onsubmit
+      }
+    }
   }
 
   def validate: String = {

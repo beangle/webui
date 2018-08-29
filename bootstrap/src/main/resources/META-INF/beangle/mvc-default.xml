@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<mvc>
+  <static>
+    <bundle name="bootstrap" version="3.3.7"/>
+    <bundle name="bui" version="0.0.4"/>
+    <bundle name="jquery" version="1.10.2"/>
+    <bundle name="my97" version="4.8"/>
+    <bundle name="kindeditor" version="4.1.11"/>
+  </static>
+</mvc>

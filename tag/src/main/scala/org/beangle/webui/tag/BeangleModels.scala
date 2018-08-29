@@ -33,13 +33,30 @@ import org.beangle.webmvc.execution.Handler
 
 class BeangleModels(context: ComponentContext, request: HttpServletRequest) extends CoreModels(context, request) {
 
+  val static_base: String = {
+    val p = System.getProperty("beangle.webmvc.static_base")
+    if (null == p) request.getContextPath + "/static" else p
+  }
+
+  def static_url(bundle: String, filename: String): String = {
+    Static.Default.url(static_base, bundle, filename)
+  }
+
+  def script(bundle: String, fileName: String): String = {
+    val url = static_url(bundle, fileName)
+    "<script type=\"text/javascript\" crossorigin=\"anonymous\" src=\"" + url + "\"></script>"
+  }
+
+  def css(bundle: String, fileName: String): String = {
+    val url = static_url(bundle, fileName)
+    "<link rel=\"stylesheet\" crossorigin=\"anonymous\" href=\"" + url + "\"/>"
+  }
+
   val rest = new Rest(context.uriRender)
 
   def head = get(classOf[Head])
 
   def dialog: TagModel = get(classOf[Dialog])
-
-  def css: TagModel = get(classOf[Css])
 
   def iframe: TagModel = get(classOf[Iframe])
 

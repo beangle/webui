@@ -23,7 +23,7 @@
         <tr>
           <td>${mapping.httpMethod!"*"}</td>
           <td>[#if mapping.name?length>0]${Parameters['name']}/${mapping.name}[#else]${Parameters['name']}[/#if]</td>
-          <td>${mapping.method.name}([#list mapping.arguments as p]${p.toString()}[#if p_has_next],[/#if][/#list])</td>
+          <td>${mapping.method.name}([#list mapping.arguments as p]${p}[#if p_has_next],[/#if][/#list])</td>
           <td>${mapping.defaultView!}</td>
         </tr>
       [/#list]

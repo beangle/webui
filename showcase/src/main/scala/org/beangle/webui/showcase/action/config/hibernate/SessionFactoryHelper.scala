@@ -16,19 +16,21 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.beangle.webui.showcase.action.hibernate
+package org.beangle.webui.showcase.action.config.hibernate
 
 import org.beangle.data.hibernate.spring.LocalSessionFactoryBean
 import org.hibernate.SessionFactory
+import org.beangle.cdi.Container
 
-class SessionFactoryHelper(val fs: Map[String, LocalSessionFactoryBean]) {
-  val factories: Map[Any, LocalSessionFactoryBean] = fs.map {
-    case (k, v) =>
-      var name = k.toString
-      name = name.replace(".", "_")
-      name = name.replace("#", "_")
-      (name, v)
-  }
+class SessionFactoryHelper(container: Container) {
+  val factories: Map[Any, LocalSessionFactoryBean] =
+    container.getBeans(classOf[LocalSessionFactoryBean]).map {
+      case (k, v) =>
+        var name = k
+        name = name.replace(".", "_")
+        name = name.replace("#", "_")
+        (name, v)
+    }
 
   def getSessionFactory(id: String): SessionFactory = {
     factories(id).result

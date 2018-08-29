@@ -12,24 +12,23 @@
     <meta http-equiv="content-script-type" content="text/javascript"/>
     <meta http-equiv="expires" content="0"/>
     <title>[#if tag.parameters['title']??]${tag.parameters['title']}[/#if]</title>
-  [#assign beangle_base=static_base+'/bui/0.0.3'/]
-  <script type="text/javascript" src="${static_base}/jquery/1.10.2/jquery.min.js"></script>
-  <script type="text/javascript" src="${beangle_base}/js/jquery-form.js"></script>
-  <script type="text/javascript" src="${beangle_base}/js/jquery-history.js"></script>
-  <script type="text/javascript" src="${beangle_base}/js/beangle.js"></script>
-  <script type="text/javascript" src="${beangle_base}/js/beangle-ui.js"></script>
+  ${b.script("jquery","jquery.min.js")}
+  ${b.script("bui","js/jquery-form.js")}
+  ${b.script("bui","js/jquery-history.js")}
+  ${b.script("bui","js/beangle.js")}
+  ${b.script("bui","js/beangle-ui.js")}
   [#if tag.loadui]
-  <script type="text/javascript" src="${static_base}/my97/4.8/WdatePicker.js"></script>
-  <script type="text/javascript" src="${beangle_base}/js/jquery-colorbox.js"></script>
-  <script type="text/javascript" src="${beangle_base}/js/jquery-chosen.js"></script>
+  ${b.script("my97","WdatePicker.js")}
+  ${b.script("bui","js/jquery-colorbox.js")}
+  ${b.script("bui","js/jquery-chosen.js")}
   [/#if]
   <script>
-    beangle.base="${beangle_base}"
+    beangle.base="${b.static_url('bui','')}"
   </script>
-  <link rel="stylesheet" href="${static_base}/bootstrap/3.3.7/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="${static_base}/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
-  <link rel="stylesheet" href="${beangle_base}/css/beangle-ui.css"/>
-  <script src="${static_base}/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  ${b.css("bootstrap","css/bootstrap.min.css")}
+  ${b.css("bootstrap","css/bootstrap-theme.min.css")}
+  ${b.css("bui","css/beangle-ui.css")}
+  ${b.script("bootstrap","js/bootstrap.min.js")}
     ${tag.body}
  </head>
  <body>
