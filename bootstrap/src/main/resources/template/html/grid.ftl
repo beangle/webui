@@ -58,6 +58,7 @@
   [#if tag.hasbar && tag.notFullPage]bg.ui.grid.fillEmpty('${tag.id}_empty',[#if tag.pageable]${tag.items.pageSize}[#else]10[/#if],${tag.items?size},'${tag.emptyMsg!b.text("page.noData")}');[/#if]
   [#if tag.var??]action=bar.addEntityAction('${tag.var}',page_${tag.id});[/#if]
   ${tag.bar!}
+  function afterApplyState(){bg.ui.grid.notifyGridbar('${tag.id}');}
   [/#if]
   [#-- refresh interval --]
   [#if tag.refresh??]
