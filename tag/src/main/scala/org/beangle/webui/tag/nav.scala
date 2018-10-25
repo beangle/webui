@@ -56,9 +56,7 @@ class Navitem(context: ComponentContext) extends ClosingUIBean(context) {
     if (null != href) {
       this.href = render(this.href)
       if (!active) {
-        val contextPath = ActionContext.current.request.getContextPath
-        val requestUri = (if (contextPath != "/") contextPath else "") + Handler.current.asInstanceOf[MappingHandler].mapping.url
-        active = requestUri.startsWith(this.href)
+        active = this.href.startsWith(request.getRequestURI)
       }
     }
   }
