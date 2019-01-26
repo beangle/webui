@@ -2,9 +2,11 @@
 <mvc>
   <static>
     <bundle name="bootstrap" version="3.3.7"/>
-    <bundle name="bui" version="0.0.6"/>
     <bundle name="jquery" version="1.10.2"/>
+    <bundle name="jquery-ui" version="1.10.4"/>
     <bundle name="my97" version="4.8"/>
     <bundle name="kindeditor" version="4.1.11"/>
+    <bundle name="font-awesome" version="4.7.0"/>
+    <bundle name="bui" version="0.0.6"/>
   </static>
 </mvc>
