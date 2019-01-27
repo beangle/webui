@@ -25,7 +25,7 @@
 [#macro beangle_uijs_head]
   ${b.script("jquery","jquery.min.js")}
   ${b.script("jquery-ui","js/base/jquery.ui.core.js")}
-  ${b.script("jquery-ui","js/plugins/jquery-form.js")}
+  ${b.script("jquery-ui","js/plugins/jquery.form.js")}
   ${b.script("jquery-ui","js/plugins/jquery-colorbox.js")}
   ${b.script("jquery-ui","js/plugins/jquery-chosen.js")}
   ${b.script("jquery-ui","js/plugins/jquery.subscribe.js")}
@@ -47,9 +47,10 @@
   </script>
   ${b.css("bootstrap","css/bootstrap.min.css")}
   ${b.css("bootstrap","css/bootstrap-theme.min.css")}
+  ${b.css("font-awesome","css/font-awesome.css")}
   ${b.css("jquery-ui","css/jquery-ui.css")}
-  ${b.css("jquery-ui","css/colorbox.css")}
-  ${b.css("jquery-ui","css/chosen.css")}
+  ${b.css("jquery-ui","css/jquery.colorbox.css")}
+  ${b.css("jquery-ui","css/jquery.chosen.css")}
   ${b.css("bui","css/beangle-ui.css")}
 [/#macro]
 
