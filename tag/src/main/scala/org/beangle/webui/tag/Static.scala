@@ -70,7 +70,7 @@ class Static {
     }
     resources.get(bundle) match {
       case Some(r) => s"${base}/${bundle}/${r.version}${fileName}"
-      case None    => s"${base}/${bundle}undefined${fileName}"
+      case None    => s"${base}/${bundle}/undefined${fileName}"
     }
   }
 }
