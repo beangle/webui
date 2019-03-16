@@ -37,12 +37,11 @@
   ${b.script("bui","js/beangle-ui.js")}
   ${b.script("my97","WdatePicker.js")}
   <script type="text/javascript">
-  jQuery(document).ready(function () {
     jQuery.struts2_jquery.version="3.6.1";
     jQuery.scriptPath ="${b.static_url('jquery-ui','/')}"
     jQuery.struts2_jquerySuffix = "";
     jQuery.ajaxSettings.traditional = true;
-    jQuery.ajaxSetup ({cache: false});});
+    jQuery.ajaxSetup ({cache: false});
     beangle.base="${b.static_url('bui','/')}"
   </script>
   ${b.css("bootstrap","css/bootstrap.min.css")}
