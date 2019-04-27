@@ -20,7 +20,7 @@ package org.beangle.webui.tag
 
 import java.io.Writer
 import java.text.SimpleDateFormat
-import java.{ util => ju }
+import java.{util => ju}
 import org.beangle.commons.bean.Properties
 import org.beangle.commons.lang.Strings
 import org.beangle.webmvc.view.tag.ComponentContext
@@ -300,6 +300,8 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
 
   var mutiple: String = _
 
+  var choosenMin: Int = 30
+
   override def evaluateParams() {
     if (null == keyName) {
       if (items.isInstanceOf[ju.Map[_, _]]) {
@@ -359,6 +361,10 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
     }
   }
   def option = _option
+
+  def remote: Boolean = {
+    null == items && Strings.isNotBlank(href)
+  }
 }
 
 class Email(context: ComponentContext) extends AbstractTextBean(context) {
