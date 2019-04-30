@@ -11,7 +11,7 @@ ${tag.body}
 [/#if]
 </select>
 [#assign enableChoosen=false]
-[#if tag.items?? && tag.items?size >= tag.choosenMin]
+[#if tag.items?? && (tag.items?size > (tag.choosenMin?number-1))]
   [#assign enableChoosen=true]
 [/#if]
 [#if enableChoosen || tag.remote]

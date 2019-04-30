@@ -24,7 +24,7 @@ import java.net.URL
 import org.beangle.commons.lang.Strings
 
 object Static {
-  class Resource(val name: String, val version: String)
+  case class Resource(val name: String, val version: String)
 
   val Default = buildDefault()
 
@@ -43,7 +43,7 @@ object Static {
     val xml = scala.xml.XML.load(url.openStream())
     val rss = Collections.newBuffer[Resource]
     (xml \\ "static" \\ "bundle") foreach { e =>
-      rss += new Resource((e \ "@name").text, (e \ "@version").text)
+      rss += Resource((e \ "@name").text, (e \ "@version").text)
     }
     rss.toList
   }
@@ -55,7 +55,13 @@ class Static {
 
   def addResources(res: List[Resource]): this.type = {
     res.foreach { r =>
-      resources.put(r.name, r)
+      resources.get(r.name) match {
+        case None => resources.put(r.name, r)
+        case Some(er) =>
+          if (r.version.compareTo(er.version) > 0) {
+            resources.put(r.name, r)
+          }
+      }
     }
     this
   }

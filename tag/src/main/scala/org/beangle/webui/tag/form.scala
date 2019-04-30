@@ -300,7 +300,7 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
 
   var mutiple: String = _
 
-  var choosenMin: Int = 30
+  var choosenMin: String = "30"
 
   override def evaluateParams() {
     if (null == keyName) {
@@ -365,6 +365,7 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
   def remote: Boolean = {
     null == items && Strings.isNotBlank(href)
   }
+
 }
 
 class Email(context: ComponentContext) extends AbstractTextBean(context) {

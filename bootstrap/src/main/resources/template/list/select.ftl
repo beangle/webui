@@ -13,7 +13,7 @@ ${tag.body}
 </select>[#if tag.comment??]<label class="comment">${tag.comment}</label>[/#if]
 </li>
 [#assign enableChoosen=false]
-[#if tag.items?? && tag.items?size >= tag.choosenMin]
+[#if tag.items?? && (tag.items?size > (tag.choosenMin?number-1))]
   [#assign enableChoosen=true]
 [/#if]
 [#if enableChoosen || tag.remote]
