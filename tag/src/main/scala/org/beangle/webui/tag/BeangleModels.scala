@@ -19,13 +19,13 @@
 package org.beangle.webui.tag
 
 import java.io.StringWriter
-import java.{ util => ju }
+import java.{util => ju}
 
 import org.beangle.commons.collection.page.Page
 import org.beangle.webmvc.api.context.ActionContext
-import org.beangle.webmvc.view.tag.{ ComponentContext, CoreModels }
+import org.beangle.webmvc.view.tag.{ComponentContext, CoreModels}
 import org.beangle.webmvc.view.tag.freemarker.TagModel
-import org.beangle.webui.tag.Grid.{ Bar, Boxcol, Col, Filter, Row, Treecol }
+import org.beangle.webui.tag.Grid.{Bar, Boxcol, Col, Filter, Row, Treecol}
 
 import _root_.freemarker.template.utility.StringUtil
 import javax.servlet.http.HttpServletRequest
@@ -53,6 +53,8 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
   }
 
   val rest = new Rest(context.uriRender)
+
+  def math = MathOps
 
   def head = get(classOf[Head])
 
@@ -139,7 +141,7 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   def navbar: TagModel = get(classOf[Navbar])
 
-  def navlist: TagModel = get(classOf[Navlist])
+  def nav: TagModel = get(classOf[Nav])
 
   def navitem: TagModel = get(classOf[Navitem])
 

@@ -20,8 +20,8 @@ package org.beangle.webui.tag
 
 import org.beangle.commons.collection.page.Page
 import org.beangle.webmvc.api.context.ActionContext
-import org.beangle.webmvc.execution.{ Handler, MappingHandler }
-import org.beangle.webmvc.view.tag.{ ClosingUIBean, ComponentContext, UIBean }
+import org.beangle.webmvc.execution.{Handler, MappingHandler}
+import org.beangle.webmvc.view.tag.{ClosingUIBean, ComponentContext, UIBean}
 
 class Toolbar(context: ComponentContext) extends ClosingUIBean(context) {
   var title: String = _
@@ -38,11 +38,12 @@ class Navbar(context: ComponentContext) extends ClosingUIBean(context) {
   var brand: String = _
 }
 
-class Navlist(context: ComponentContext) extends ClosingUIBean(context) {
+class Nav(context: ComponentContext) extends ClosingUIBean(context) {
 
   override def evaluateParams() {
     if (cssClass == null) cssClass = "nav navbar-nav"
     else if (!cssClass.startsWith("nav ")) cssClass = "nav " + cssClass
+    generateIdIfEmpty();
   }
 }
 
