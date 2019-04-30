@@ -21,11 +21,11 @@ package org.beangle.webui.tag
 object MathOps {
 
   def ceil(n: Number): Int = {
-    Math.ceil(n.doubleValue)
+    Math.ceil(n.doubleValue).asInstanceOf[Int]
   }
 
   def floor(n: Number): Int = {
-    Math.floor(n.doubleValue)
+    Math.floor(n.doubleValue).asInstanceOf[Int]
   }
 
   def round(n: Number): Int = {
