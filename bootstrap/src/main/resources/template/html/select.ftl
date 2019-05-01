@@ -40,5 +40,5 @@ jQuery.ajax({
   }
 });
 [/#if]
-[/#if]
 </script>
+[/#if]

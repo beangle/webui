@@ -7,6 +7,6 @@
     <bundle name="my97" version="4.8"/>
     <bundle name="kindeditor" version="4.1.11"/>
     <bundle name="font-awesome" version="4.7.0"/>
-    <bundle name="bui" version="0.1.3"/>
+    <bundle name="bui" version="0.1.4-SNAPSHOT"/>
   </static>
 </mvc>
