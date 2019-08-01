@@ -1,7 +1,7 @@
-<div class="grid">[@b.messages slash="4"/]
+<div id="${tag.id}" class="grid" ${tag.parameterString}>[@b.messages slash="4"/]
 [#if tag.caption??]<div class="grid-caption">${tag.caption?html}</div>[/#if]
 [#if tag.hasbar]<div id="${tag.id}_bar1" class="gridbar"></div>[/#if]
-<table id="${tag.id}" class="gridtable" ${tag.parameterString}>
+<table class="gridtable" id="${tag.id}_gridtable">
 [#if tag.cols?size>0]
 <thead class="gridhead">
 [#assign filterable = (tag.filterable=="true" || tag.filters?size > 0 )]
@@ -47,10 +47,9 @@
 <script type="text/javascript">
   page_${tag.id} = bg.page("${request.requestURI}","${tag.parameters['target']!""}");
   page_${tag.id}.setTarget("${tag.parameters['target']!""}",'${tag.id}').action("${request.requestURI}").addParams('${b.paramstring}').orderBy("${Parameters['orderBy']!('null')}");
-  bg.ui.grid.init('${tag.id}',page_${tag.id});
+  bg.ui.grid.init('${tag.id}_gridtable',page_${tag.id});
   [#if tag.hasbar]
   bar=new bg.ui.gridbar(['${tag.id}_bar1','${tag.id}_bar2'],'${(tag.parameters['title']?default(''))?replace("'","\"")}');
-  bar.pageId('${tag.id}')
   [#if tag.pageable]
   page_${tag.id}.pageInfo(${tag.items.pageIndex},${tag.items.pageSize},${tag.items.totalItems});
   bar.addPage(page_${tag.id},[#if tag.parameters['fixPageSize']??][][#else]null[/#if],{${b.text('page.description')}});

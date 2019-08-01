@@ -19,16 +19,15 @@
 package org.beangle.webui.tag
 
 import java.io.Writer
-import java.{ util => ju }
+import java.{util => ju}
 
-import org.beangle.commons.collection.page.Page
-import org.beangle.commons.lang.{ Objects, Strings }
-import org.beangle.webmvc.api.context.ActionContext
-import org.beangle.webmvc.view.tag.{ ClosingUIBean, ComponentContext, IterableUIBean, Themes }
-import org.beangle.webui.tag.Grid.Row
-
-import Grid.{ Boxcol, Col }
 import _root_.freemarker.template.utility.StringUtil
+import org.beangle.commons.collection.page.Page
+import org.beangle.commons.lang.{Objects, Strings}
+import org.beangle.webmvc.api.context.ActionContext
+import org.beangle.webmvc.view.tag.{ClosingUIBean, ComponentContext, IterableUIBean, Themes}
+
+import scala.jdk.javaapi.CollectionConverters.asScala
 
 object Grid {
 
@@ -54,16 +53,16 @@ object Grid {
   }
 
   class Row(context: ComponentContext) extends IterableUIBean(context) {
-    val table = findAncestor(classOf[Grid])
-    val var_index = table.`var` + "_index"
-    var index = -1
+    val table: Grid = findAncestor(classOf[Grid])
+    val var_index: String = table.`var` + "_index"
+    var index: Int = -1
     var curObj: Any = _
     var innerTr: Option[Boolean] = None
 
     private val iterator: Iterator[Any] = {
       table.items match {
-        case iterbl: Iterable[_]        => if (iterbl.iterator.hasNext) iterbl.iterator else List(null).iterator
-        case javaIter: ju.Collection[_] => collection.JavaConverters.asScalaIterator(javaIter.iterator())
+        case iterbl: Iterable[_] => if (iterbl.iterator.hasNext) iterbl.iterator else List(null).iterator
+        case javaIter: ju.Collection[_] => asScala(javaIter.iterator())
       }
     }
 
@@ -96,7 +95,7 @@ object Grid {
       } else {
         ctx.removeAttribute(table.`var`, var_index)
       }
-      return false
+      false
     }
   }
 
@@ -111,11 +110,11 @@ object Grid {
     override def start(writer: Writer): Boolean = {
       row = findAncestor(classOf[Row])
       if (row.index == 0) row.table.addCol(this)
-      return null != row.curObj
+      null != row.curObj
     }
 
     override def doEnd(writer: Writer, body: String): Boolean = {
-      if (context.theme.name == Themes.Default) {
+      if (context.theme == Themes.Default) {
         try {
           writer.append("<td").append(parameterString).append(">")
           if (Strings.isNotEmpty(body)) {
@@ -138,16 +137,16 @@ object Grid {
      */
     def value: String = {
       getValue(row.curObj, property) match {
-        case null           => ""
-        case s: String      => s
-        case Some(d)        => if (null == d) "" else d.toString
-        case None           => ""
+        case null => ""
+        case s: String => s
+        case Some(d) => if (null == d) "" else d.toString
+        case None => ""
         case a: Iterable[_] => if (a.isEmpty) "" else a.toString
-        case any: Any       => any.toString
+        case any: Any => any.toString
       }
     }
 
-    def title_=(title: String) {
+    def title_=(title: String): Unit = {
       this._title = title
     }
 
@@ -162,10 +161,10 @@ object Grid {
       if (null == _title) {
         _title = Strings.concat(row.table.`var`, ".", property)
       }
-      return getText(_title)
+      getText(_title)
     }
 
-    def curObj = row.curObj
+    def curObj: Any = row.curObj
 
   }
 
@@ -195,11 +194,11 @@ object Grid {
       row = findAncestor(classOf[Row])
       if (null == boxname) boxname = row.table.`var` + "." + property
       if (row.index == 0) row.table.addCol(this)
-      return null != row.curObj
+      null != row.curObj
     }
 
     override def doEnd(writer: Writer, body: String): Boolean = {
-      if (context.theme.name == Themes.Default) {
+      if (context.theme == Themes.Default) {
         try {
           writer.append("<td class=\"gridselect\"")
           if (null != id) writer.append(" id=\"").append(id).append("\"")
@@ -225,10 +224,13 @@ object Grid {
       Strings.concat(row.table.`var`, "_", property)
     }
   }
+
 }
 
 class Grid(context: ComponentContext) extends ClosingUIBean(context) {
+
   import Grid._
+
   val cols = new collection.mutable.ListBuffer[Col]
   val colTitles = new collection.mutable.HashSet[Object]
   var items: Object = _
@@ -245,7 +247,9 @@ class Grid(context: ComponentContext) extends ClosingUIBean(context) {
   /** 没有数据时显示的文本 */
   var emptyMsg: String = _
 
-  def hasbar: Boolean = (null != bar || items.isInstanceOf[Page[_]])
+  def hasbar: Boolean = {
+    null != bar || items.isInstanceOf[Page[_]]
+  }
 
   def pageable: Boolean = {
     items.isInstanceOf[Page[_]]
@@ -253,25 +257,25 @@ class Grid(context: ComponentContext) extends ClosingUIBean(context) {
 
   def notFullPage: Boolean = {
     items match {
-      case p: Page[_]          => p.size < p.pageSize
-      case c: ju.Collection[_] => c.isEmpty()
-      case s: Seq[_]           => s.isEmpty
+      case p: Page[_] => p.size < p.pageSize
+      case c: ju.Collection[_] => c.isEmpty
+      case s: Seq[_] => s.isEmpty
     }
   }
 
-  def defaultSort(property: String) = Strings.concat(`var`, ".", property)
+  def defaultSort(property: String): String = Strings.concat(`var`, ".", property)
 
   def isSortable(cln: Col): Boolean = {
     val sortby = cln.parameters.get("sort").orNull
     if (null != sortby) true
-    else ("true".equals(sortable) && !Objects.equals(cln.sortable, "false") && null != cln.property)
+    else "true".equals(sortable) && !Objects.equals(cln.sortable, "false") && null != cln.property
   }
 
   def isFilterable(cln: Col): Boolean = {
-    ("true".equals(filterable) && !Objects.equals(cln.filterable, "false") && null != cln.property)
+    "true".equals(filterable) && !Objects.equals(cln.filterable, "false") && null != cln.property
   }
 
-  def addCol(column: Col) {
+  def addCol(column: Col): Unit = {
     var title = column.title
     if (null == title) title = column.property
     if (null == column.width && column.isInstanceOf[Boxcol]) column.width = "4%"

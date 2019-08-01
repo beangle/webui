@@ -18,28 +18,28 @@
  */
 package org.beangle.webui.tag
 
-import org.beangle.webmvc.api.context.{ ActionMessages, ActionContext, Flash }
-import org.beangle.webmvc.view.tag.{ ClosingUIBean, ComponentContext, UIBean }
+import org.beangle.webmvc.api.context.ActionContext
+import org.beangle.webmvc.view.tag.{ClosingUIBean, ComponentContext, UIBean}
 
 class Messages(context: ComponentContext) extends UIBean(context) {
-  var actionMessages: List[String] = null
-  var actionErrors: List[String] = null
+  var actionMessages: List[String] = _
+  var actionErrors: List[String] = _
 
   var clear = "true"
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     actionMessages = ActionContext.current.flash.messages
     actionErrors = ActionContext.current.flash.errors
 
-    if (!actionMessages.isEmpty || !actionErrors.isEmpty) {
+    if (actionMessages.nonEmpty || actionErrors.nonEmpty) {
       generateIdIfEmpty()
       if ("true".equals(clear)) ActionContext.current.flash.clear()
     }
   }
 
-  def hasErrors: Boolean = !actionErrors.isEmpty
+  def hasErrors: Boolean = actionErrors.nonEmpty
 
-  def hasMessages: Boolean = !actionMessages.isEmpty
+  def hasMessages: Boolean = actionMessages.nonEmpty
 
 }
 
@@ -48,7 +48,7 @@ class Dialog(context: ComponentContext) extends ClosingUIBean(context) {
   var href: String = _
   var modal = "false"
 
-  override def evaluateParams() {
-    this.href = render(href);
+  override def evaluateParams(): Unit = {
+    this.href = render(href)
   }
 }

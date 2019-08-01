@@ -19,14 +19,12 @@
 package org.beangle.webui.tag
 
 import org.beangle.commons.collection.page.Page
-import org.beangle.webmvc.api.context.ActionContext
-import org.beangle.webmvc.execution.{Handler, MappingHandler}
 import org.beangle.webmvc.view.tag.{ClosingUIBean, ComponentContext, UIBean}
 
 class Toolbar(context: ComponentContext) extends ClosingUIBean(context) {
   var title: String = _
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     generateIdIfEmpty()
     if (null != title) {
       title = getText(title)
@@ -40,10 +38,10 @@ class Navbar(context: ComponentContext) extends ClosingUIBean(context) {
 
 class Nav(context: ComponentContext) extends ClosingUIBean(context) {
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     if (cssClass == null) cssClass = "nav navbar-nav"
     else if (!cssClass.startsWith("nav ")) cssClass = "nav " + cssClass
-    generateIdIfEmpty();
+    generateIdIfEmpty()
   }
 }
 
@@ -53,7 +51,7 @@ class Navitem(context: ComponentContext) extends ClosingUIBean(context) {
   var target: String = _
   var active = false
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     if (null != href) {
       this.href = render(this.href)
       if (!active) {
@@ -62,6 +60,7 @@ class Navitem(context: ComponentContext) extends ClosingUIBean(context) {
     }
   }
 }
+
 class Pagebar(context: ComponentContext) extends UIBean(context) {
   var page: Page[_] = _
 }

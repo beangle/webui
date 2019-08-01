@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>org.beangle.webui</groupId>
-    <artifactId>beangle-webui-parent_2.12</artifactId>
+    <artifactId>beangle-webui-parent_2.13</artifactId>
     <version>0.3.30-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>beangle-webui-showcase_2.12</artifactId>
+  <artifactId>beangle-webui-showcase_2.13</artifactId>
   <packaging>jar</packaging>
   <name>Beangle WebUI Showcase</name>
 
@@ -18,28 +18,28 @@
   <dependencies>
     <dependency>
       <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-spring-plugin_2.12</artifactId>
+      <artifactId>beangle-webmvc-spring-plugin_2.13</artifactId>
     </dependency>
     <dependency>
       <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-entity-plugin_2.12</artifactId>
+      <artifactId>beangle-webmvc-entity-plugin_2.13</artifactId>
     </dependency>
     <dependency>
       <groupId>org.beangle.webui</groupId>
-      <artifactId>beangle-webui-bootstrap_2.12</artifactId>
+      <artifactId>beangle-webui-bootstrap_2.13</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.beangle.webmvc</groupId>
-      <artifactId>beangle-webmvc-view_2.12</artifactId>
+      <artifactId>beangle-webmvc-view_2.13</artifactId>
     </dependency>
     <dependency>
       <groupId>org.beangle.cdi</groupId>
-      <artifactId>beangle-cdi-spring_2.12</artifactId>
+      <artifactId>beangle-cdi-spring_2.13</artifactId>
     </dependency>
     <dependency>
       <groupId>org.beangle.data</groupId>
-      <artifactId>beangle-data-hibernate_2.12</artifactId>
+      <artifactId>beangle-data-hibernate_2.13</artifactId>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
