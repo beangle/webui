@@ -18,15 +18,16 @@
  */
 package org.beangle.webui.tag
 
-import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.ClassLoaders
 import java.net.URL
-import org.beangle.commons.lang.Strings
+
+import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.{ClassLoaders, Strings}
 
 object Static {
-  case class Resource(val name: String, val version: String)
 
-  val Default = buildDefault()
+  case class Resource(name: String, version: String)
+
+  val Default: Static = buildDefault()
 
   def buildDefault(): Static = {
     val rs = new Static
@@ -50,8 +51,10 @@ object Static {
 }
 
 class Static {
+
   import Static.Resource
-  val resources = Collections.newMap[String, Resource]
+
+  private val resources = Collections.newMap[String, Resource]
 
   def addResources(res: List[Resource]): this.type = {
     res.foreach { r =>
@@ -75,8 +78,8 @@ class Static {
       }
     }
     resources.get(bundle) match {
-      case Some(r) => s"${base}/${bundle}/${r.version}${fileName}"
-      case None    => s"${base}/${bundle}/undefined${fileName}"
+      case Some(r) => s"$base/$bundle/${r.version}$fileName"
+      case None => s"$base/$bundle/undefined$fileName"
     }
   }
 }

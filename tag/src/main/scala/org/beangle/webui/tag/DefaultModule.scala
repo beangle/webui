@@ -22,7 +22,7 @@ import org.beangle.cdi.bind.BindModule
 
 object DefaultModule extends BindModule {
 
-  protected override def binding() {
+  protected override def binding(): Unit = {
     bind("mvc.Taglibrary.b", classOf[BeangleTagLibrary])
   }
 }

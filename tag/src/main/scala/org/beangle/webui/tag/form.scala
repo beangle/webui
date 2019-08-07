@@ -21,12 +21,10 @@ package org.beangle.webui.tag
 import java.io.Writer
 import java.text.SimpleDateFormat
 import java.{util => ju}
+
 import org.beangle.commons.bean.Properties
-import org.beangle.commons.lang.Strings
-import org.beangle.webmvc.view.tag.ComponentContext
-import org.beangle.commons.lang.Primitives
-import org.beangle.webmvc.view.tag.ClosingUIBean
-import org.beangle.webmvc.view.tag.UIBean
+import org.beangle.commons.lang.{Primitives, Strings}
+import org.beangle.webmvc.view.tag.{ClosingUIBean, ComponentContext, UIBean}
 
 class Form(context: ComponentContext) extends ClosingUIBean(context) {
   var name: String = _
@@ -66,7 +64,7 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
 
   def validate: String = {
     if (null == _validate) {
-      if (!elementChecks.isEmpty || (null != extraChecks && extraChecks.length > 0)) _validate = "true"
+      if (elementChecks.nonEmpty || (null != extraChecks && extraChecks.nonEmpty)) _validate = "true"
       else _validate = "false"
     }
     _validate
@@ -124,7 +122,7 @@ class Submit(context: ComponentContext) extends UIBean(context) {
   var value: String = _
   var target: String = _
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     if (null == formId) {
       val f = findAncestor(classOf[Form])
       if (null != f) formId = f.id
@@ -146,9 +144,10 @@ class Validity(context: ComponentContext) extends ClosingUIBean(context) {
 
 object Radio {
   val Booleans: Map[Any, String] = Map(true -> "1", false -> "0", "y" -> "1", "Y" -> "1", "true" -> "1", "false" -> "0", "n" -> "0", "N" -> "0")
-  val DefaultItemMap = Map(("1", "是"), ("0", "否"))
-  val DefaultKeys = List("1", "0")
-  def booleanize(obj: Object): Object = Booleans.get(obj).getOrElse(obj)
+  val DefaultItemMap: Map[String, String] = Map(("1", "是"), ("0", "否"))
+  val DefaultKeys: List[String] = List("1", "0")
+
+  def booleanize(obj: Object): Object = Booleans.getOrElse(obj, obj)
 }
 
 class Radio(context: ComponentContext) extends UIBean(context) {
@@ -158,7 +157,7 @@ class Radio(context: ComponentContext) extends UIBean(context) {
   var title: String = _
   var value: Object = ""
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     if (null == this.id) generateIdIfEmpty()
     label = processLabel(label, name)
     if (null != title) title = getText(title)
@@ -170,10 +169,12 @@ class Radio(context: ComponentContext) extends UIBean(context) {
 class Field(context: ComponentContext) extends ClosingUIBean(context) {
   var label: String = _
   var required: String = _
-  override def evaluateParams() {
+
+  override def evaluateParams(): Unit = {
     if (null != label) label = getText(label)
   }
 }
+
 class AbstractTextBean(context: ComponentContext) extends UIBean(context) {
   var name: String = _
   var label: String = _
@@ -208,14 +209,15 @@ class Textarea(context: ComponentContext) extends AbstractTextBean(context) {
 
   maxlength = "400"
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     super.evaluateParams()
     val myform = findAncestor(classOf[Form])
     if (null != maxlength) myform.addCheck(id, "maxLength(" + maxlength + ")")
   }
 }
+
 object Date {
-  val ResvervedFormats = Map(("date",
+  val ResvervedFormats: Map[String, String] = Map(("date",
     "yyyy-MM-dd"), ("datetime", "yyyy-MM-dd HH:mm:ss"))
 }
 
@@ -231,7 +233,7 @@ class Date(context: ComponentContext) extends UIBean(context) {
   var minDate: String = _
   var maxDate: String = _
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     if (null == this.id) generateIdIfEmpty()
     label = processLabel(label, name)
 
@@ -245,9 +247,11 @@ class Date(context: ComponentContext) extends UIBean(context) {
     }
     val format2 = Date.ResvervedFormats.getOrElse(format, format)
     if (null != format2) format = format2
-    if (value.isInstanceOf[ju.Date]) {
-      val dformat = new SimpleDateFormat(format)
-      value = dformat.format(value.asInstanceOf[java.util.Date])
+    value match {
+      case juDate: ju.Date =>
+        val dformat = new SimpleDateFormat(format)
+        value = dformat.format(juDate)
+      case _ =>
     }
   }
 
@@ -261,14 +265,14 @@ class Checkbox(context: ComponentContext) extends UIBean(context) {
   var checked = false
   var required: String = _
 
-  override def evaluateParams() = {
+  override def evaluateParams(): Unit = {
     if (null == this.id) generateIdIfEmpty()
     label = processLabel(label, name)
 
     if (null != title) title = getText(title)
     else title = label
 
-    var myform = findAncestor(classOf[Form])
+    val myform = findAncestor(classOf[Form])
     if (null != myform) {
       if ("true".equals(required)) {
         myform.addCheck(id + "_span", "assert($(\"#" + id + ":checked\").length != 0,'必须勾选一项')")
@@ -302,15 +306,16 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
 
   var choosenMin: String = "30"
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     if (null == keyName) {
-      if (items.isInstanceOf[ju.Map[_, _]]) {
-        keyName = "key"
-        valueName = "value"
-        items = items.asInstanceOf[ju.Map[_, _]].entrySet
-      } else {
-        keyName = "id"
-        valueName = "name"
+      items match {
+        case juMap: ju.Map[_, _] =>
+          keyName = "key"
+          valueName = "value"
+          items = juMap.entrySet
+        case _ =>
+          keyName = "id"
+          valueName = "name"
       }
     }
     if (null == this.id) generateIdIfEmpty()
@@ -326,10 +331,10 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
     if (null == value) value = requestParameter(name)
     if (null != value) {
       value = value match {
-        case str: String         => if (Strings.isEmpty(str)) null else str
-        case tuple: Tuple2[_, _] => tuple._1.toString
+        case str: String => if (Strings.isEmpty(str)) null else str
+        case tuple: (_, _) => tuple._1.toString
         case _ =>
-          if (Primitives.isWrapperType(value.getClass())) value
+          if (Primitives.isWrapperType(value.getClass)) value
           else Properties.get(value, keyName)
       }
     }
@@ -337,20 +342,24 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
   }
 
   def isSelected(obj: Object): Boolean = {
-    if (null == value) return false
-    else try {
-      var pObj =
-        if (obj.isInstanceOf[Tuple2[_, _]]) obj.asInstanceOf[Tuple2[Object, _]]._1
-        else if (obj.isInstanceOf[ju.Map.Entry[_, _]]) obj.asInstanceOf[ju.Map.Entry[Object, _]].getKey()
-        else Properties.get(obj, keyName)
-
-      value == pObj || value.toString == pObj.toString
-    } catch {
-      case e: Exception => false
+    if (null == value) {
+      false
+    } else {
+      try {
+        val pObj =
+          obj match {
+            case tu: (_, _) => tu._1
+            case e: ju.Map.Entry[_, _] => e.getKey
+            case _ => Properties.get[Any](obj, keyName)
+          }
+        value == pObj || value.toString == pObj.toString
+      } catch {
+        case _: Exception => false
+      }
     }
   }
 
-  def option_=(o: String) {
+  def option_=(o: String): Unit = {
     if (null != o) {
       if (Strings.contains(o, "$")) {
         this._option = o
@@ -360,7 +369,8 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
       }
     }
   }
-  def option = _option
+
+  def option: String = _option
 
   def remote: Boolean = {
     null == items && Strings.isNotBlank(href)

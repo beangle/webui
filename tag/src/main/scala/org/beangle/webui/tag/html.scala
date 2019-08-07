@@ -21,12 +21,13 @@ package org.beangle.webui.tag
 import java.io.Writer
 
 import org.beangle.commons.lang.Strings
-import org.beangle.webmvc.view.tag.{ ComponentContext, UIBean, ClosingUIBean, Themes }
+import org.beangle.webmvc.view.tag.{ClosingUIBean, ComponentContext, Themes}
 
 class Head(context: ComponentContext) extends ClosingUIBean(context) {
   var loadui = true
   var compressed = true
-  override def evaluateParams() {
+
+  override def evaluateParams(): Unit = {
     val devMode = requestParameter("devMode")
     if (null != devMode) compressed = !("true".equals(devMode) || "on".equals(devMode))
   }
@@ -36,7 +37,7 @@ class Foot(context: ComponentContext) extends ClosingUIBean(context)
 
 object Anchor {
 
-  val ReservedTargets = Set("_blank", "_top", "_self", "_parent", "new")
+  val ReservedTargets: Set[String] = Set("_blank", "_top", "_self", "_parent")
 }
 
 class Anchor(context: ComponentContext) extends ClosingUIBean(context) {
@@ -46,7 +47,7 @@ class Anchor(context: ComponentContext) extends ClosingUIBean(context) {
 
   def reserved: Boolean = Anchor.ReservedTargets.contains(target)
 
-  override def evaluateParams() = {
+  override def evaluateParams(): Unit = {
     this.href = render(this.href)
     if (!reserved) {
       if (null == onclick) {
@@ -61,7 +62,7 @@ class Anchor(context: ComponentContext) extends ClosingUIBean(context) {
   }
 
   override def doEnd(writer: Writer, body: String): Boolean = {
-    if (context.theme.name == Themes.Default) {
+    if (context.theme == Themes.Default) {
       try {
         writer.append("<a href=\"")
         writer.append(href).append("\"")
@@ -80,9 +81,9 @@ class Anchor(context: ComponentContext) extends ClosingUIBean(context) {
         case e: Exception =>
           e.printStackTrace()
       }
-      return false
+      false
     } else {
-      return super.doEnd(writer, body)
+      super.doEnd(writer, body)
     }
   }
 }

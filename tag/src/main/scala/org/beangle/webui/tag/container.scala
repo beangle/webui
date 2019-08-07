@@ -18,16 +18,15 @@
  */
 package org.beangle.webui.tag
 
-import org.beangle.commons.lang.{ Objects, Strings }
-import org.beangle.webmvc.view.tag.{ ComponentContext, UIBean, ClosingUIBean }
-import java.io.Writer
+import org.beangle.commons.lang.{Objects, Strings}
+import org.beangle.webmvc.view.tag.{ClosingUIBean, ComponentContext}
 
 class Div(context: ComponentContext) extends ClosingUIBean(context) {
   var href: String = _
 
   var astarget: String = _
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     if (null == astarget && (null != id || null != href)) astarget = "true"
     if (null != href) {
       generateIdIfEmpty()
@@ -42,7 +41,8 @@ class Div(context: ComponentContext) extends ClosingUIBean(context) {
 
 class Iframe(context: ComponentContext) extends ClosingUIBean(context) {
   var src: String = _
-  override def evaluateParams() {
+
+  override def evaluateParams(): Unit = {
     src = render(src)
   }
 }
@@ -51,7 +51,7 @@ class Tab(context: ComponentContext) extends ClosingUIBean(context) {
   var href: String = _
   var label: String = _
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     if (null != href) href = render(href)
     if (null != label) label = getText(label)
     val tabs = findAncestor(classOf[Tabs])
@@ -65,11 +65,11 @@ class Tabs(context: ComponentContext) extends ClosingUIBean(context) {
   var selected: Int = 0
   val tabs = new collection.mutable.ListBuffer[Tab]
 
-  def addTab(tab: Tab) {
+  def addTab(tab: Tab): Unit = {
     this.tabs += tab
   }
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     generateIdIfEmpty()
   }
 
@@ -78,7 +78,7 @@ class Tabs(context: ComponentContext) extends ClosingUIBean(context) {
 class Module(context: ComponentContext) extends ClosingUIBean(context) {
   var title: String = _
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     generateIdIfEmpty()
     if (null != title) {
       title = getText(title)

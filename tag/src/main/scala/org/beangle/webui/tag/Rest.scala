@@ -19,10 +19,9 @@
 package org.beangle.webui.tag
 
 import org.beangle.commons.bean.Properties
-
-import org.beangle.commons.lang.functor.{ NotEmpty, NotZero }
-import org.beangle.webmvc.execution.Handler
+import org.beangle.commons.lang.functor.{NotEmpty, NotZero}
 import org.beangle.webmvc.dispatch.ActionUriRender
+import org.beangle.webmvc.execution.Handler
 
 class Rest(uriRender: ActionUriRender) {
 
@@ -55,8 +54,10 @@ class Rest(uriRender: ActionUriRender) {
   }
 
   private def isValid(id: Any): Boolean = {
-    if (null == id) return false
-    if (id.isInstanceOf[Number]) return NotZero(id.asInstanceOf[Number])
-    return NotEmpty(id.toString)
+    id match {
+      case null => false
+      case n: Number => NotZero(n)
+      case _ => NotEmpty(id.toString)
+    }
   }
 }

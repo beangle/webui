@@ -19,20 +19,19 @@
 package org.beangle.webui.tag
 
 import org.beangle.commons.bean.Properties
-import org.beangle.commons.lang.{ Numbers, Strings }
-import org.beangle.webmvc.view.tag.ComponentContext
-import org.beangle.webmvc.view.tag.UIBean
-import Radio.{ DefaultItemMap, DefaultKeys }
-import scala.collection.JavaConverters.mapAsScalaMap
+import org.beangle.commons.lang.{Numbers, Strings}
+import org.beangle.webmvc.view.tag.{ComponentContext, UIBean}
+
+import scala.jdk.javaapi.CollectionConverters.asScala
 
 class Textfields(context: ComponentContext) extends UIBean(context) {
   var names: String = _
   var fields: Array[Textfield] = _
 
-  override def evaluateParams() {
-    var nameArray = Strings.split(names, ',')
+  override def evaluateParams(): Unit = {
+    val nameArray = Strings.split(names, ',')
     fields = new Array[Textfield](nameArray.length)
-    (0 until nameArray.length) foreach { i =>
+    nameArray.indices foreach { i =>
       fields(i) = new Textfield(context)
       var name = nameArray(i)
       var title = name
@@ -61,7 +60,7 @@ class Radios(context: ComponentContext) extends UIBean(context) {
 
   var comment: String = _
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     if (null == this.id) generateIdIfEmpty()
     label = processLabel(label, name)
 
@@ -82,37 +81,36 @@ class Radios(context: ComponentContext) extends UIBean(context) {
   }
 
   private def convertItems(): Iterable[_] = {
-    if (items.isInstanceOf[collection.Map[_, _]]) return items.asInstanceOf[collection.Map[_, _]].keys.toList
-    if (items.isInstanceOf[java.util.Map[_, _]]) {
-      items = mapAsScalaMap(items.asInstanceOf[java.util.Map[_, _]])
-      return items.asInstanceOf[collection.Map[_, _]].keys.toList
-    }
     import Radio._
-    var keys: Seq[Object] = null
-    if (null == items) {
-      keys = DefaultKeys
-      items = DefaultItemMap
-    } else if (items.isInstanceOf[String]) {
-      if (Strings.isBlank(items.asInstanceOf[String])) {
-        keys = DefaultKeys
+    items match {
+      case m: collection.Map[_, _] =>
+        m.keys.toList
+      case jm: java.util.Map[_, _] =>
+        items = asScala(jm)
+        items.asInstanceOf[collection.Map[_, _]].keys.toList
+      case null =>
         items = DefaultItemMap
-      } else {
-        val newkeys = new collection.mutable.ListBuffer[Object]
-        val itemMap = new collection.mutable.HashMap[Object, Object]
-        val titleArray = Strings.split(items.toString, ',')
-        for (i <- 0 until titleArray.length) {
-          val titleValue = titleArray(i)
-          val semiconIndex = titleValue.indexOf(':')
-          if (-1 != semiconIndex) {
-            newkeys += titleValue.substring(0, semiconIndex)
-            itemMap.put(titleValue.substring(0, semiconIndex), titleValue.substring(semiconIndex + 1))
+        DefaultKeys
+      case s: String =>
+        if (Strings.isBlank(s)) {
+          items = DefaultItemMap
+          DefaultKeys
+        } else {
+          val newkeys = new collection.mutable.ListBuffer[Object]
+          val itemMap = new collection.mutable.HashMap[Object, Object]
+          val titleArray = Strings.split(items.toString, ',')
+          titleArray.indices foreach { i =>
+            val titleValue = titleArray(i)
+            val semiconIndex = titleValue.indexOf(':')
+            if (-1 != semiconIndex) {
+              newkeys += titleValue.substring(0, semiconIndex)
+              itemMap.put(titleValue.substring(0, semiconIndex), titleValue.substring(semiconIndex + 1))
+            }
           }
+          items = itemMap
+          newkeys
         }
-        keys = newkeys
-        items = itemMap
-      }
     }
-    return keys
   }
 }
 
@@ -128,7 +126,7 @@ class Checkboxes(context: ComponentContext) extends UIBean(context) {
   var max: Object = _
   var valueName = "name"
 
-  override def evaluateParams() = {
+  override def evaluateParams(): Unit = {
     if (null == this.id) generateIdIfEmpty()
     if (null != label) label = getText(label)
 
@@ -137,8 +135,8 @@ class Checkboxes(context: ComponentContext) extends UIBean(context) {
     checkboxes = new Array[Checkbox](keys.size)
     var i = 0
     val myform = findAncestor(classOf[Form])
-    var minValue = getValidateNum(min)
-    var maxValue = getValidateNum(max)
+    val minValue = getValidateNum(min)
+    val maxValue = getValidateNum(max)
     if (null != myform) {
       if ("true".equals(required)) {
         myform.addCheck(id, "assert($(\"input[name='" + name + "']:checked\").length != 0,'必须勾选一项')")
@@ -170,30 +168,33 @@ class Checkboxes(context: ComponentContext) extends UIBean(context) {
     if (items.isInstanceOf[collection.Map[_, _]]) return items.asInstanceOf[collection.Map[Object, Object]].keys
     val itemMap = new collection.mutable.HashMap[Object, Object]
     val keys = new collection.mutable.ListBuffer[Object]
-    if (items.isInstanceOf[String]) {
-      if (Strings.isBlank(items.asInstanceOf[String])) {
-        return List.empty
-      } else {
-        val titleArray = Strings.split(items.toString(), ',')
-        for (i <- 0 to titleArray.length) {
-          val titleValue = titleArray(i)
-          val semiconIndex = titleValue.indexOf(':')
-          if (-1 != semiconIndex) {
-            keys += titleValue.substring(0, semiconIndex)
-            itemMap.put(titleValue.substring(0, semiconIndex), titleValue.substring(semiconIndex + 1))
+    items match {
+      case s: String =>
+        if (Strings.isBlank(s)) {
+          List.empty
+        } else {
+          val titleArray = Strings.split(items.toString, ',')
+          titleArray.indices foreach { i =>
+            val titleValue = titleArray(i)
+            val semiconIndex = titleValue.indexOf(':')
+            if (-1 != semiconIndex) {
+              keys += titleValue.substring(0, semiconIndex)
+              itemMap.put(titleValue.substring(0, semiconIndex), titleValue.substring(semiconIndex + 1))
+            }
           }
+          items = itemMap
+          keys
         }
-      }
-    } else if (items.isInstanceOf[Iterable[_]]) {
-      for (obj <- items.asInstanceOf[Iterable[_]]) {
-        val value = Properties.get(obj, "id")
-        val title = Properties.get(obj, valueName)
-        keys += value
-        itemMap.put(value, title)
-      }
+      case i: Iterable[_] =>
+        i foreach { obj =>
+          val value = Properties.get(obj, "id")
+          val title = Properties.get(obj, valueName)
+          keys += value
+          itemMap.put(value, title)
+        }
+        items = itemMap
+        keys
     }
-    items = itemMap
-    keys
   }
 
   private def getValidateNum(number: Object): Int = {
@@ -206,10 +207,11 @@ class Checkboxes(context: ComponentContext) extends UIBean(context) {
       case iter: Iterable[_] =>
         (for (obj <- iter) yield Properties.get(obj, "id")).toSet
       case arry: Array[Object] => arry.toSet
-      case str: String         => if (Strings.isNotBlank(str)) Strings.split(str).toSet else Set.empty
+      case str: String => if (Strings.isNotBlank(str)) Strings.split(str).toSet else Set.empty
     }
   }
 }
+
 class Select2(context: ComponentContext) extends UIBean(context) {
   var keyName = "id"
   var valueName = "name"
@@ -223,7 +225,7 @@ class Select2(context: ComponentContext) extends UIBean(context) {
 
   var style = "width:250px;height:200px"
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     if (null != label) label = getText(label)
     generateIdIfEmpty()
     val myform = findAncestor(classOf[Form])
@@ -239,7 +241,7 @@ class Select2(context: ComponentContext) extends UIBean(context) {
 
   }
 
-  def setOption(option: String) {
+  def setOption(option: String): Unit = {
     if (null != option) {
       if (Strings.contains(option, ",")) {
         keyName = Strings.substringBefore(option, ",")
@@ -266,29 +268,29 @@ class Startend(context: ComponentContext) extends UIBean(context) {
 
   var dates: Array[Date] = _
 
-  override def evaluateParams() {
+  override def evaluateParams(): Unit = {
     val nameArray = Strings.split(name, ',')
     dates = new Array[Date](nameArray.length)
     Date.ResvervedFormats.get(format) foreach { f => format = f }
     val requiredArray = Strings.split(required, ',')
     val commentArray = Strings.split(comment, ',')
     val labelArray = Strings.split(label, ',')
-    for (i <- 0 until nameArray.length) {
+    nameArray.indices foreach { i =>
       if (i < 2) {
         dates(i) = new Date(context)
         val name = nameArray(i)
         dates(i).name = name
         dates(i).format = format
         if (requiredArray != null) {
-          dates(i).required = (if (requiredArray.length == 1) required else requiredArray(i))
+          dates(i).required = if (requiredArray.length == 1) required else requiredArray(i)
         }
         if (commentArray != null) {
-          dates(i).comment = (if (commentArray.length == 1) comment else commentArray(i))
+          dates(i).comment = if (commentArray.length == 1) comment else commentArray(i)
         }
         if (labelArray != null) {
-          dates(i).label = (if (labelArray.length == 1) label else labelArray(i))
+          dates(i).label = if (labelArray.length == 1) label else labelArray(i)
         }
-        dates(i).title = (dates(i).label)
+        dates(i).title = dates(i).label
         if (i == 0) dates(0).value = start
         else dates(1).value = end
 
@@ -301,8 +303,8 @@ class Startend(context: ComponentContext) extends UIBean(context) {
 
       if (labelArray.length == 1) {
         val containTime = format.contains("HH:mm")
-        dates(0).title = (dates(0).title + getText(if (containTime) "common.beginAt" else "common.beginOn"))
-        dates(1).title = (dates(1).title + getText(if (containTime) "common.endAt" else "common.endOn"))
+        dates(0).title = dates(0).title + getText(if (containTime) "common.beginAt" else "common.beginOn")
+        dates(1).title = dates(1).title + getText(if (containTime) "common.endAt" else "common.endOn")
       }
     }
   }

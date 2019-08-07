@@ -18,18 +18,10 @@
  */
 package org.beangle.webui.tag
 
-import java.io.StringWriter
-import java.{util => ju}
-
-import org.beangle.commons.collection.page.Page
-import org.beangle.webmvc.api.context.ActionContext
-import org.beangle.webmvc.view.tag.{ComponentContext, CoreModels}
-import org.beangle.webmvc.view.tag.freemarker.TagModel
-import org.beangle.webui.tag.Grid.{Bar, Boxcol, Col, Filter, Row, Treecol}
-
-import _root_.freemarker.template.utility.StringUtil
 import javax.servlet.http.HttpServletRequest
-import org.beangle.webmvc.execution.Handler
+import org.beangle.webmvc.view.tag.freemarker.TagModel
+import org.beangle.webmvc.view.tag.{ComponentContext, CoreModels}
+import org.beangle.webui.tag.Grid._
 
 class BeangleModels(context: ComponentContext, request: HttpServletRequest) extends CoreModels(context, request) {
 
@@ -54,9 +46,9 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   val rest = new Rest(context.uriRender)
 
-  def math = MathOps
+  def math: MathOps.type = MathOps
 
-  def head = get(classOf[Head])
+  def head: TagModel = get(classOf[Head])
 
   def dialog: TagModel = get(classOf[Dialog])
 
@@ -91,11 +83,11 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
     if (null == model) {
       // just for performance
       model = new TagModel(context) {
-        override protected def getBean() = new Col(context)
+        override protected def getBean = new Col(context)
       }
       models.put(classOf[Col], model)
     }
-    return model
+    model
   }
 
   def treecol: TagModel = get(classOf[Treecol])
@@ -114,7 +106,7 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
       }
       models.put(classOf[Anchor], model)
     }
-    return model
+    model
   }
 
   def messages: TagModel = get(classOf[Messages])
