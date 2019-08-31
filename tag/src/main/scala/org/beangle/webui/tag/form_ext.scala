@@ -135,6 +135,12 @@ class Checkboxes(context: ComponentContext) extends UIBean(context) {
     checkboxes = new Array[Checkbox](keys.size)
     var i = 0
     val myform = findAncestor(classOf[Form])
+    if (required == "true" && min == null) {
+      min = "1"
+    }
+    if (null == max) {
+      max = checkboxes.length.toString
+    }
     val minValue = getValidateNum(min)
     val maxValue = getValidateNum(max)
     if (null != myform) {
@@ -187,8 +193,8 @@ class Checkboxes(context: ComponentContext) extends UIBean(context) {
         }
       case i: Iterable[_] =>
         i foreach { obj =>
-          val value = Properties.get(obj, "id")
-          val title = Properties.get(obj, valueName)
+          val value = Properties.get[Object](obj, "id")
+          val title = Properties.get[Object](obj, valueName)
           keys += value
           itemMap.put(value, title)
         }
@@ -204,8 +210,10 @@ class Checkboxes(context: ComponentContext) extends UIBean(context) {
   private def convertValue(): collection.Set[Object] = {
     value match {
       case null => Set.empty
+      case iter: java.lang.Iterable[_] =>
+        (for (obj <- asScala(iter)) yield Properties.get[Object](obj, "id")).toSet
       case iter: Iterable[_] =>
-        (for (obj <- iter) yield Properties.get(obj, "id")).toSet
+        (for (obj <- iter) yield Properties.get[Object](obj, "id")).toSet
       case arry: Array[Object] => arry.toSet
       case str: String => if (Strings.isNotBlank(str)) Strings.split(str).toSet else Set.empty
     }
