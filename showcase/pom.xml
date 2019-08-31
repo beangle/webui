@@ -2,7 +2,7 @@
   <parent>
     <groupId>org.beangle.webui</groupId>
     <artifactId>beangle-webui-parent_2.13</artifactId>
-    <version>0.3.31-SNAPSHOT</version>
+    <version>0.3.31</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>beangle-webui-showcase_2.13</artifactId>
