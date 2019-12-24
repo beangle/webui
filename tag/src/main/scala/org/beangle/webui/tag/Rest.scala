@@ -56,7 +56,7 @@ class Rest(uriRender: ActionUriRender) {
   private def isValid(id: Any): Boolean = {
     id match {
       case null => false
-      case n: Number => NotZero(n)
+      case n: java.lang.Number => NotZero(n)
       case _ => NotEmpty(id.toString)
     }
   }
