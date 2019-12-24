@@ -20,15 +20,15 @@ package org.beangle.webui.tag
 
 object MathOps {
 
-  def ceil(n: Number): Int = {
+  def ceil(n: java.lang.Number): Int = {
     Math.ceil(n.doubleValue).asInstanceOf[Int]
   }
 
-  def floor(n: Number): Int = {
+  def floor(n: java.lang.Number): Int = {
     Math.floor(n.doubleValue).asInstanceOf[Int]
   }
 
-  def round(n: Number): Int = {
+  def round(n: java.lang.Number): Int = {
     Math.round(n.floatValue)
   }
 

@@ -115,6 +115,12 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   def email: TagModel = get(classOf[Email])
 
+  def number: TagModel = get(classOf[Number])
+
+  def range: TagModel = get(classOf[Range])
+
+  def time: TagModel = get(classOf[Time])
+
   def textarea: TagModel = get(classOf[Textarea])
 
   def field: TagModel = get(classOf[Field])

@@ -382,6 +382,30 @@ class Email(context: ComponentContext) extends AbstractTextBean(context) {
   check = "match('email')"
 }
 
+class Number(context: ComponentContext) extends AbstractTextBean(context) {
+  check = "match('integer')"
+  var min: String = "0"
+  var max: String = "1000"
+
+  override def evaluateParams(): Unit = {
+    check = s"match('integer').range($min,$max)"
+    super.evaluateParams()
+  }
+}
+
+class Range(context: ComponentContext) extends AbstractTextBean(context) {
+  var min: String = "0"
+  var max: String = "1000"
+
+  override def evaluateParams(): Unit = {
+    check = s"match('integer').range($min,$max)"
+    super.evaluateParams()
+  }
+}
+
+class Time(context: ComponentContext) extends AbstractTextBean(context) {
+}
+
 class Password(context: ComponentContext) extends AbstractTextBean(context) {
   var minlength: String = "6"
   maxlength = "10"

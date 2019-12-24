@@ -75,6 +75,9 @@ class Anchor(context: ComponentContext) extends ClosingUIBean(context) {
         if (null != onclick) {
           writer.append(" onclick=\"").append(onclick).append("\"")
         }
+        if (null != cssClass) {
+          writer.append(" class=\"").append(cssClass).append("\"")
+        }
         writer.append(parameterString)
         writer.append(">").append(body).append("</a>")
       } catch {
