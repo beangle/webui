@@ -48,7 +48,7 @@
       <module name="jquery-validity" js="js/jquery-validity.js" css="css/jquery.validity.css"/>
       <module name="jquery-pstrength" js="js/jquery-pstrength.js" css="css/jquery.pstrength.css"/>
       <module name="jquery-pstrength-zh" js="js/jquery-pstrength_zh.js"/>
-      <module name="jquery-treetable" js="js/jquery-treetable.js" css="css/jquery.treetable.css"/>
+      <module name="jquery-treetable" js="jquery-treetable.js" css="css/jquery.treetable.css"/>
     </bundle>
 
     <bundle name="my97" version="4.8">

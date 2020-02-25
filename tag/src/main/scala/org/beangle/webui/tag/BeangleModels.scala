@@ -26,22 +26,27 @@ import org.beangle.webui.tag.Grid._
 class BeangleModels(context: ComponentContext, request: HttpServletRequest) extends CoreModels(context, request) {
 
   val static_base: String = {
-    val p = System.getProperty("beangle.webmvc.static_base")
-    if (null == p) request.getContextPath + "/static" else p
+    Static.Default.base
+  }
+
+  def static: Static = {
+    Static.Default
   }
 
   def static_url(bundle: String, filename: String): String = {
-    Static.Default.url(static_base, bundle, filename)
+    Static.Default.url(bundle, filename)
   }
 
   def script(bundle: String, fileName: String): String = {
-    val url = static_url(bundle, fileName)
-    "<script type=\"text/javascript\" crossorigin=\"anonymous\" src=\"" + url + "\"></script>"
+    script(bundle, fileName, false)
+  }
+
+  def script(bundle: String, fileName: String, deferable: Boolean): String = {
+    Static.Default.script(bundle, fileName, deferable)
   }
 
   def css(bundle: String, fileName: String): String = {
-    val url = static_url(bundle, fileName)
-    "<link rel=\"stylesheet\" crossorigin=\"anonymous\" href=\"" + url + "\"/>"
+    Static.Default.css(bundle, fileName)
   }
 
   val rest = new Rest(context.uriRender)
