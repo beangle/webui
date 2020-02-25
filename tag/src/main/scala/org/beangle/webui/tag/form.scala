@@ -30,6 +30,7 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
   var name: String = _
   var action: String = _
   var target: String = _
+  var method: String = "post"
 
   var onsubmit: String = _
 

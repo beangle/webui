@@ -12,49 +12,18 @@
     <meta http-equiv="expires" content="0"/>
     <meta http-equiv="content-style-type" content="text/css"/>
     <meta http-equiv="content-script-type" content="text/javascript"/>
-  [#if tag.loadui]
-  [@beangle_uijs_head/]
-  [#else]
-  [@beangle_js_head/]
-  [/#if]
+    ${b.static.load(["requirejs","jquery","jquery-history","beangle","bui"])}
+  <script type="text/javascript">
+    beangle.register("${b.static_base}/",{
+      [#assign contents = b.static.module_contents/]
+      [#list contents?keys?sort as k]
+        "${k}":${contents[k]}[#if k_has_next],[/#if]
+      [/#list]
+    });
+    bg.load(["jquery-form","bootstrap","font-awesome"])
+  </script>
+  [@include_if_exists path="head_ext.ftl"/]
   ${tag.body}
  </head>
  <body>
 [/#if]
-
-[#macro beangle_uijs_head]
-  ${b.script("jquery","jquery.min.js")}
-  ${b.script("jquery-ui","js/base/jquery.ui.core.js")}
-  ${b.script("jquery-ui","js/plugins/jquery.form.js")}
-  ${b.script("jquery-ui","js/plugins/jquery-colorbox.js")}
-  ${b.script("jquery-ui","js/plugins/jquery-chosen.js")}
-  ${b.script("jquery-ui","js/plugins/jquery.subscribe.js")}
-  ${b.script("jquery-ui","js/struts2/jquery.struts2.js")}
-  ${b.script("jquery-ui","js/struts2/jquery.ui.struts2.js")}
-  ${b.script("bootstrap","js/bootstrap.min.js")}
-  ${b.script("bui","js/jquery-history.js")}
-  ${b.script("bui","js/beangle.js")}
-  ${b.script("bui","js/beangle-ui.js")}
-  ${b.script("my97","WdatePicker.js")}
-  <script type="text/javascript">
-    jQuery.struts2_jquery.version="3.6.1";
-    jQuery.scriptPath ="${b.static_url('jquery-ui','/')}"
-    jQuery.struts2_jquerySuffix = "";
-    jQuery.ajaxSettings.traditional = true;
-    jQuery.ajaxSetup ({cache: false});
-    beangle.base="${b.static_url('bui','/')}"
-  </script>
-  ${b.css("bootstrap","css/bootstrap.min.css")}
-  ${b.css("bootstrap","css/bootstrap-theme.min.css")}
-  ${b.css("font-awesome","css/font-awesome.css")}
-  ${b.css("jquery-ui","css/jquery-ui.css")}
-  ${b.css("jquery-ui","css/jquery.colorbox.css")}
-  ${b.css("jquery-ui","css/jquery.chosen.css")}
-  ${b.css("bui","css/beangle-ui.css")}
-[/#macro]
-
-[#macro beangle_js_head]
-  ${b.script("jquery","jquery.min.js")}
-  ${b.script("bui","js/beangle.js")}
-  ${b.css("bui","css/beangle-ui.css")}
-[/#macro]

@@ -18,25 +18,26 @@
  */
 package org.beangle.webui.tag
 
-import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
-import org.beangle.commons.lang.annotation.description
-import org.beangle.webmvc.view.tag.AbstractTagLibrary
+import org.beangle.commons.collection.Collections
+import org.beangle.commons.logging.Logging
+import org.junit.runner.RunWith
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatestplus.junit.JUnitRunner
 
-/**
- * Beangle tag Library
- *
- * @author chaostone
- * @since 2.0
- */
-@description("beangle webui 标签库")
-class BeangleTagLibrary extends AbstractTagLibrary {
+@RunWith(classOf[JUnitRunner])
+class StaticTest extends AnyFunSpec with Matchers with Logging {
 
-  def getModels(req: HttpServletRequest, res: HttpServletResponse): AnyRef = {
-    if (null == Static.Default.base) {
-      val p = System.getProperty("beangle.webmvc.static_base")
-      Static.Default.base = if (null == p) req.getContextPath + "/static" else p
+  describe("Static") {
+    it(" read and write") {
+      val modules = Static.Default.modules
+      val map = Collections.newMap[String, String]
+      modules.keys.toList.sorted foreach { n =>
+        var m = modules(n);
+        map.put(n, m.toString)
+        println(s"""    "${n}":${m.toString},""")
+      }
+      map.get("font-awesome").size should equal(1)
     }
-    new BeangleModels(this.buildComponentContext(req), req)
   }
-
 }
