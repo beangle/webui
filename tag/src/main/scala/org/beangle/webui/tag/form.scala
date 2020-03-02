@@ -305,7 +305,7 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
 
   var mutiple: String = _
 
-  var choosenMin: String = "30"
+  var chosenMin: String = "30"
 
   override def evaluateParams(): Unit = {
     if (null == keyName) {

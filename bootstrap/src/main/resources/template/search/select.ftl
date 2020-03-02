@@ -11,14 +11,16 @@ ${tag.body}
 [#if tag.value?? && !selected]<option value="${tag.value}" selected="selected">${tag.value}</option>[/#if]
 [/#if]
 </select></td></tr>
-[#assign enableChoosen=false]
-[#if tag.items?? && (tag.items?size > (tag.choosenMin?number-1))]
-  [#assign enableChoosen=true]
+[#assign enableChosen=false]
+[#if tag.items?? && (tag.items?size > (tag.chosenMin?number-1))]
+  [#assign enableChosen=true]
 [/#if]
-[#if enableChoosen || tag.remote]
+[#if enableChosen || tag.remote]
 <script type="text/javascript">
-[#if enableChoosen]
-  $("#${tag.id}").chosen({no_results_text: "没有找到结果！",search_contains:true,allow_single_deselect:true});
+[#if enableChosen]
+  beangle.load(["jquery-chosen"],function(){
+    $("#${tag.id}").chosen({no_results_text: "没有找到结果！",search_contains:true,allow_single_deselect:true});
+  });
 [/#if]
 [#if tag.remote]
 jQuery.ajax({
@@ -35,8 +37,10 @@ jQuery.ajax({
     [#if tag.value??]
     select.val("${tag.value}")
     [/#if]
-    if( cnt >= ${tag.choosenMin}){
-      $("#${tag.id}").chosen({no_results_text: "没有找到结果！",search_contains:true,allow_single_deselect:true});
+    if( cnt >= ${tag.chosenMin}){
+      beangle.load(["jquery-chosen"],function(){
+        $("#${tag.id}").chosen({no_results_text: "没有找到结果！",search_contains:true,allow_single_deselect:true});
+      });
     }
   }
 });
