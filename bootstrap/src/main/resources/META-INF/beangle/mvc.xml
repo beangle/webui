@@ -39,7 +39,7 @@
       <module name="sj-jquery-ui" js="js/struts2/jquery.ui.struts2.js" depends="sj-jquery"/>
     </bundle>
 
-    <bundle name="bui" version="0.2.0">
+    <bundle name="bui" version="0.2.1">
       <module name="beangle" js="js/beangle.js"/>
       <module name="bui" js="js/beangle-ui.js"  css="css/beangle-ui.css"/>
       <module name="bui-tabletree" js="js/beangle-ui-tabletree.js"  css="css/beangle-ui-tabletree.css"/>

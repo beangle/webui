@@ -18,13 +18,13 @@
  */
 package org.beangle.webui.showcase.action.config
 
+import java.net.URL
+
+import org.beangle.commons.io.IOs
+import org.beangle.commons.lang.ClassLoaders
+import org.beangle.commons.lang.annotation.description
 import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.api.context.ActionContext
-import java.io.File
-import org.beangle.commons.lang.ClassLoaders
-import org.beangle.commons.io.IOs
-import java.net.URL
-import org.beangle.commons.lang.annotation.description
 import org.beangle.webmvc.api.view.View
 
 @description("Web初始化配置查看器")
@@ -32,13 +32,7 @@ class WebinitAction extends ActionSupport {
 
   def index(): View = {
     val context = ActionContext.current.request.getServletContext
-    val webxml = context.getRealPath("WEB-INF/web.xml")
-    val url =
-      if (null != webxml && new File(webxml).exists) {
-        new File(webxml).toURI.toURL
-      } else {
-        ClassLoaders.getResource("WEB-INF/web.xml").get
-      }
+    val url = context.getResource("/WEB-INF/web.xml")
     if (null != url) put("webxml", IOs.readString(url.openStream))
     val initializers = new collection.mutable.HashMap[String, URL]
 
