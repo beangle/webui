@@ -48,12 +48,12 @@
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
-      <scope>provided</scope>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <scope>provided</scope>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
 
@@ -62,12 +62,13 @@
         <plugin>
           <groupId>org.beangle.maven</groupId>
           <artifactId>beangle-maven-plugin</artifactId>
-          <version>0.3.2</version>
+          <version>0.3.24</version>
           <executions>
             <execution>
               <id>generate</id>
               <phase>compile</phase>
               <goals>
+                <goal>webxml</goal>
                 <goal>sas</goal>
               </goals>
             </execution>

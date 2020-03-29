@@ -62,7 +62,7 @@ class Tab(context: ComponentContext) extends ClosingUIBean(context) {
 
 class Tabs(context: ComponentContext) extends ClosingUIBean(context) {
 
-  var selected: Int = 0
+  var selected: String = "0"
   val tabs = new collection.mutable.ListBuffer[Tab]
 
   def addTab(tab: Tab): Unit = {

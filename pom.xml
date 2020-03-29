@@ -12,10 +12,10 @@
   <version>0.3.38-SNAPSHOT</version>
 
   <properties>
-    <beangle.commons.version>5.1.11</beangle.commons.version>
+    <beangle.commons.version>5.1.13</beangle.commons.version>
     <beangle.data.version>5.3.3</beangle.data.version>
     <beangle.cdi.version>0.2.1</beangle.cdi.version>
-    <beangle.webmvc.version>0.3.35</beangle.webmvc.version>
+    <beangle.webmvc.version>0.3.38</beangle.webmvc.version>
     <hibernate.version>5.4.4.Final</hibernate.version>
   </properties>
 

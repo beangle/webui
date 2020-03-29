@@ -1,6 +1,6 @@
 [#ftl]
 [@b.navbar brand="Beangle Config Browser"]
-  [@b.navlist]
+  [@b.nav]
    [@b.navitem href="/config/mvc"]MVC[/@]
    [@b.navitem href="/config/container/index"]Beans[/@]
    [@b.navitem href="/config/hibernate/index"]Hibernate[/@]
