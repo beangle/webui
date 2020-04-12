@@ -1,6 +1,6 @@
 [#if tag.option??][#assign optionTemplate=tag.option?interpret][/#if]
 [#assign selected=false/]
-<select id="${tag.id}" name="${tag.name}"${tag.parameterString}>
+<select id="${tag.id}" name="${tag.name}" [#if tag.width??]width="${tag.width}"[/#if] ${tag.parameterString}>
 ${tag.body}
 [#if tag.empty??]<option value="">${tag.empty}</option>[/#if][#rt/]
 [#if tag.items??]
@@ -18,7 +18,7 @@ ${tag.body}
 <script type="text/javascript">
 [#if enableChosen]
   beangle.load(["jquery-chosen"],function(){
-    $("#${tag.id}").chosen({no_results_text: "没有找到结果！",search_contains:true,allow_single_deselect:true});
+    $("#${tag.id}").chosen({no_results_text: "没有找到结果！",search_contains:true,allow_single_deselect:true[#if tag.width??],width:'${tag.width}'[/#if]});
   });
 [/#if]
 [#if tag.remote]
@@ -38,7 +38,7 @@ jQuery.ajax({
     [/#if]
     if( cnt >= ${tag.chosenMin}){
       beangle.load(["jquery-chosen"],function(){
-        $("#${tag.id}").chosen({no_results_text: "没有找到结果！",search_contains:true,allow_single_deselect:true});
+        $("#${tag.id}").chosen({no_results_text: "没有找到结果！",search_contains:true,allow_single_deselect:true[#if tag.width??],width:'${tag.width}'[/#if]});
       });
     }
   }
