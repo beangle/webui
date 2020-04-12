@@ -307,6 +307,8 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
 
   var chosenMin: String = "30"
 
+  var width: String = _
+
   override def evaluateParams(): Unit = {
     if (null == keyName) {
       items match {
@@ -337,6 +339,18 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
         case _ =>
           if (Primitives.isWrapperType(value.getClass)) value
           else Properties.get(value, keyName)
+      }
+    }
+    if (null == width) {
+      this.parameters.get("style") foreach { style =>
+        //style="width:xx;"
+        val w = Strings.substringAfter(style.toString, "width:")
+        width =
+          if (w.contains(";")) {
+            Strings.substringBefore(w, ";")
+          } else {
+            w
+          }
       }
     }
     if (null != href) href = render(href)
