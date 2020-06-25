@@ -2,7 +2,7 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>27.0</version>
+    <version>27.1</version>
   </parent>
   <groupId>org.beangle.webui</groupId>
   <artifactId>beangle-webui-parent_2.13</artifactId>
@@ -12,11 +12,11 @@
   <version>0.3.40-SNAPSHOT</version>
 
   <properties>
-    <beangle.commons.version>5.1.13</beangle.commons.version>
-    <beangle.data.version>5.3.5</beangle.data.version>
-    <beangle.cdi.version>0.2.1</beangle.cdi.version>
-    <beangle.webmvc.version>0.3.38</beangle.webmvc.version>
-    <hibernate.version>5.4.4.Final</hibernate.version>
+    <beangle.commons.version>5.1.17</beangle.commons.version>
+    <beangle.data.version>5.3.7</beangle.data.version>
+    <beangle.cdi.version>0.2.2</beangle.cdi.version>
+    <beangle.webmvc.version>0.3.39</beangle.webmvc.version>
+    <hibernate.version>5.4.17.Final</hibernate.version>
   </properties>
 
   <modules>
