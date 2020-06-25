@@ -63,6 +63,8 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   def form: TagModel = get(classOf[Form])
 
+  def fieldset: TagModel = get(classOf[Fieldset])
+
   def formfoot: TagModel = get(classOf[Formfoot])
 
   def submit: TagModel = get(classOf[Submit])

@@ -167,6 +167,10 @@ class Radio(context: ComponentContext) extends UIBean(context) {
   }
 }
 
+class Fieldset(context: ComponentContext) extends ClosingUIBean(context) {
+  var title: String = _
+}
+
 class Field(context: ComponentContext) extends ClosingUIBean(context) {
   var label: String = _
   var required: String = _

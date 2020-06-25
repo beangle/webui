@@ -56,7 +56,7 @@
     </bundle>
 
     <bundle name="kindeditor" version="4.1.12">
-      <module name="kindeditor" js="kindeditor/kindeditor-all-min.js"/>
+      <module name="kindeditor" js="kindeditor-all-min.js"/>
     </bundle>
   </static>
 </mvc>
