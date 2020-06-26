@@ -1,7 +1,7 @@
 [#assign existRemote=false/]
 <ul id="${tag.id}" class="nav nav-tabs nav-tabs-compact" ${tag.parameterString}>
   [#list tag.tabs as tab]
-  <li><a href="#${tab.id}" [#if tab.href??]beangle_href="${tab.href}"[#assign existRemote=true/][/#if] data-toggle="tab">${tab.label}</a></li>
+  <li class="nav-item"><a href="#${tab.id}" class="nav-link" [#if tab.href??]beangle_href="${tab.href}"[#assign existRemote=true/][/#if] data-toggle="tab">${tab.label}</a></li>
   [/#list]
 </ul>
 <div id="${tag.id}_content" class="tab-content">

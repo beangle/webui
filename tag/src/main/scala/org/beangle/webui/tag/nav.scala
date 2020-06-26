@@ -39,8 +39,7 @@ class Navbar(context: ComponentContext) extends ClosingUIBean(context) {
 class Nav(context: ComponentContext) extends ClosingUIBean(context) {
 
   override def evaluateParams(): Unit = {
-    if (cssClass == null) cssClass = "nav navbar-nav"
-    else if (!cssClass.startsWith("nav ")) cssClass = "nav " + cssClass
+    if (cssClass == null) cssClass = "nav"
     generateIdIfEmpty()
   }
 }
