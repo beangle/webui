@@ -18,8 +18,12 @@
       <module name="bootstrap" js="js/bootstrap.bundle.min.js" css="css/bootstrap.min.css"/>
     </bundle>
 
-    <bundle name="font-awesome" version="4.7.0">
-      <module name="font-awesome" css="css/font-awesome.css"/>
+    <bundle name="AdminLTE" version="3.0.5">
+      <module name="adminlte" js="dist/js/adminlte.min.js" css="dist/css/adminlte.min.css"/>
+    </bundle>
+
+    <bundle name="font-awesome" version="5.13.0">
+      <module name="font-awesome" css="css/all.min.css"/>
     </bundle>
 
     <!--org.webjars:jquery-form:4.2.2-->
@@ -49,7 +53,7 @@
       <module name="sj-jquery-ui" js="js/struts2/jquery.ui.struts2.js" depends="sj-jquery"/>
     </bundle>
 
-    <bundle name="bui" version="0.2.1">
+    <bundle name="bui" version="0.2.2">
       <module name="beangle" js="js/beangle.js"/>
       <module name="bui" js="js/beangle-ui.js"  css="css/beangle-ui.css"/>
       <module name="bui-tabletree" js="js/beangle-ui-tabletree.js"  css="css/beangle-ui-tabletree.css"/>
@@ -58,8 +62,7 @@
       <module name="jquery-chosen" js="js/jquery-chosen.js" css="css/jquery.chosen.css"/>
       -->
       <module name="jquery-validity" js="js/jquery-validity.js" css="css/jquery.validity.css"/>
-      <module name="jquery-pstrength" js="js/jquery-pstrength.js" css="css/jquery.pstrength.css"/>
-      <module name="jquery-pstrength-zh" js="js/jquery-pstrength_zh.js"/>
+      <module name="jquery-pstrength" js="js/jquery-pstrength,jquery-pstrength_zh.js" css="css/jquery.pstrength.css"/>
       <module name="jquery-treetable" js="js/jquery-treetable.js" css="css/jquery.treetable.css"/>
     </bundle>
 
