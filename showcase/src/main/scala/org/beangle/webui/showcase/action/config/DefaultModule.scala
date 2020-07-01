@@ -25,7 +25,5 @@ object DefaultModule extends BindModule {
   protected override def binding(): Unit = {
     bind(classOf[MvcAction], classOf[ContainerAction], classOf[FreemarkerAction],
       classOf[IndexAction], classOf[DependencyAction], classOf[WebinitAction])
-
-    bind(classOf[TagAction])
   }
 }
