@@ -71,7 +71,7 @@
     </bundle>
 
     <bundle name="kindeditor" version="4.1.12">
-      <module name="kindeditor" js="kindeditor-all-min.js"/>
+      <module name="kindeditor" js="kindeditor-all-min,lang/zh-CN.js" css="themes/default/default.css"/>
     </bundle>
   </static>
 </mvc>

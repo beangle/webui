@@ -130,6 +130,8 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   def textarea: TagModel = get(classOf[Textarea])
 
+  def editor: TagModel = get(classOf[Editor])
+
   def field: TagModel = get(classOf[Field])
 
   def textfields: TagModel = get(classOf[Textfields])
