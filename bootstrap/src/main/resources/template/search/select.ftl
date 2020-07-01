@@ -1,5 +1,5 @@
 [#if tag.option??][#assign optionTemplate=tag.option?interpret][/#if]
-<tr><td class="search-item"><label for="${tag.id}">${tag.label}:</label>[#t/]
+<tr><td class="search-item"><label style="font-weight:inherit" for="${tag.id}">${tag.label}:</label>[#t/]
 [#assign selected=false/]
 <select id="${tag.id}" name="${tag.name}"${tag.parameterString}>
 ${tag.body}

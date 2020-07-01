@@ -4,6 +4,6 @@
 [#list tag.checkboxes as checkbox]
 [#if moreThan2]&nbsp;&nbsp;&nbsp;&nbsp;[/#if]
 <input type="checkbox" id="${checkbox.id}" style="width:10px" name="${tag.name}" value="${checkbox.value}"${tag.parameterString} [#if checkbox.checked]checked="checked"[/#if]/>
-<label for="${checkbox.id}">${checkbox.title!}</label>[#if moreThan2]<br/>[/#if]
+<label style="font-weight:inherit" for="${checkbox.id}">${checkbox.title!}</label>[#if moreThan2]<br/>[/#if]
 [/#list]
 </td></tr>
