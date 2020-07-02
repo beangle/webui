@@ -6,6 +6,9 @@
 <tr><td><span class="toolbar-icon action-info"></span><em>${tag.title}</em></td></tr>
 <tr><td style="font-size:0px"><img src="${b.static_url("bui","icons/16x16/actions/keyline.png")}" height="2" width="100%" alt="keyline"/></td></tr>
 [/#if]
-${tag.body}[#if !tag.body?contains('submit')]<tr><td align="center"><input type="reset" value="${b.text('action.reset')}"/>&nbsp;&nbsp;<input type="submit" value="${b.text('action.search')}" onclick="bg.form.submit('${tag.id}');return false;"/></td></tr>[/#if]
+${tag.body}
+[#if !tag.body?contains('submit')]
+<tr><td align="center" style="padding-top:3px">[@b.submit value="${b.text('action.search')}"/]</td></tr>
+[/#if]
 </table>
 </form>
