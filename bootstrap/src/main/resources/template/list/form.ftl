@@ -1,6 +1,6 @@
 [#ftl]
 [@b.messages slash="2"/]
-<form id="${tag.id}" name="${tag.name}" [#if tag.cssClass??] class="${tag.cssClass}"[/#if] action="${tag.action}" method="post" [#if tag.target??]target="${tag.target}"[/#if]${tag.parameterString}
+<form id="${tag.id}" name="${tag.name}" [#if tag.cssClass??] class="${tag.cssClass}"[/#if] action="${tag.action}" method="post" [#if tag.target??]target="${tag.target}"[/#if] [#if tag.enctype??]enctype="${tag.enctype}"[/#if]${tag.parameterString}
 [#if tag.validate=="true" || tag.onsubmit??]onsubmit="return onsubmit${tag.id}()"[/#if]>
 [#if Parameters['_params']??]<input name="_params" type="hidden" value="${Parameters['_params']?html}" />[/#if]
 [@b.fieldset title=tag.title!]${tag.body}[/@]

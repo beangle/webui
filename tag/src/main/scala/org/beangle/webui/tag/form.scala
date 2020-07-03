@@ -31,7 +31,7 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
   var action: String = _
   var target: String = _
   var method: String = "post"
-
+  var enctype: String = _
   var onsubmit: String = _
 
   /** Boolean */
@@ -429,4 +429,23 @@ class Password(context: ComponentContext) extends AbstractTextBean(context) {
   var minlength: String = "6"
   maxlength = "10"
   var showStrength = "false"
+}
+
+class File(context: ComponentContext) extends AbstractTextBean(context) {
+  var extensions: String = ""
+
+  override def evaluateParams(): Unit = {
+    if (null == this.id) generateIdIfEmpty()
+    label = processLabel(label, name)
+    if (null != title) title = getText(title)
+    else title = label
+
+    val myform = findAncestor(classOf[Form])
+    if (null != myform) {
+      if (Strings.isEmpty(myform.enctype)) {
+        myform.enctype = "multipart/form-data"
+      }
+      if ("true".equals(required)) myform.addRequire(id)
+    }
+  }
 }
