@@ -167,5 +167,7 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   def validity: TagModel = get(classOf[Validity])
 
-  def file:TagModel= get(classOf[File])
+  def file: TagModel = get(classOf[File])
+
+  def URL: TagModel = get(classOf[Url])
 }

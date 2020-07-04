@@ -449,3 +449,7 @@ class File(context: ComponentContext) extends AbstractTextBean(context) {
     }
   }
 }
+
+class Url(context: ComponentContext) extends AbstractTextBean(context) {
+  check = "match('url')"
+}
