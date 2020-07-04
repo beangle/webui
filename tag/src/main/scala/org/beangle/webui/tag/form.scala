@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat
 import java.{util => ju}
 
 import org.beangle.commons.bean.Properties
-import org.beangle.commons.lang.{Primitives, Strings}
+import org.beangle.commons.lang.{Numbers, Primitives, Strings}
 import org.beangle.webmvc.view.tag.{ClosingUIBean, ComponentContext, UIBean}
 
 class Form(context: ComponentContext) extends ClosingUIBean(context) {
@@ -433,6 +433,7 @@ class Password(context: ComponentContext) extends AbstractTextBean(context) {
 
 class File(context: ComponentContext) extends AbstractTextBean(context) {
   var extensions: String = ""
+  var maxSize = "5M" //1M
 
   override def evaluateParams(): Unit = {
     if (null == this.id) generateIdIfEmpty()
@@ -440,14 +441,43 @@ class File(context: ComponentContext) extends AbstractTextBean(context) {
     if (null != title) title = getText(title)
     else title = label
 
+    var maxSizeStr = maxSize.toLowerCase().trim()
+    if(maxSizeStr.endsWith("b")){
+      maxSizeStr = Strings.substringBefore(maxSizeStr,"b")
+    }
+    if (maxSizeStr.endsWith("k")) {
+      maxSize = Strings.substringBefore(maxSizeStr, "k")
+    } else if (maxSizeStr.endsWith("m")) {
+      maxSize = (Numbers.toLong(Strings.substringBefore(maxSizeStr, "m")) * 1024).toString;
+    }
     val myform = findAncestor(classOf[Form])
     if (null != myform) {
       if (Strings.isEmpty(myform.enctype)) {
         myform.enctype = "multipart/form-data"
       }
       if ("true".equals(required)) myform.addRequire(id)
+
+      val extRegex =
+        if (Strings.isNotBlank(extensions)) {
+          val a = Strings.split(extensions, ",") map { ext => s"""(\\.${ext})""" }
+          a.mkString("|")
+        } else {
+          ".*"
+        }
+      myform.addCheck(
+        s"""
+           |function checkFile_${id}(value){
+           |  if(jQuery("#${id}").data("file").size > ${maxSize}*1024){
+           |    return false;
+           |  }
+           |  return /${extRegex}/.test(value);
+           |}
+           |""".stripMargin
+      )
+      myform.addCheck(id, s"match(checkFile_${id},'文件格式或大小不符合要求')")
     }
   }
+
 }
 
 class Url(context: ComponentContext) extends AbstractTextBean(context) {
