@@ -57,10 +57,8 @@
       <module name="beangle" js="js/beangle.js"/>
       <module name="bui" js="js/beangle-ui.js"  css="css/beangle-ui.css"/>
       <module name="bui-tabletree" js="js/beangle-ui-tabletree.js"  css="css/beangle-ui-tabletree.css"/>
+      <module name="bui-ajaxchosen" js="js/beangle-ui-ajaxchosen.js" depends="chosen"/>
       <module name="jquery-history" js="js/jquery-history.js"/>
-      <!--
-      <module name="jquery-chosen" js="js/jquery-chosen.js" css="css/jquery.chosen.css"/>
-      -->
       <module name="jquery-validity" js="js/jquery-validity.js" css="css/jquery.validity.css"/>
       <module name="jquery-pstrength" js="js/jquery-pstrength,jquery-pstrength_zh.js" css="css/jquery.pstrength.css"/>
       <module name="jquery-treetable" js="js/jquery-treetable.js" css="css/jquery.treetable.css"/>

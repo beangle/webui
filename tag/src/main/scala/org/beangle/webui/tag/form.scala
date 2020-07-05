@@ -335,6 +335,7 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
       if ("true".equals(required)) myform.addRequire(id)
       if (null != check) myform.addCheck(id, check)
     }
+    if (!"true".equals(required) && null == empty) empty = "..."
     if (null == value) value = requestParameter(name)
     if (null != value) {
       value = value match {
@@ -391,10 +392,9 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
 
   def option: String = _option
 
-  def remote: Boolean = {
-    null == items && Strings.isNotBlank(href)
+  def remoteSearch: Boolean = {
+    Strings.contains(href, "{term}")
   }
-
 }
 
 class Email(context: ComponentContext) extends AbstractTextBean(context) {
@@ -442,8 +442,8 @@ class File(context: ComponentContext) extends AbstractTextBean(context) {
     else title = label
 
     var maxSizeStr = maxSize.toLowerCase().trim()
-    if(maxSizeStr.endsWith("b")){
-      maxSizeStr = Strings.substringBefore(maxSizeStr,"b")
+    if (maxSizeStr.endsWith("b")) {
+      maxSizeStr = Strings.substringBefore(maxSizeStr, "b")
     }
     if (maxSizeStr.endsWith("k")) {
       maxSize = Strings.substringBefore(maxSizeStr, "k")
