@@ -75,13 +75,20 @@ class Tabs(context: ComponentContext) extends ClosingUIBean(context) {
 
 }
 
-class Module(context: ComponentContext) extends ClosingUIBean(context) {
+class Card(context: ComponentContext) extends ClosingUIBean(context) {
   var title: String = _
+
+  var closeable: String = _
+
+  var minimal: String = _
 
   override def evaluateParams(): Unit = {
     generateIdIfEmpty()
     if (null != title) {
       title = getText(title)
+    }
+    if (null == cssClass) {
+      cssClass = "card"
     }
   }
 }

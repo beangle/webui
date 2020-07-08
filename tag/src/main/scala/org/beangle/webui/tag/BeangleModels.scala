@@ -147,7 +147,7 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   def select2: TagModel = get(classOf[Select2])
 
-  def module: TagModel = get(classOf[Module])
+  def card: TagModel = get(classOf[Card])
 
   def navbar: TagModel = get(classOf[Navbar])
 
