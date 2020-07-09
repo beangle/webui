@@ -147,8 +147,6 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   def select2: TagModel = get(classOf[Select2])
 
-  def card: TagModel = get(classOf[Card])
-
   def navbar: TagModel = get(classOf[Navbar])
 
   def nav: TagModel = get(classOf[Nav])
@@ -170,4 +168,15 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
   def file: TagModel = get(classOf[File])
 
   def URL: TagModel = get(classOf[Url])
+
+  def card: TagModel = get(classOf[Card])
+
+  def card_header: TagModel = get(classOf[CardHeader])
+
+  def card_tools: TagModel = get(classOf[CardTools])
+
+  def card_body: TagModel = get(classOf[CardBody])
+
+  def card_footer: TagModel = get(classOf[CardFooter])
+
 }

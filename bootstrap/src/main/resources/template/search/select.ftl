@@ -1,4 +1,4 @@
-<tr><td class="search-item">
+<div class="search-item">
 [#if tag.option??][#assign optionTemplate=tag.option?interpret][/#if]
 [#assign remoteSearch=tag.remoteSearch/]
 [#assign localChosen=false]
@@ -65,4 +65,4 @@ ${tag.body}
 [/#if]
 </script>
 [/#if]
-<td></tr>
+</div>

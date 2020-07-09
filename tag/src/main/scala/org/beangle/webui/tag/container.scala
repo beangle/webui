@@ -76,19 +76,40 @@ class Tabs(context: ComponentContext) extends ClosingUIBean(context) {
 }
 
 class Card(context: ComponentContext) extends ClosingUIBean(context) {
-  var title: String = _
-
-  var closeable: String = _
-
-  var minimal: String = _
 
   override def evaluateParams(): Unit = {
-    generateIdIfEmpty()
+    addClass("card")
+  }
+}
+
+class CardHeader(context: ComponentContext) extends ClosingUIBean(context) {
+  var closeable: String = "false"
+  var minimal: String = "false"
+  var title: String = _
+
+  override def evaluateParams(): Unit = {
     if (null != title) {
       title = getText(title)
     }
-    if (null == cssClass) {
-      cssClass = "card"
-    }
+    addClass("card-header")
+  }
+}
+
+class CardTools(context: ComponentContext) extends ClosingUIBean(context) {
+
+  override def evaluateParams(): Unit = {
+    addClass("card-tools")
+  }
+}
+
+class CardBody(context: ComponentContext) extends ClosingUIBean(context) {
+  override def evaluateParams(): Unit = {
+    addClass("card-body")
+  }
+}
+
+class CardFooter(context: ComponentContext) extends ClosingUIBean(context) {
+  override def evaluateParams(): Unit = {
+    addClass("card-footer")
   }
 }

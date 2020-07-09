@@ -7,9 +7,13 @@ beangle.load(["kindeditor"],function(){
     resizeType : 1,
     allowPreviewEmoticons : false,
     allowImageUpload : false,
+    allowFlashUpload:false,
+    allowMediaUpload:false,
+    allowFileUpload:false,
     allowFileManager:false,
     loadStyleMode:false,
-    afterBlur : function() {$('#${tag.id}').val(editor.html());}
+    afterBlur : function() {$('#${tag.id}').val(editor.html());},
+    items:[ 'source', '|', 'undo', 'redo', '|', 'preview', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage', 'flash', 'media', 'insertfile', 'table', 'hr',  'pagebreak', 'anchor', 'link', 'unlink']
   });
 });
 </script>
