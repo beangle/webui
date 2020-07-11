@@ -33,8 +33,7 @@ class Div(context: ComponentContext) extends ClosingUIBean(context) {
       href = render(this.href)
     }
     if (!Objects.equals(astarget, "false")) {
-      if (null != cssClass) cssClass = Strings.concat("ajax_container", " ", cssClass)
-      else cssClass = "ajax_container"
+      addClass("ajax_container")
     }
   }
 }

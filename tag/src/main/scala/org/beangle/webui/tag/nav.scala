@@ -39,7 +39,7 @@ class Navbar(context: ComponentContext) extends ClosingUIBean(context) {
 class Nav(context: ComponentContext) extends ClosingUIBean(context) {
 
   override def evaluateParams(): Unit = {
-    if (cssClass == null) cssClass = "nav"
+    addClass("nav")
     generateIdIfEmpty()
   }
 }
@@ -54,7 +54,9 @@ class Navitem(context: ComponentContext) extends ClosingUIBean(context) {
     if (null != href) {
       this.href = render(this.href)
       if (!active) {
-        active = this.href.startsWith(request.getRequestURI)
+        val qIdx = this.href.indexOf("?")
+        val thisHrefUri = if (qIdx == -1) this.href else this.href.substring(0, qIdx)
+        active = thisHrefUri == request.getRequestURI || thisHrefUri == request.getRequestURI + "/index"
       }
     }
   }
