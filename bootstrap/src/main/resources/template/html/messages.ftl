@@ -19,7 +19,7 @@
 </div>
 [#if tag.parameters['slash']?? && !tag.hasErrors]
 <script>
-  setTimeout(function(){var msgdiv=document.getElementById('${tag.id}');if(msgdiv) msgdiv.style.display="none";},${tag.parameters['slash']}*1000);
+  setTimeout(function(){jQuery('#${tag.id}').fadeOut();},${tag.parameters['slash']}*1000);
 </script>
 [/#if]
 [/#if]
