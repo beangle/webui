@@ -1,6 +1,7 @@
 <div id="${tag.id}_div" class="grid" ${tag.parameterString}>[@b.messages slash="4"/]
 [#if tag.caption??]<div class="grid-caption">${tag.caption?html}</div>[/#if]
 [#if tag.hasbar]<div id="${tag.id}_bar1" class="gridbar"></div>[/#if]
+<div class="gridcontent">
 <table class="gridtable" id="${tag.id}">
 [#if tag.cols?size>0]
 <thead class="gridhead">
@@ -37,6 +38,7 @@
 
 <tbody id="${tag.id}_data">${tag.body}</tbody>
 </table>
+</div>
 [#if tag.hasbar]
 [#if tag.notFullPage]
 <div class="gridempty" id="${tag.id}_empty"></div>

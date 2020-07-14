@@ -63,6 +63,8 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   def form: TagModel = get(classOf[Form])
 
+  def fieldset: TagModel = get(classOf[Fieldset])
+
   def formfoot: TagModel = get(classOf[Formfoot])
 
   def submit: TagModel = get(classOf[Submit])
@@ -128,19 +130,22 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
 
   def textarea: TagModel = get(classOf[Textarea])
 
+  def editor: TagModel = get(classOf[Editor])
+
   def field: TagModel = get(classOf[Field])
 
   def textfields: TagModel = get(classOf[Textfields])
 
+  @deprecated("using @b.date")
   def datepicker: TagModel = get(classOf[Date])
+
+  def date: TagModel = get(classOf[Date])
 
   def div: TagModel = get(classOf[Div])
 
   def select: TagModel = get(classOf[Select])
 
   def select2: TagModel = get(classOf[Select2])
-
-  def module: TagModel = get(classOf[Module])
 
   def navbar: TagModel = get(classOf[Navbar])
 
@@ -159,5 +164,19 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
   def checkboxes: TagModel = get(classOf[Checkboxes])
 
   def validity: TagModel = get(classOf[Validity])
+
+  def file: TagModel = get(classOf[File])
+
+  def URL: TagModel = get(classOf[Url])
+
+  def card: TagModel = get(classOf[Card])
+
+  def card_header: TagModel = get(classOf[CardHeader])
+
+  def card_tools: TagModel = get(classOf[CardTools])
+
+  def card_body: TagModel = get(classOf[CardBody])
+
+  def card_footer: TagModel = get(classOf[CardFooter])
 
 }

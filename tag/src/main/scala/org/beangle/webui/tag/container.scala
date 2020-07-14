@@ -33,8 +33,7 @@ class Div(context: ComponentContext) extends ClosingUIBean(context) {
       href = render(this.href)
     }
     if (!Objects.equals(astarget, "false")) {
-      if (null != cssClass) cssClass = Strings.concat("ajax_container", " ", cssClass)
-      else cssClass = "ajax_container"
+      addClass("ajax_container")
     }
   }
 }
@@ -75,13 +74,41 @@ class Tabs(context: ComponentContext) extends ClosingUIBean(context) {
 
 }
 
-class Module(context: ComponentContext) extends ClosingUIBean(context) {
+class Card(context: ComponentContext) extends ClosingUIBean(context) {
+
+  override def evaluateParams(): Unit = {
+    addClass("card")
+  }
+}
+
+class CardHeader(context: ComponentContext) extends ClosingUIBean(context) {
+  var closeable: String = "false"
+  var minimal: String = "false"
   var title: String = _
 
   override def evaluateParams(): Unit = {
-    generateIdIfEmpty()
     if (null != title) {
       title = getText(title)
     }
+    addClass("card-header")
+  }
+}
+
+class CardTools(context: ComponentContext) extends ClosingUIBean(context) {
+
+  override def evaluateParams(): Unit = {
+    addClass("card-tools")
+  }
+}
+
+class CardBody(context: ComponentContext) extends ClosingUIBean(context) {
+  override def evaluateParams(): Unit = {
+    addClass("card-body")
+  }
+}
+
+class CardFooter(context: ComponentContext) extends ClosingUIBean(context) {
+  override def evaluateParams(): Unit = {
+    addClass("card-footer")
   }
 }

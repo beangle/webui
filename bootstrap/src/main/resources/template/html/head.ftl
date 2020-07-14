@@ -20,7 +20,7 @@
         "${k}":${contents[k]}[#if k_has_next],[/#if]
       [/#list]
     });
-    bg.load(["jquery-form","bootstrap","font-awesome"])
+    bg.load(["jquery-form","bootstrap","font-awesome","adminlte"])
   </script>
   [@include_if_exists path="head_ext.ftl"/]
   ${tag.body}

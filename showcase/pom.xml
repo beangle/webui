@@ -2,7 +2,7 @@
   <parent>
     <groupId>org.beangle.webui</groupId>
     <artifactId>beangle-webui-parent_2.13</artifactId>
-    <version>0.3.39</version>
+    <version>0.3.40</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>beangle-webui-showcase_2.13</artifactId>
@@ -12,7 +12,6 @@
   <properties>
     <bundle.symbolicName>org.beangle.webui.showcase</bundle.symbolicName>
     <bundle.namespace>org.beangle.webui.showcase</bundle.namespace>
-    <hibernate.version>5.2.12.Final</hibernate.version>
   </properties>
 
   <dependencies>
@@ -62,7 +61,7 @@
         <plugin>
           <groupId>org.beangle.maven</groupId>
           <artifactId>beangle-maven-plugin</artifactId>
-          <version>0.3.24</version>
+          <version>0.3.25</version>
           <executions>
             <execution>
               <id>generate</id>

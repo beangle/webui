@@ -1,12 +1,10 @@
-<nav [#if tag.id??] id="${tag.id}"[/#if] class="navbar navbar-default[#if tag.cssClass??] ${tag.cssClass}[/#if]" role="navigation" ${tag.parameterString}>
+<nav [#if tag.id??] id="${tag.id}"[/#if] class="navbar[#if tag.cssClass??] ${tag.cssClass}[#else] navbar-expand-lg navbar-light bg-light[/#if]" ${tag.parameterString}>
    [#if tag.brand??]
-   <div class="navbar-header">
       [#if tag.brand?contains("<")]
       ${tag.brand}
       [#else]
       <a class="navbar-brand" href="#">${tag.brand}</a>
       [/#if]
-   </div>
    [/#if]
-   <div>${tag.body!}</div>
+   ${tag.body!}
 </nav>
