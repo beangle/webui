@@ -33,7 +33,7 @@ ${tag.body}
     function (datas){
       var items=[]
       jQuery.each(datas,function(i,data){
-        items.push({"value":data['${tag.keyName}'],"text":data['${tag.valueName}']});
+        items.push({"value":data.${tag.keyName},"text":data.${tag.valueName}});
        });
        return items;
     },{placeholder_text_single:"${tag.empty!'...'}",search_contains:true,allow_single_deselect:true[#if tag.width??],width:'${tag.width}'[/#if]}
