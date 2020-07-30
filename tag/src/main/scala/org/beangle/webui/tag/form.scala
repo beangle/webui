@@ -51,7 +51,7 @@ class Form(context: ComponentContext) extends ClosingUIBean(context) {
       id = name
     }
     if (null != action) action = render(action)
-    if (null != title) title = getText(title)
+    title = getText(title)
     if (null != onsubmit) {
       onsubmit = onsubmit.trim()
       if (!onsubmit.contains(')') && !onsubmit.contains(' ')) {
@@ -129,7 +129,7 @@ class Submit(context: ComponentContext) extends UIBean(context) {
       if (null != f) formId = f.id
     }
     if (null != onsubmit && -1 != onsubmit.indexOf('(')) onsubmit = Strings.concat("'", onsubmit, "'")
-    if (null != value) value = getText(value)
+    value = getText(value)
     if (null != action) action = render(action)
   }
 }
@@ -176,7 +176,7 @@ class Field(context: ComponentContext) extends ClosingUIBean(context) {
   var required: String = _
 
   override def evaluateParams(): Unit = {
-    if (null != label) label = getText(label)
+    label = getText(label)
   }
 }
 

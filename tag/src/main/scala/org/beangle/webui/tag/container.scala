@@ -52,7 +52,7 @@ class Tab(context: ComponentContext) extends ClosingUIBean(context) {
 
   override def evaluateParams(): Unit = {
     if (null != href) href = render(href)
-    if (null != label) label = getText(label)
+    label = getText(label)
     val tabs = findAncestor(classOf[Tabs])
     if (Strings.isEmpty(id)) id = tabs.id + "_tab" + tabs.tabs.size
     tabs.addTab(this)
@@ -87,9 +87,7 @@ class CardHeader(context: ComponentContext) extends ClosingUIBean(context) {
   var title: String = _
 
   override def evaluateParams(): Unit = {
-    if (null != title) {
-      title = getText(title)
-    }
+    title = getText(title)
     addClass("card-header")
   }
 }

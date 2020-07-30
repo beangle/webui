@@ -128,7 +128,7 @@ class Checkboxes(context: ComponentContext) extends UIBean(context) {
 
   override def evaluateParams(): Unit = {
     if (null == this.id) generateIdIfEmpty()
-    if (null != label) label = getText(label)
+    label = getText(label)
 
     val keys = convertItems()
     val values = convertValue()
@@ -234,7 +234,7 @@ class Select2(context: ComponentContext) extends UIBean(context) {
   var style = "width:250px;height:200px"
 
   override def evaluateParams(): Unit = {
-    if (null != label) label = getText(label)
+    label = getText(label)
     generateIdIfEmpty()
     val myform = findAncestor(classOf[Form])
     if (null != myform) {
