@@ -1,4 +1,4 @@
-<div class="${tag.cssClass}" ${tag.parameterString}>
+<div [#if tag.id??]id="${tag.id}"[/#if] class="${tag.cssClass}" ${tag.parameterString}>
 [#if tag.title??]
     <h3 class="card-title">${tag.title}</h3>
     [#if tag.minimal=="true" || tag.closeable=="true"]

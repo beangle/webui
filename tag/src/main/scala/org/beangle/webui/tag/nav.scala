@@ -26,9 +26,7 @@ class Toolbar(context: ComponentContext) extends ClosingUIBean(context) {
 
   override def evaluateParams(): Unit = {
     generateIdIfEmpty()
-    if (null != title) {
-      title = getText(title)
-    }
+    title = getText(title)
   }
 }
 
