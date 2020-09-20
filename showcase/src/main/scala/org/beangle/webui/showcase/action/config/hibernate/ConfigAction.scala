@@ -31,7 +31,7 @@ import org.beangle.webmvc.api.view.View
 class ConfigAction extends AbstractAction {
 
   def index(): View = {
-    put("factory", getFactory)
+    put("factory", getFactory())
     put("action", this)
     forward()
   }
