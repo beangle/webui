@@ -18,7 +18,7 @@
  */
 package org.beangle.webui.tag
 
-import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
+import jakarta.servlet.http.{HttpServletRequest, HttpServletResponse}
 import org.beangle.commons.lang.annotation.description
 import org.beangle.webmvc.view.tag.AbstractTagLibrary
 

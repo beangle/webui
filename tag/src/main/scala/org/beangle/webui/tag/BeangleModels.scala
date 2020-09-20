@@ -18,7 +18,7 @@
  */
 package org.beangle.webui.tag
 
-import javax.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletRequest
 import org.beangle.webmvc.view.tag.freemarker.TagModel
 import org.beangle.webmvc.view.tag.{ComponentContext, CoreModels}
 import org.beangle.webui.tag.Grid._
@@ -109,7 +109,7 @@ class BeangleModels(context: ComponentContext, request: HttpServletRequest) exte
     var model = models.get(classOf[Anchor])
     if (null == model) {
       model = new TagModel(context) {
-        override protected def getBean() = new Anchor(context)
+        override protected def getBean = new Anchor(context)
       }
       models.put(classOf[Anchor], model)
     }
