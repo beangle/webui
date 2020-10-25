@@ -6,12 +6,12 @@
 [/#if]
 [#if tag.label??]<label for="${tag.id}" class="title">[#if (tag.required!"")=="true"]<em class="required">*</em>[/#if]${tag.label}:</label>[/#if]
 [#assign selected=false/]
-<select id="${tag.id}" [#if tag.title??]title="${tag.title}"[/#if] name="${tag.name}" [#if tag.width??]width="${tag.width}"[/#if] [#if tag.mutiple??]mutiple="${tag.mutiple}"[/#if]${tag.parameterString}>
+<select id="${tag.id}" [#if tag.title??]title="${tag.title}"[/#if] name="${tag.name}" [#if tag.width??]width="${tag.width}"[/#if] [#if tag.multiple??]multiple="${tag.multiple}"[/#if]${tag.parameterString}>
 ${tag.body}
 [#if tag.empty??][#if localChosen|| tag.remoteSearch]<option value=""></option>[#else]<option value="">${tag.empty}</option>[/#if][/#if][#rt/]
 [#if tag.items??]
 [#list tag.items as item][#assign optionText][#if tag.option??][@optionTemplate/][#else]${item[tag.valueName]!}[/#if][/#assign]
-<option value="${item[tag.keyName]}" title="${optionText!}" [#if !selected && tag.isSelected(item)] selected="selected" [#assign selected=true/][/#if]>${optionText!}</option>
+<option value="${item[tag.keyName]}" title="${optionText!}" [#if (!selected || tag.multiple??) && tag.isSelected(item)] selected="selected" [#assign selected=true/][/#if]>${optionText!}</option>
 [/#list]
 [#if tag.value?? && !selected]<option value="${tag.value}" selected="selected">${tag.value}</option>[/#if]
 [/#if]

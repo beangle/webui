@@ -292,6 +292,8 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
   var empty: String = _
   var value: Object = _
 
+  var values: Object = _
+
   var keyName: String = _
   var valueName: String = _
 
@@ -307,7 +309,7 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
 
   var href: String = _
 
-  var mutiple: String = _
+  var multiple: String = _
 
   var chosenMin: String = "30"
 
@@ -362,17 +364,31 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
   }
 
   def isSelected(obj: Object): Boolean = {
-    if (null == value) {
+    if (null == value && null == values) {
       false
     } else {
       try {
-        val pObj =
-          obj match {
-            case tu: (_, _) => tu._1
-            case e: ju.Map.Entry[_, _] => e.getKey
-            case _ => Properties.get[Any](obj, keyName)
+        val pObj = obj match {
+          case tu: (_, _) => tu._1
+          case e: ju.Map.Entry[_, _] => e.getKey
+          case _ => Properties.get[Any](obj, keyName)
+        }
+        if (null != value) {
+          value == pObj || value.toString == pObj.toString
+        } else if (null != values) {
+          values match {
+            case i: Iterable[Any] =>
+              i exists { v =>
+                val vkey = Properties.get[Any](v, keyName)
+                vkey == pObj || vkey.toString == pObj.toString
+              }
+            case _ => false
           }
-        value == pObj || value.toString == pObj.toString
+
+        } else {
+          false
+        }
+
       } catch {
         case _: Exception => false
       }
