@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat
 import java.{util => ju}
 
 import org.beangle.commons.bean.Properties
+import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.{Numbers, Primitives, Strings}
 import org.beangle.webmvc.view.tag.{ClosingUIBean, ComponentContext, UIBean}
 
@@ -290,9 +291,9 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
   var name: String = _
   var items: Object = _
   var empty: String = _
-  var value: Object = _
 
-  var values: Object = _
+  val keys = Collections.newSet[String]
+  var values: Iterable[Object] = _
 
   var keyName: String = _
   var valueName: String = _
@@ -338,16 +339,9 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
       if (null != check) myform.addCheck(id, check)
     }
     if (!"true".equals(required) && null == empty) empty = "..."
-    if (null == value) value = requestParameter(name)
-    if (null != value) {
-      value = value match {
-        case str: String => if (Strings.isEmpty(str)) null else str
-        case tuple: (_, _) => tuple._1.toString
-        case _ =>
-          if (Primitives.isWrapperType(value.getClass)) value
-          else Properties.get(value, keyName)
-      }
-    }
+    if (null == values) setValue(requestParameter(name))
+    if (null != values) collectKeys()
+
     if (null == width) {
       this.parameters.get("style") foreach { style =>
         //style="width:xx;"
@@ -363,32 +357,50 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
     if (null != href) href = render(href)
   }
 
+  private def collectKeys(): Unit = {
+    val emptyValues = Collections.newBuffer[Object]
+    values.foreach { value =>
+      val k = value match {
+        case str: String => if (Strings.isEmpty(str)) null else str
+        case tuple: (_, _) => tuple._1
+        case _ =>
+          if (Primitives.isWrapperType(value.getClass)) value
+          else Properties.get[Any](value, keyName)
+      }
+      k match {
+        case null => emptyValues += value
+        case s: String => keys.add(s)
+        case _ => keys.add(k.toString)
+      }
+    }
+    if (emptyValues.nonEmpty) {
+      values = Collections.newBuffer(values).subtractAll(emptyValues)
+    }
+  }
+
+  def setValue(v: Object): Unit = {
+    v match {
+      case null => this.values = List.empty
+      case s: String => if (Strings.isEmpty(s)) {
+        this.values = List.empty
+      } else {
+        this.values = List(s.trim)
+      }
+      case _ => this.values = List(v)
+    }
+  }
+
   def isSelected(obj: Object): Boolean = {
-    if (null == value && null == values) {
+    if (null == values || values.isEmpty) {
       false
     } else {
       try {
-        val pObj = obj match {
-          case tu: (_, _) => tu._1
-          case e: ju.Map.Entry[_, _] => e.getKey
-          case _ => Properties.get[Any](obj, keyName)
+        val itemKey = obj match {
+          case tu: (_, _) => tu._1.toString
+          case e: ju.Map.Entry[_, _] => e.getKey.toString
+          case _ => Properties.get[Any](obj, keyName).toString
         }
-        if (null != value) {
-          value == pObj || value.toString == pObj.toString
-        } else if (null != values) {
-          values match {
-            case i: Iterable[Any] =>
-              i exists { v =>
-                val vkey = Properties.get[Any](v, keyName)
-                vkey == pObj || vkey.toString == pObj.toString
-              }
-            case _ => false
-          }
-
-        } else {
-          false
-        }
-
+        keys.contains(itemKey)
       } catch {
         case _: Exception => false
       }

@@ -9,12 +9,21 @@
 [#assign selected=false/]
 <select id="${tag.id}" [#if tag.title??]title="${tag.title}"[/#if] name="${tag.name}" [#if tag.width??]width="${tag.width}"[/#if] [#if tag.multiple??]multiple="${tag.multiple}"[/#if]${tag.parameterString}>
 ${tag.body}
-[#if tag.empty??][#if localChosen|| tag.remoteSearch]<option value=""></option>[#else]<option value="">${tag.empty}</option>[/#if][/#if][#rt/]
+[#if tag.empty??][#if localChosen || remoteSearch]<option value=""></option>[#else]<option value="">${tag.empty}</option>[/#if][/#if][#rt/]
 [#if tag.items??]
 [#list tag.items as item][#assign optionText][#if tag.option??][@optionTemplate/][#else]${item[tag.valueName]!}[/#if][/#assign]
 <option value="${item[tag.keyName]}" title="${optionText!}" [#if (!selected || tag.multiple??) && tag.isSelected(item)] selected="selected" [#assign selected=true/][/#if]>${optionText!}</option>
 [/#list]
-[#if tag.value?? && !selected]<option value="${tag.value}" selected="selected">${tag.value}</option>[/#if]
+[#if tag.keys?size>0 && !selected][#list tag.keys as k]<option value="${k}" selected="selected">${k}</option>[/#list][/#if]
+[/#if]
+[#if remoteSearch]
+    [#list tag.values as v]
+      [#if v?is_hash]
+        <option value="${v[tag.keyName]!}" selected="selected">${v[tag.valueName]!}</option>
+      [#else]
+        <option value="${v}" selected="selected">${v}</option>
+      [/#if]
+    [/#list]
 [/#if]
 </select>[#if tag.comment??]<label class="comment">${tag.comment}</label>[/#if]
 [#if localChosen || tag.href??]
@@ -49,7 +58,7 @@ ${tag.body}
       for(var i in datas){
         cnt += 1;
         var data = datas[i], value = data.${tag.keyName}
-        select.append('<option value="'+value+'" title="'+data.name+'">'+data.${tag.valueName}+'</option>');
+        select.append('<option value="'+value+'" title="'+data.${tag.valueName}+'">'+data.${tag.valueName}+'</option>');
       }
       [#if tag.value??]
       select.val("${tag.value}")
