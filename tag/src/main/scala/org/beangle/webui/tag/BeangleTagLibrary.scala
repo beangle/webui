@@ -18,8 +18,8 @@
  */
 package org.beangle.webui.tag
 
-import jakarta.servlet.http.{HttpServletRequest, HttpServletResponse}
 import org.beangle.commons.lang.annotation.description
+import org.beangle.webmvc.api.context.ActionContext
 import org.beangle.webmvc.view.tag.AbstractTagLibrary
 
 /**
@@ -31,7 +31,8 @@ import org.beangle.webmvc.view.tag.AbstractTagLibrary
 @description("beangle webui 标签库")
 class BeangleTagLibrary extends AbstractTagLibrary {
 
-  def getModels(req: HttpServletRequest, res: HttpServletResponse): AnyRef = {
+  override def models(): AnyRef = {
+    val req = ActionContext.current.request
     if (null == Static.Default.base) {
       val p = System.getProperty("beangle.webmvc.static_base")
       Static.Default.base = if (null == p) req.getContextPath + "/static" else p
