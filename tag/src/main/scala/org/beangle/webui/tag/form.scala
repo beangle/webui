@@ -18,14 +18,14 @@
  */
 package org.beangle.webui.tag
 
-import java.io.Writer
-import java.text.SimpleDateFormat
-import java.{util => ju}
-
 import org.beangle.commons.bean.Properties
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.{Numbers, Primitives, Strings}
 import org.beangle.webmvc.view.tag.{ClosingUIBean, ComponentContext, UIBean}
+
+import java.io.Writer
+import java.text.SimpleDateFormat
+import java.{util => ju}
 
 class Form(context: ComponentContext) extends ClosingUIBean(context) {
   var name: String = _
@@ -293,7 +293,7 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
   var empty: String = _
 
   val keys = Collections.newSet[String]
-  var values: Iterable[Object] = _
+  var values: Object = _
 
   var keyName: String = _
   var valueName: String = _
@@ -359,7 +359,11 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
 
   private def collectKeys(): Unit = {
     val emptyValues = Collections.newBuffer[Object]
-    values.foreach { value =>
+    val valueList = values match {
+      case ji: java.lang.Iterable[Object] => scala.jdk.javaapi.CollectionConverters.asScala(ji)
+      case si: Iterable[Object] => si
+    }
+    valueList.foreach { value =>
       val k = value match {
         case str: String => if (Strings.isEmpty(str)) null else str
         case tuple: (_, _) => tuple._1
@@ -376,6 +380,9 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
     if (emptyValues.nonEmpty) {
       values = Collections.newBuffer(values).subtractAll(emptyValues)
     }
+    if (multiple != "true" && keys.size > 1) {
+      multiple = "true"
+    }
   }
 
   def setValue(v: Object): Unit = {
@@ -391,7 +398,7 @@ class Select(context: ComponentContext) extends ClosingUIBean(context) {
   }
 
   def isSelected(obj: Object): Boolean = {
-    if (null == values || values.isEmpty) {
+    if (null == values) {
       false
     } else {
       try {
